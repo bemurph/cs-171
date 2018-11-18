@@ -1,0 +1,117 @@
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600');
+
+:root {
+	--main-color: #2b4388;;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.navigation-tooltip{
+  padding:10px;
+  background-color: var(--main-color);;
+  color:white;
+  display: none;
+  position: absolute;
+  z-index: 2;
+}
+
+h1{
+  font-size: 2.5rem;
+  color:var(--main-color);
+  text-transform: uppercase;
+  margin-bottom:2rem;
+}
+
+h2{
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  text-align: left;
+  font-size: 1.5rem;
+  color: var(--main-color);
+}
+
+.highlight{
+  font-size: 2rem;
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.key-indicators{
+  font-size: 1rem;
+  color: var(--main-color);
+}
+
+.key-indicators::before{
+  display: inline-block;
+  content: ' ';
+  background-image: url(/images/heart.svg);
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
+  position: relative;
+  top: 3px;
+  right: 8px;
+}
+
+.navigation-dot-container{
+  z-index:3; 
+  position: fixed; 
+  top: calc(50% - 100px); 
+  right: 10px;
+}
+
+.navigation-dot{
+  border-radius: 100%; 
+  border: 1px solid var(--main-color);;
+  width: 15px; 
+  height:15px;
+  margin-top:5px;
+}
+
+.navigation-dot:hover{
+  background-color: var(--main-color);;
+}
+
+
+/* LANDING PAGE TEXT */
+.introduction-text{
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: var(--main-color);;
+  text-align: left;
+}
+
+/* LANDING PAGE VIEW */
+.view1 {
+  background-image: url('/images/landing-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 3rem;
+}
+
+/* NEXT CONTENT SCROLL */
+.next-content span:before{
+  display: inline-block;
+  content: ' ';
+  background-image: url(/images/down.svg);
+  background-size: 22px 22px;
+  height: 22px;
+  width: 22px;
+  position: relative;
+  top: 3px;
+  right: 8px;
+}
+
+.next-content{
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  color: var(--main-color);
+}
