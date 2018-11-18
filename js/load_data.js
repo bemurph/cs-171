@@ -32,7 +32,7 @@ function processDALYRow(d) {
 }
 
 const DALYStringColumns = ['sex', 'cause_of_death_0', 'cause_of_death_1', 'cause_of_death_2', 'cause_of_death_3',
-    'cause_of_death_4'];
+    'cause_of_death_4', 'year'];
 
 function processDALYCountryRow(d) {
     for (let key in d) {
@@ -41,6 +41,9 @@ function processDALYCountryRow(d) {
                 d[key] = 0;
             }
             d[key] = +d[key];
+        }
+        else if (key === 'year') {
+            d[key] = yearParser(d[key]);
         }
     }
     return d;
@@ -53,13 +56,15 @@ queue()
     .defer(d3.csv, 'data/DALY_Global_2015.csv', processDALYRow)
     .defer(d3.csv, 'data/DALY_Global_2016.csv', processDALYRow)
     .defer(d3.csv, 'data/DALY-2000-country-all.csv', processDALYCountryRow)
+    .defer(d3.csv, 'data/DALY-2010-country-all.csv', processDALYCountryRow)
     .await(printData);
 
 
-function printData(error, daly_2000, daly_2010, daly_2015, daly_2016, daly_country_2000) {
+function printData(error, daly_2000, daly_2010, daly_2015, daly_2016, daly_country_2000, daly_country_2010) {
     console.log(daly_2000);
     console.log(daly_2010);
     console.log(daly_2015);
     console.log(daly_2016);
     console.log(daly_country_2000);
+    console.log(daly_country_2010);
 }
