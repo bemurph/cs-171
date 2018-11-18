@@ -109,13 +109,25 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>TITLE 4</h2>
+						<h2>Association between mean systolic blood pressure and cardiovascular disease</h2>
 						<div id="chart-area-5">
+							<p><span><label for="x-axis">Select sex</label></span>
+								<select id="x-value" onchange="setGraph()">
+									<option value="Male">Males</option>
+									<option value="Female">Females</option>
+								</select>
+							<p><span><label for="y-axis">Select year</label></span>
+								<select id="y-value" onchange="setGraph()">
+									<option value="2000">2000</option>
+									<option value="2010">2010</option>
+								</select>
+
+
 						</div>
 					</div>
 				</div>
 				<div class="next-content">
-					<span>NEXT: TITLE-5</span>
+					<span>NEXT: cholesterol</span>
 				</div>
 			</div>
 		</div>
@@ -125,7 +137,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>TITLE 5</h2>
+						<h2>Average Cholesterol</h2>
 						<div id="chart-area-6">
 						</div>
 					</div>
@@ -201,6 +213,7 @@
 
 	<!-- Load data, create visualizations -->
 	<script src="js/load_data.js"></script>
+	<script src="js/load_data_cholesterol.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/scatter.js"></script>
 </body>
