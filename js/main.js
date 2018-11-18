@@ -1,8 +1,10 @@
+//SCROLL LIBRARY 
 $('.mainbag').viewScroller({
                 useScrollbar: false,
                 changeWhenAnim: false
             });
 
+//LEFT NAVIGATION DOTS 
 var windowWidth = $( window ).width() - 100;
 
             $(".navigation-dot").mousemove(function(event){

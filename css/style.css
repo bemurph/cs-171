@@ -12,6 +12,7 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+/* DOT NAVIGATION TOOLTIP */
 .navigation-tooltip{
   padding:10px;
   background-color: var(--main-color);;
@@ -36,6 +37,7 @@ h2{
   color: var(--main-color);
 }
 
+/* TEXT HIGHLIGHT */
 .highlight{
   font-size: 2rem;
   color: var(--main-color);
@@ -95,7 +97,7 @@ h2{
   padding-top: 3rem;
 }
 
-/* NEXT CONTENT SCROLL */
+/* NEXT CONTENT WITH SCROLL */
 .next-content span:before{
   display: inline-block;
   content: ' ';
