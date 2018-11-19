@@ -9,6 +9,11 @@ var svg = d3.select('#chart-area-6')
     .append('g')
     .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
+
+//to do: define scales; initVis; enter, update, exit based on user selection
+//sources of data: js/load_data_cholesterol.js
+//generate line plots (male vs. female) for selected country over time
+
 var xScale = d3.scaleLinear()
     .range([0, width]);
 
