@@ -50,15 +50,15 @@ var processraisedcholesterolRow = function(d) {
 
 d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", processcholesterolRow, function(data) {
     mean_cholesterol = data;
-    console.log(data);
+    // console.log(data);
 });
 
 d3.csv("data/raised-total-cholesterol-adult-5plus-2008.csv", processraisedcholesterolRow, function(data) {
     raise_cholesterol5 = data;
-    console.log(data);
+    // console.log(data);
 });
 
 d3.csv("data/raised-total-cholesterol-adult-6plus-2008.csv", processraisedcholesterolRow, function(data) {
     raise_cholesterol6 = data;
-    console.log(data);
+    // console.log(data);
 });
