@@ -1,6 +1,6 @@
 function drawGraph(xText, yText) {
     $('svg').remove();
-    var margin = {top: 30, right: 50, bottom: 40, left: 40};
+    var margin = {top: 30, right: 200, bottom: 40, left: 50};
 
     var width = 960 - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
@@ -75,6 +75,7 @@ function drawGraph(xText, yText) {
 
 
         var bubble = svg.selectAll('.bubble')
+
             .data(data)
             .enter().append('circle')
             .attr('class', 'bubble')
@@ -101,8 +102,14 @@ function drawGraph(xText, yText) {
 
         // adding label. For x-axis, it's at (10, 10), and for y-axis at (width, height-10).
         svg.append('text')
-            .attr('x', 10)
-            .attr('y', 10)
+
+          .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+
+           // .attr('x', 10)
+           // .attr('y', 10)
             .attr('class', 'label')
             .text('Disability adjusted life years from Cardiovascular Disease');
 
@@ -116,12 +123,27 @@ function drawGraph(xText, yText) {
 
         // I feel I understand legends much better now.
         // define a group element for each color i, and translate it to (0, i * 20).
+
+        svg.selectAll("title_text")
+            .data(["Region"])
+            .enter()
+            .append("text")
+            .attr("x", 700)
+            .attr("y", 1)
+            .attr('class', 'legend')
+//            .style("font-family", "sans-serif")
+  //          .style("font-size", "10px")
+    //        .style("color", "Black")
+            .text(function (d) { return d; });
+
         var legend = svg.selectAll('legend')
+
             .data(color.domain())
             .enter().append('g')
             .attr('class', 'legend')
+
             .attr('transform', function (d, i) {
-                return 'translate(0,' + i * 20 + ')';
+                return 'translate(0,' + i * 40 + ')';
             });
 
         // give x value equal to the legend elements.
