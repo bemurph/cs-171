@@ -63,9 +63,9 @@ d3.csv("data/raised-total-cholesterol-adult-6plus-2008.csv", processraisedcholes
     // console.log(data);
 });
 
-var selectboxCholesterol =[];
+const selectBox = [];
 
-for (i = 0; i < mean_cholesterol.length; i++) {
-    selectboxCholesterol.push(mean_cholesterol[i].Country);
-    //console.log(selectboxCholesterol);
+for (let i=0; i < mean_cholesterol.length; i++) {
+    const country = mean_cholesterol[i].Country;
+    selectBox.push(country)
 }
