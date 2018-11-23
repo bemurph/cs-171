@@ -1,6 +1,9 @@
 var mean_cholesterol = [];
 var raise_cholesterol5 = [];
 var raise_cholesterol6 = [];
+const selectBox = [];
+
+var parseYear = d3.timeParse("%Y");
 
 var processcholesterolRow = function(d) {
     return {
@@ -39,6 +42,15 @@ var processcholesterolRow = function(d) {
     }
 }
 
+var processcholesterolRowV2 = function(d) {
+    return {
+        Country: d.Country,
+        Year: parseYear(d.Year),
+        Male: +d.Male,
+        Female: +d.Female
+    }
+}
+
 var processraisedcholesterolRow = function(d) {
     return {
         Country: d.Country,
@@ -48,9 +60,18 @@ var processraisedcholesterolRow = function(d) {
     }
 }
 
+
 d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", processcholesterolRow, function(data) {
+    for (let i=0; i < data.length; i++) {
+        const country = data[i].Country;
+        selectBox.push(country);
+        // console.log(data);
+    }
+});
+
+d3.csv("data/mean-total-cholesterol-age-adjusted_V2.csv", processcholesterolRowV2, function(data) {
     mean_cholesterol = data;
-    // console.log(data);
+        // console.log(data);
 });
 
 d3.csv("data/raised-total-cholesterol-adult-5plus-2008.csv", processraisedcholesterolRow, function(data) {
@@ -63,9 +84,6 @@ d3.csv("data/raised-total-cholesterol-adult-6plus-2008.csv", processraisedcholes
     // console.log(data);
 });
 
-const selectBox = [];
 
-for (let i=0; i < mean_cholesterol.length; i++) {
-    const country = mean_cholesterol[i].Country;
-    selectBox.push(country)
-}
+
+

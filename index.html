@@ -157,27 +157,9 @@
 					<div class="col-md-12">
 						<h2>Average Cholesterol Levels in Adults 25 Years and Older</h2>
 						<h3>The impact of high cholesterol in CVD will be visualized via a line chart. Refer to Process Book for details.</h3>
-						<div id="chart-area-6">
+						<div id="chart-area-6"></div>
 							<!--to do: create select box with country inputs from table -->
-							<select id="cholesterol-country">
-								<option value="default">United States of America</option>
-							</select>
-							<script>
-
-                                var select = document.getElementById("select"),
-                                    arr = selectboxCholesterol;
-
-                                for(var i = 0; i < arr.length; i++)
-                                {
-                                    var option = document.createElement("OPTION"),
-                                        txt = document.createTextNode(arr[i]);
-                                    option.appendChild(txt);
-                                    option.setAttribute("value",arr[i]);
-                                    select.insertBefore(option,select.lastChild);
-                                }
-
-							</script>
-						</div>
+						<div id="cholesterol"></div>
 					</div>
 				</div>
 				<div class="next-content">
@@ -258,7 +240,7 @@
 	<!-- Load data, create visualizations -->
 	<script src="js/heart.js"></script>
 	<script src="js/load_data.js"></script>
-	<script src="js/load_data_cholesterol.js"></script>
+	<script src="js/cholesterol_line.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/scatter.js"></script>
 </body>
