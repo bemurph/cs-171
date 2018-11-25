@@ -3,8 +3,8 @@ var mapData;
 var countryData={};
 
 //SIZE VARIABLES
-var width = 600,
-    height = 500,
+var mapWidth = 600,
+    mapHeight = 500,
     barMargin ={top:20, right:60, bottom:20, left:60},
     barWidth = 600 - barMargin.left - barMargin.right,
     barHeight = 300 - barMargin.top - barMargin.bottom;
@@ -37,7 +37,7 @@ var yAxisBar = d3.axisLeft()
 
 var xAxisGroupBar = barSVG.append("g")
     .attr("class", "x-axis-bar axis")
-    .attr("transform", "translate(0," + height + ")")
+    .attr("transform", "translate(0," + barHeight + ")")
 
 var yAxisGroupBar = barSVG.append("g")
     .attr("class", "y-axis-bar axis")
@@ -125,14 +125,14 @@ var vis_corophlet = function(){
     // CREATING SVG MAP
     var mapSVG = d3.select("#chart-area-3")
     .append("svg")
-    .attr("width", width)
-    .attr("height", height)
+    .attr("width", mapWidth)
+    .attr("height", mapHeight)
     .append("g");
 
     // SET PROJECTIONS
     var projection = d3.geoMercator()
     .scale(95)
-    .translate( [width / 2, height / 1.5]);
+    .translate( [mapWidth / 2, mapHeight / 1.5]);
 
     //CREATING PATH
     var path = d3.geoPath()
