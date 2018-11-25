@@ -1,4 +1,4 @@
-//SCROLL LIBRARY 
+//SCROLL LIBRARY
 $('.mainbag').viewScroller({
                 useScrollbar: false,
                 changeWhenAnim: false
@@ -21,3 +21,4 @@ var windowWidth = $( window ).width() - 100;
 
 $(".count-1").animateNumber({ number: 17.9});
 $(".count-2").animateNumber({ number: 85});
+
