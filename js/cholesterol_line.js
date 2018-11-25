@@ -21,7 +21,7 @@ var line = d3.line()
     .y(function(d) { return y(+d.Cholesterol); });
 
 // Create the svg canvas in the "graph" div
-var svg = d3.select("#chart-area-6")
+var svgC = d3.select("#chart-area-6")
     .append("svg")
     .style("width", width + margin.left + margin.right + "px")
     .style("height", height + margin.top + margin.bottom + "px")
@@ -43,7 +43,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         d.Year = (parseYear(+d.Year));
     });
 
-    // console.log(data);
+   // console.log(data);
 
     var nest = d3.nest()
         .key(function(d){
@@ -59,7 +59,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     y.domain([0, d3.max(data, function(d) { return d.Cholesterol; })]);
 
     // Set up the x axis
-    var xAxis = svg.append("g")
+    var xAxis = svgC.append("g")
         .attr("transform", "translate(0," + height + ")")
         .attr("class", "x axis")
         .call(d3.axisBottom(x)
@@ -69,7 +69,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .tickPadding(10));
 
     // Add the Y Axis
-    var yAxis = svg.append("g")
+    var yAxis = svgC.append("g")
         .attr("class", "y axis")
         .call(d3.axisLeft(y)
             .ticks(5)
@@ -78,7 +78,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .tickSize(0, 0));
 
     // Add a label to the y axis
-    svg.append("text")
+    svgC.append("text")
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - 60)
         .attr("x", 0 - (height / 2))
@@ -112,7 +112,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             return d.key == country;
         });
 
-        var selectCountryGroups = svg.selectAll(".CountryGroups")
+        var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry, function(d){
                 return d ? d.key : this.key;
             })
@@ -146,7 +146,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         })
 
         // Select all of the grouped elements and update the data
-        var selectCountryGroups = svg.selectAll(".CountryGroups")
+        var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry);
 
         // Select all the lines and transition to new positions
