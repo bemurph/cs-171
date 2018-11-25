@@ -11,7 +11,6 @@ var formatYear = d3.timeFormat("%Y");
 var parseYear = d3.timeParse("%Y");
 
 var x = d3.scaleTime()
-    .domain([1980, 2009])
     .range([0, width]);
 
 var y = d3.scaleLinear()
@@ -28,16 +27,6 @@ var svg = d3.select("#chart-area-6")
     .attr("transform","translate(" + margin.left + "," + margin.top + ")")
     .attr("class", "svg");
 
-var cholesterolRow = function(d) {
-    return {
-        Country: d.Country,
-        Year: parseYear(+d.Year),
-        Male: +d.Male,
-        Female: +d.Female
-    }
-};
-
-
 // Import the CSV data
 d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, data) {
     if (error) throw error;
@@ -47,10 +36,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         d.Country = d.Country;
         d.Male = +d.Male;
         d.Female = +d.Female;
-        d.Year = formatYear(parseYear(+d.Year));
+        d.Year = parseYear(+d.Year);
     });
-
-    console.log(data);
 
     var nest = d3.nest()
         .key(function(d){
@@ -61,28 +48,33 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         })
         .entries(data);
 
-    // Define the line
+    // define the 1st line
     var line = d3.line()
         .x(function(d) { return x(d.Year); })
-        .y(function(d) { return y(+d.Male); });
+        .y(function(d) { return y(d.Male); });
+
+// define the 2nd line
+    var line2 = d3.line()
+        .x(function(d) { return x(d.Year); })
+        .y(function(d) { return y(d.Female); });
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.Year; }));
-    y.domain([0, d3.max(data, function(d) { return +d.Male; })]);
+    y.domain([0, d3.max(data, function(d) {
+        return Math.max(d.Male, d.Female); })]);
 
     // Set up the x axis
-    var xaxis = svg.append("g")
+    var xAxis = svg.append("g")
         .attr("transform", "translate(0," + height + ")")
         .attr("class", "x axis")
         .call(d3.axisBottom(x)
-        //.ticks(d3.timeMonth)
             .tickSize(0, 0)
-            .tickFormat(d3.timeFormat("%B"))
+            .tickFormat(d3.timeFormat("%Y"))
             .tickSizeInner(0)
             .tickPadding(10));
 
     // Add the Y Axis
-    var yaxis = svg.append("g")
+    var yAxis = svg.append("g")
         .attr("class", "y axis")
         .call(d3.axisLeft(y)
             .ticks(5)
@@ -133,21 +125,33 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .append("g")
             .attr("class", "country-group");
 
-        var initialPath = selectCountryGroups.selectAll(".line")
+        var initialPath1 = selectCountryGroups.selectAll(".lineCholesterol")
             .data(function(d) { return d.Male; })
             .enter()
             .append("path");
 
-        initialPath
+        initialPath1
             .attr("d", function(d){
                 return line(d.Male)
             })
-            .attr("class", "line")
+            .attr("class", "line");
+
+        var initialPath2 = selectCountryGroups.selectAll(".lineCholesterol")
+            .data(function(d) { return d.Female; })
+            .enter()
+            .append("path");
+
+        initialPath2
+            .attr("d", function(d){
+                return line(d.Female)
+            })
+            .style("stroke", "red")
+            .attr("class", "line");
 
     };
 
     // Create initial graph
-    initialGraph("Albania");
+    initialGraph("United States of America");
 
 
     // Update the data
@@ -167,10 +171,16 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .data(function(d){
                 return (d.Male);
             })
+            .data(function(d){
+                return (d.Female);
+            })
             .transition()
             .duration(1000)
             .attr("d", function(d){
                 return line(d.Male)
+            })
+            .attr("d", function(d){
+                return line2(d.Female)
             });
 
 
