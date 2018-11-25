@@ -21,4 +21,7 @@ var windowWidth = $( window ).width() - 100;
 
 $(".count-1").animateNumber({ number: 17.9});
 $(".count-2").animateNumber({ number: 85});
+<<<<<<< HEAD
 
+=======
+>>>>>>> 34d02bdcbddc4a1e42f219c78dabc521f43eaab1

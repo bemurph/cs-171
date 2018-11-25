@@ -58,12 +58,19 @@
 
 		<!-- VIEW-2 -->
 		<div vs-anchor="view-2" class="mainview view2">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<h2>Innovative Visualization</h2>
+			<div class="container height-100">
+				<h2>Risk factors for noncommunicable disease</h2>
+				<div class="row height-100">
+					<div class="col-md-8 height-100">
 						<div id="chart-area-2">
 						</div>
+					</div>
+					<div class="col-md-4">
+						<p>Many deaths can be directly attributed to modifiable risk factors</p>
+						<p><strong>High blood pressure</strong> accounts for <span class="highlight">13%</span> of deaths globally</p>
+						<p><strong>Tobacco use</strong> accounts for <span class="highlight">9%</span></p>
+						<p><strong>High blood sugar</strong> and <strong>physical inactivity</strong> account for <span class="highlight">6%</span> each</p>
+						<p>And <strong>obesity</strong> accounts for <span class="highlight">5%</span></p>
 					</div>
 				</div>
 				<div class="next-content">
@@ -77,7 +84,16 @@
 			
 			<div class="container">
 				<div class="row">
+<<<<<<< HEAD
 						<h2>Global Atlas of Cardiovascular Disease</h2>
+=======
+					<div class="col-md-12">
+						<h2>World Map</h2>
+						<h3>Users will see a world map and an info-on-demand area. Refer to Process Book for Details.</h3>
+						<div id="chart-area-3">
+						</div>
+					</div>
+>>>>>>> 34d02bdcbddc4a1e42f219c78dabc521f43eaab1
 				</div>
 			</div>
 						
@@ -118,7 +134,7 @@
 
 						
 				<div class="next-content">
-					<span>NEXT: TITLE-3</span>
+					<span>NEXT: Risk Factors to Cardiovascular Disease</span>
 				</div>
 			
 
@@ -129,23 +145,25 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>TITLE 3</h2>
+						<h2>Risk Factors to Cardiovascular Disease</h2>
+						<h3>This page will have pictures and text about upcoming visualizations. It will introduce two CVD factors: blood pressure and cholesterol. </h3>
 						<div id="chart-area-4">
 						</div>
 					</div>
 				</div>
 				<div class="next-content">
-					<span>NEXT: TITLE-4</span>
+					<span>NEXT: High Blood Pressure</span>
 				</div>
 			</div>
 		</div>
 
 		<!-- VIEW-5 -->			
 		<div vs-anchor="view-5" class="mainview view5">
-			<div class="container">
+
+				<div class="container">
 				<div class="row">
-					<div class="col-md-12">
-						<h2>Association between mean systolic blood pressure and cardiovascular disease</h2>
+					<div class="col-md-9">
+						<h2><b>Association between mean systolic blood pressure and cardiovascular disease in countries with a population greater than 20 billion people</b></h2>
 						<div id="chart-area-5">
 							<p><span><label for="x-axis">Select sex</label></span>
 								<select id="x-value" onchange="setGraph()">
@@ -161,9 +179,20 @@
 
 						</div>
 					</div>
+					<div class="col-md-3">
+						<p></p>
+						<p></p>
+						<p></p>
+						<p><strong>High blood pressure</strong> accounts for <span class="highlight">13%</span> of deaths globally</p>
+						<h3><b>High blood pressure is the leading cause of cardiovascular disease</b></h3>
+						<img src="images/blood-pressure-monitor-clipart-3.jpg" alt="Blood pressure monitor" style="width:40%">
+						<div class="chart"></div>
+						<div class="equation"></div>
+						<div class="equation"></div>
+					</div>
 				</div>
 				<div class="next-content">
-					<span>NEXT: cholesterol</span>
+					<span>NEXT: Cholesterol</span>
 				</div>
 			</div>
 		</div>
@@ -173,13 +202,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>Average Cholesterol</h2>
-						<div id="chart-area-6">
-						</div>
+						<h2>Average Cholesterol Levels in Adults 25 Years and Older</h2>
+						<h3>The impact of high cholesterol in CVD will be visualized via a line chart. Refer to Process Book for details.</h3>
+						<div id="chart-area-6"></div>
+							<!--to do: create select box with country inputs from table -->
+						<div id="cholesterol"></div>
 					</div>
 				</div>
 				<div class="next-content">
-					<span>NEXT: TITLE-6</span>
+					<span>NEXT: Summary</span>
 				</div>
 			</div>
 		</div>
@@ -189,18 +220,25 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h2>TITLE 6</h2>
+						<h2>Summary</h2>
+						<h3>This page will have concluding remarks on CVD and resources available for the viewer to learn more.</h3>
+						<br><br>
+						<h2>Group Members Who Contributed to Prototype V1: <br></h2>
+						<h3>Kerry Ivey<br>
+						Brendan Murphy<br>
+						Nil Tuzcu<br>
+						Ka Ning Yip</h3>
 						<div id="chart-area-7">
 						</div>
 					</div>
 				</div>
-				<div class="next-content">
+	<!--			<div class="next-content">
 					<span>NEXT: TITLE-7</span>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
-		<!-- VIEW-8 -->			
+		<!-- VIEW-8 if necessary --
 		<div vs-anchor="view-8" class="mainview view8">
 				<div class="container">
 					<div class="row">
@@ -214,9 +252,9 @@
 						<span>NEXT: TITLE-8</span>
 					</div>
 				</div>
-		</div>
+		</div> -->
 
-		<!-- VIEW-8 -->			
+		<!-- VIEW-9 if necessary --
 		<div vs-anchor="view-9" class="mainview view9">
 				<div class="container">
 					<div class="row">
@@ -230,8 +268,7 @@
 						<span>NEXT: TITLE-9</span>
 					</div>
 				</div>
-		</div>
-		
+		</div> -->
 	
 </div>
 
@@ -244,6 +281,7 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/queue.v1.min.js"></script>
 	<script src="js/d3.min.js"></script>
+<<<<<<< HEAD
 	<script src="js/topojson.min.js"></script>
 
 	<!-- Visualization objects -->
@@ -252,6 +290,15 @@
 	<!-- <script src="js/load_data.js"></script>
 	<script src="js/load_data_cholesterol.js"></script> -->
 	<script src="js/worldmap.js"></script>
+=======
+<script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.min.js"></script>
+	<!-- Visualization objects -->
+
+	<!-- Load data, create visualizations -->
+	<script src="js/heart.js"></script>
+	<script src="js/load_data.js"></script>
+	<script src="js/cholesterol_line.js"></script>
+>>>>>>> 34d02bdcbddc4a1e42f219c78dabc521f43eaab1
 	<script src="js/main.js"></script>
 	<!-- <script src="js/scatter.js"></script> -->
 </body>

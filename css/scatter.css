@@ -39,3 +39,19 @@
 .legeng:hover rect{
     fill-opacity:1;
 }
+
+text {
+    font-family: sans-serif;
+}
+
+.bar {
+    fill: cornflowerblue;
+}
+
+.bar:hover {
+    fill: pink;
+}
+
+.axis--x path {
+    display: none;
+}

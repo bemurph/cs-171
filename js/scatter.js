@@ -1,6 +1,16 @@
+
+
+
+
+
+
+
+
+
+
 function drawGraph(xText, yText) {
     $('svg').remove();
-    var margin = {top: 30, right: 50, bottom: 40, left: 40};
+    var margin = {top: 30, right: 200, bottom: 40, left: 50};
 
     var width = 960 - margin.left - margin.right;
     var height = 500 - margin.top - margin.bottom;
@@ -32,9 +42,9 @@ function drawGraph(xText, yText) {
         .scale(yScale);
 
 // again scaleOrdinal
-    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-    d3.csv('data/data_bp_combined.csv', function (error, data) {
+    d3.csv('data/data_bp_combined_excl_china_india_russia_USA_smlpop.csv', function (error, data) {
         data.forEach(function (d) {
             xValue=xText+'_'+yText;
             yValue=xText+'_'+yText+'_CVD';
@@ -75,6 +85,7 @@ function drawGraph(xText, yText) {
 
 
         var bubble = svg.selectAll('.bubble')
+
             .data(data)
             .enter().append('circle')
             .attr('class', 'bubble')
@@ -101,8 +112,14 @@ function drawGraph(xText, yText) {
 
         // adding label. For x-axis, it's at (10, 10), and for y-axis at (width, height-10).
         svg.append('text')
-            .attr('x', 10)
-            .attr('y', 10)
+
+          .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+
+           // .attr('x', 10)
+           // .attr('y', 10)
             .attr('class', 'label')
             .text('Disability adjusted life years from Cardiovascular Disease');
 
@@ -116,12 +133,27 @@ function drawGraph(xText, yText) {
 
         // I feel I understand legends much better now.
         // define a group element for each color i, and translate it to (0, i * 20).
+
+        svg.selectAll("title_text")
+            .data(["Region"])
+            .enter()
+            .append("text")
+            .attr("x", 700)
+            .attr("y", 1)
+            .attr('class', 'legend')
+//            .style("font-family", "sans-serif")
+  //          .style("font-size", "10px")
+    //        .style("color", "Black")
+            .text(function (d) { return d; });
+
         var legend = svg.selectAll('legend')
+
             .data(color.domain())
             .enter().append('g')
             .attr('class', 'legend')
+
             .attr('transform', function (d, i) {
-                return 'translate(0,' + i * 20 + ')';
+                return 'translate(0,' + i * 40 + ')';
             });
 
         // give x value equal to the legend elements.
@@ -155,11 +187,121 @@ function drawGraph(xText, yText) {
         })
 
 
+
+
+        var lg = calcLinear(data, "bloodPressure", "CVD", d3.min(data, function(d){ return d.bloodPressure}), d3.min(data, function(d){ return d.CVD}));
+      console.log(lg);
+        svg.append("line")
+            .attr("class", "chart")
+            .attr("x1", x(lg.ptA.x))
+            .attr("y1", y(lg.ptA.y))
+            .attr("x2", x(lg.ptB.x))
+            .attr("y2", y(lg.ptB.y));
+
+
+        function types(d){
+            d.x = +d.bloodPressure;
+            d.y = +d.CVD;
+            console.log(d.x);
+            return d;
+        }
+        // Calculate a linear regression from the data
+
+        // Takes 5 parameters:
+        // (1) Your data
+        // (2) The column of data plotted on your x-axis
+        // (3) The column of data plotted on your y-axis
+        // (4) The minimum value of your x-axis
+        // (5) The minimum value of your y-axis
+
+        // Returns an object with two points, where each point is an object with an x and y coordinate
+
+        function calcLinear(data, x, y, minX, minY){
+            /////////
+            //SLOPE//
+            /////////
+
+            // Let n = the number of data points
+            var n = data.length;
+
+            // Get just the points
+            var pts = [];
+            data.forEach(function(d,i){
+                var obj = {};
+                obj.x = d[x];
+                obj.y = d[y];
+                obj.mult = obj.x*obj.y;
+                pts.push(obj);
+            });
+
+            // Let a equal n times the summation of all x-values multiplied by their corresponding y-values
+            // Let b equal the sum of all x-values times the sum of all y-values
+            // Let c equal n times the sum of all squared x-values
+            // Let d equal the squared sum of all x-values
+            var sum = 0;
+            var xSum = 0;
+            var ySum = 0;
+            var sumSq = 0;
+            pts.forEach(function(pt){
+                sum = sum + pt.mult;
+                xSum = xSum + pt.x;
+                ySum = ySum + pt.y;
+                sumSq = sumSq + (pt.x * pt.x);
+            });
+            var a = sum * n;
+            var b = xSum * ySum;
+            var c = sumSq * n;
+            var d = xSum * xSum;
+
+            // Plug the values that you calculated for a, b, c, and d into the following equation to calculate the slope
+            // slope = m = (a - b) / (c - d)
+            var m = (a - b) / (c - d);
+
+            /////////////
+            //INTERCEPT//
+            /////////////
+
+            // Let e equal the sum of all y-values
+            var e = ySum;
+
+            // Let f equal the slope times the sum of all x-values
+            var f = m * xSum;
+
+            // Plug the values you have calculated for e and f into the following equation for the y-intercept
+            // y-intercept = b = (e - f) / n
+            var b = (e - f) / n;
+
+            // Print the equation below the chart
+            document.getElementsByClassName("equation")[0].innerHTML = "Every 1 mmHg increase in systolic blood pressure is associated with a " + m + " unit increase in CVD DALYs";
+            document.getElementsByClassName("equation")[1].innerHTML = "Analysis excludes outliers";
+
+            // return an object of two points
+            // each point is an object with an x and y coordinate
+            return {
+                ptA : {
+                    x: minX,
+                    y: m * minX + b
+                },
+                ptB : {
+                    y: minY,
+                    x: (minY - b) / m
+                }
+            }
+
+        }
+
+
+
+
+
+
     })
 
 }
-drawGraph('Male', '2000');
+drawGraph('Female', '2010');
 
 function setGraph() {
     drawGraph($('#x-value').val(), $('#y-value').val());
 }
+
+

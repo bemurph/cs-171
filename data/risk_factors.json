@@ -1,0 +1,27 @@
+[
+  {
+    "source": "images/blood_pressure.svg",
+    "number": 13,
+    "name": "blood_pressure"
+  },
+  {
+    "source": "images/smoke.svg",
+    "number": 9,
+    "name": "smoking"
+  },
+  {
+    "source": "images/sugar.svg",
+    "number": 6,
+    "name": "sugar"
+  },
+  {
+    "source": "images/sitting.svg",
+    "number": 6,
+    "name": "inactivity"
+  },
+  {
+    "source": "images/eating.svg",
+    "number": 5,
+    "name": "obesity"
+  }
+]
