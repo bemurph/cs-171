@@ -17,11 +17,6 @@ var x = d3.scaleTime()
 var y = d3.scaleLinear()
     .range([height, 0]);
 
-// Define the line
-var line = d3.line()
-    .x(function(d) { return x(d.Year); })
-    .y(function(d) { return y(+d.Male); });
-
 // Create the svg canvas in the "graph" div
 var svg = d3.select("#chart-area-6")
     .append("svg")
@@ -33,10 +28,10 @@ var svg = d3.select("#chart-area-6")
     .attr("transform","translate(" + margin.left + "," + margin.top + ")")
     .attr("class", "svg");
 
-var processcholesterolRow = function(d) {
+var cholesterolRow = function(d) {
     return {
         Country: d.Country,
-        Year: +d.Year,
+        Year: parseYear(+d.Year),
         Male: +d.Male,
         Female: +d.Female
     }
@@ -44,8 +39,16 @@ var processcholesterolRow = function(d) {
 
 
 // Import the CSV data
-d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", processcholesterolRow, function(error, data) {
+d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, data) {
     if (error) throw error;
+
+    // Format the data
+    data.forEach(function(d) {
+        d.Country = d.Country;
+        d.Male = +d.Male;
+        d.Female = +d.Female;
+        d.Year = formatYear(parseYear(+d.Year));
+    });
 
     console.log(data);
 
@@ -57,6 +60,11 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", processcholesterolR
             return d.Year;
         })
         .entries(data);
+
+    // Define the line
+    var line = d3.line()
+        .x(function(d) { return x(d.Year); })
+        .y(function(d) { return y(+d.Male); });
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.Year; }));
@@ -148,14 +156,14 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", processcholesterolR
         // Filter the data to include only fruit of interest
         var selectCountry = nest.filter(function(d){
             return d.key = country;
-        })
+        });
 
         // Select all of the grouped elements and update the data
-        var selectCountry = svg.selectAll(".country-group")
+        var selectCountryGroups = svg.selectAll(".country-group")
             .data(selectCountry);
 
         // Select all the lines and transition to new positions
-        selectCountry.selectAll("path.line")
+        selectCountryGroups.selectAll("path.line")
             .data(function(d){
                 return (d.Male);
             })
