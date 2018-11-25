@@ -1,4 +1,4 @@
-//SCROLL LIBRARY 
+//SCROLL LIBRARY
 $('.mainbag').viewScroller({
                 useScrollbar: false,
                 changeWhenAnim: false

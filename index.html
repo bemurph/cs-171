@@ -30,7 +30,8 @@
 		<div id="Title-9" class="navigation-dot"></div>
 		<div id="Title-10" class="navigation-dot"></div>
 	</div>	
-
+<div class="tooltip-map"></div>
+<div class="tooltip-bar"></div>
 <div class="mainbag">
 
 		<!-- VIEW-1 -->
@@ -40,7 +41,6 @@
 				<div class="row">
 					<div class="col-6" style="padding-right: 3rem">
 							<p class="introduction-text">With 610,000 people dying of heart disease in the United States every year, heart disease is the leading cause of death for both men and women 1. Even when heart disease does not cause death, it can cause disability and decrease the overall quality of life2. We want to raise awareness about heart disease, the different factors which contribute to this disease, and ways that one can mitigate their risk.</p>
-							<p class="introduction-text">Lorem ipsum .. disease in the United States every year, heart disease is the leading cause of death for both men and women 1. Even when heart disease does not cause death, it can cause disability and decrease the overall quality of life2. We want to raise awareness about heart disease, the different factors which contribute to this disease, and ways that one can mitigate their risk.</p>
 					</div>
 					<div class="col-6" style="text-align: left; padding-left: 3rem; border-left: 1px solid #778bb986">
 						<p class="key-indicators">CVDs are the <span class="highlight">number 1</span> cause of death globally</p>
@@ -74,15 +74,17 @@
 					</div>
 				</div>
 				<div class="next-content">
-						<span>NEXT: World Map</span>
+						<span>NEXT: Global Atlas of Cardiovascular Disease</span>
 				</div>
 			</div>
 		</div>
 
 		<!-- VIEW-3 -->
 		<div vs-anchor="view-3" class="mainview view3">
+			
 			<div class="container">
 				<div class="row">
+						<h2>Global Atlas of Cardiovascular Disease</h2>
 					<div class="col-md-12">
 						<h2>World Map</h2>
 						<h3>Users will see a world map and an info-on-demand area. Refer to Process Book for Details.</h3>
@@ -90,10 +92,49 @@
 						</div>
 					</div>
 				</div>
+			</div>
+						
+						<div id="chart-area-3"></div>
+						<div class="worldmap-legend"></div>
+						<div class="bar-area">
+							<p class="info-on-demand" style="text-align: center; padding-top: 100px; color: #666666">Click on a country to see more information</p>
+							<p class="bar-area-name"></p>
+							<p class="bar-area-population"></p>
+							<p class="bar-area-ratio"></p>
+							<p style="color:#26438e; margin-top:20px; display:none" class="compare"> Top 10 diseases causing the most deaths worldwide. <span style="font-size:12px">(Hover to see name of the diseases)</span></p>
+						</div>
+					
+						<div class="worldmap-button-area">
+								<form class="form-inline">
+										<div class="form-group" id="select-box-rank">
+											<label for="ranking-type">Gender by</label>
+											<select class="form-control" id="map-ranking-type">
+												<option value="ratio_Total">Total</option>
+												<option value="ratio_Male">Male</option>
+												<option value="ratio_Female">Female</option>
+											</select>
+										</div>
+									</form>
+			
+									<form style="margin-left: 20px;" class="form-inline">
+										<div class="form-group" id="select-box-year">
+											<label for="year-type">Year</label>
+											<select class="form-control" id="map-year-type">
+												<option value="2016">2016</option>
+												<option value="2000">2000</option>
+												<option value="2010">2010</option>
+												<option value="2015">2015</option>
+											</select>
+										</div>
+								</form>
+						</div>
+
+						
 				<div class="next-content">
 					<span>NEXT: Risk Factors to Cardiovascular Disease</span>
 				</div>
-			</div>
+			
+
 		</div>	
 
 		<!-- VIEW-4 -->			
@@ -231,12 +272,20 @@
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery.easing.min.js"></script>
 	<script src="js/jquery.mousewheel.min.js"></script>
-	<script src="js/jquery.animateNumber.js"></script>
+	<script src="js/jquery.animateNumber.min.js"></script>
 	<script src="js/viewScroller.js"></script>
 	<script src="js/popper.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/queue.v1.min.js"></script>
 	<script src="js/d3.min.js"></script>
+	<script src="js/topojson.min.js"></script>
+
+	<!-- Visualization objects -->
+
+	<!-- Load data, create visualizations -->
+	<!-- <script src="js/load_data.js"></script>
+	<script src="js/load_data_cholesterol.js"></script> -->
+	<script src="js/worldmap.js"></script>
 <script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.min.js"></script>
 	<!-- Visualization objects -->
 
@@ -245,7 +294,7 @@
 	<script src="js/load_data.js"></script>
 	<script src="js/cholesterol_line.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/scatter.js"></script>
+	<!-- <script src="js/scatter.js"></script> -->
 </body>
 
 </html>
