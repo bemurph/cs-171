@@ -47,6 +47,14 @@ function drawGraph(xText, yText) {
 
 // creates a generator for symbols
     var symbol = d3.symbol().size(100);
+
+
+    const colorValue = d => d.dataset;
+    const colorClass = d => {
+        return colorLegendKeys
+            .find(item => item.key === colorValue(d))
+            .className;
+    };
     d3.csv('data/data_bp_combined_excl_china_india_russia_USA_smlpop.csv', function (error, data) {
         data.forEach(function (d) {
             xValue=xText+'_'+yText;
@@ -155,15 +163,19 @@ function drawGraph(xText, yText) {
   //          .style("font-size", "10px")
     //        .style("color", "Black")
             .text(function (d) { return d; })
+
+            ;
+
+
+        const colorLegend = d3.legendColor()
+            .scale(colorScale)
+            .shape('circle')
+            .shapeRadius(7)
             .on('cellclick', function(d) {
                 toggleDataPoints(d);
                 const legendCell = d3.select(this);
                 legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-            })
-            ;
-
-
-
+            });
         var legend = svg.selectAll('legend')
 
             .data(color.domain())
