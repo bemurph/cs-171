@@ -2,15 +2,15 @@
   {
     "source": "images/blood_pressure.svg",
     "number": 13,
-    "name": "blood_pressure"
+    "name": "blood-pressure"
   },
   {
-    "source": "images/smoke.svg",
+    "source": "images/smoking.svg",
     "number": 9,
     "name": "smoking"
   },
   {
-    "source": "images/sugar.svg",
+    "source": "images/candy.svg",
     "number": 6,
     "name": "sugar"
   },
