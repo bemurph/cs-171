@@ -10,9 +10,10 @@ BeatingHeart = function(_parentElement, _data){
     this.parentElement = _parentElement;
     this.data = _data;
     this.iconSize = 45;
-    this.heartSize = this.iconSize * 5;
+    this.heartSize = this.iconSize * 8;
     this.transitionDuration = 3000;
     this.fadeOutDuration = this.transitionDuration/5;
+    this.animating = false;
     this.initVis();
 };
 
@@ -30,7 +31,7 @@ BeatingHeart.prototype.initVis = function(){
     vis.margin = { top: vis.iconSize, right: vis.iconSize, bottom: vis.iconSize, left: vis.iconSize };
 
     vis.width = boundingBox.width - vis.margin.left - vis.margin.right;
-    vis.height = 800 - vis.margin.top - vis.margin.bottom;
+    vis.height = 700 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select(vis.parentElement).append("svg")
@@ -41,7 +42,6 @@ BeatingHeart.prototype.initVis = function(){
 
     vis.radius = Math.min(vis.width, vis.height)/2;
 
-    // TO-DO: (Filter, aggregate, modify data)
     vis.updateVis();
 };
 
@@ -56,42 +56,94 @@ BeatingHeart.prototype.updateVis = function() {
 
     let totalIcons = 0;
     vis.data.forEach(d => totalIcons += d.number);
-    let angles = d3.range(totalIcons).map(i => {
+    vis.angles = d3.range(totalIcons).map(i => {
         let angle = (i/totalIcons) * Math.PI*2 - Math.PI/2;
         return {x: Math.cos(angle)*vis.radius, y: Math.sin(angle)*vis.radius};
     });
+
     let risk_factors = vis.svg.selectAll('.risk-factor').data(vis.data);
     let risk_factors_enter = risk_factors.enter().append('g')
         .classed('risk-factor', true);
-    let risk_factor_icons = risk_factors_enter.selectAll('image').data(d => d3.range(d.number).map(i => {
+    risk_factors_enter.selectAll('image').data(d => d3.range(d.number).map(i => {
         return {source: d.source, name: d.name}
     }))
         .enter().append('image')
         .attr('xlink:href', d => d.source)
-        .attr('x', vis.width/2 - vis.iconSize/2)
-        .attr('y', vis.height/2 - vis.iconSize/2)
+        .attr('x', vis.centerX(vis.iconSize))
+        .attr('y', vis.centerY(vis.iconSize))
         .attr('width', vis.iconSize)
         .attr('height', vis.iconSize);
-    vis.svg.append('image').attr('xlink:href', 'images/heart2.svg')
-        .attr('x', vis.width/2 - vis.heartSize/2)
-        .attr('y', vis.height/2 - vis.heartSize/2)
+    vis.heart = vis.svg.append('image')
+        .attr('xlink:href', 'images/heart2.svg')
+        .attr('x', vis.centerX(vis.heartSize))
+        .attr('y', vis.centerY(vis.heartSize))
         .attr('width', vis.heartSize)
-        .attr('height', vis.heartSize);
+        .attr('height', vis.heartSize)
+        .on('click', function() {
+            vis.toggleAnimation();
+        });
+
+    vis.toggleAnimation();
+};
+
+BeatingHeart.prototype.stopAnimation = function() {
+    let vis = this;
+    vis.animating = false;
+    vis.svg.selectAll('image').interrupt();
+};
+
+BeatingHeart.prototype.centerX = function(width) {
+    let vis = this;
+    return vis.width/2 - width/2;
+};
+
+BeatingHeart.prototype.centerY = function(height) {
+    let vis = this;
+    return vis.height/2 - height/2;
+};
+
+BeatingHeart.prototype.startAnimation = function() {
+    let vis = this;
+    vis.animating = true;
+    let riskFactorIcons = vis.svg.selectAll('.risk-factor image');
     function loopTransition(){
         let angleCounter = 0;
-        risk_factor_icons
+        riskFactorIcons
             .attr('transform', 'translate(0,0)')
             .attr('opacity', 1)
-            .transition().duration(vis.transitionDuration).ease(t =>
-                d3.easeExpOut(t))
-            .attr('transform', function(){
-                let angle = angles[angleCounter];
-                angleCounter++;
-                return 'translate('+angle.x+','+angle.y+')';
-            })
+            .transition().duration(vis.transitionDuration).ease(d3.easeExpOut)
+                .attr('transform', function(){
+                    let angle = vis.angles[angleCounter];
+                    angleCounter++;
+                    return 'translate('+angle.x+','+angle.y+')';
+                })
             .transition().duration(vis.fadeOutDuration).attr('opacity', 0)
             .on('end', loopTransition);
     }
+    function loopHeartTransition() {
+        vis.heart
+            .transition().duration(vis.fadeOutDuration).ease(t => d3.easePolyOut(t, 1))
+                .attr('width', vis.heartSize/2)
+                .attr('height', vis.heartSize/2)
+                .attr('x', vis.centerX(vis.heartSize/2))
+                .attr('y', vis.centerY(vis.heartSize/2))
+            .transition().delay(vis.fadeOutDuration).duration(vis.transitionDuration-vis.fadeOutDuration).ease(t => d3.easePolyOut(t, 1))
+                .attr('width', vis.heartSize)
+                .attr('height', vis.heartSize)
+                .attr('x', vis.centerX(vis.heartSize))
+                .attr('y', vis.centerY(vis.heartSize))
+            .on('end', loopHeartTransition);
+    }
+    loopHeartTransition();
     loopTransition();
+};
 
+BeatingHeart.prototype.toggleAnimation = function() {
+    let vis = this;
+    if (vis.animating) {
+        vis.stopAnimation();
+    }
+    else {
+        vis.startAnimation();
+    }
 };
