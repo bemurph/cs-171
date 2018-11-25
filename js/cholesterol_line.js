@@ -1,20 +1,24 @@
-var margin = {top: 30, right: 50, bottom: 40, left:40};
-var width = 960 - margin.left - margin.right;
-var height = 500 - margin.top - margin.bottom;
-
+var margin = {top: 60, right: 100, bottom: 20, left: 80},
+    width = 850 - margin.left - margin.right,
+    height = 370 - margin.top - margin.bottom;
 
 //to do: define scales; initVis; enter, update, exit based on user selection
 //sources of data: js/load_data_cholesterol.js
 //generate line plots (male vs. female) for selected country over time
 
-var formatYear = d3.timeFormat("%Y");
 var parseYear = d3.timeParse("%Y");
+var formatYear = d3.timeFormat("%Y");
 
 var x = d3.scaleTime()
     .range([0, width]);
 
 var y = d3.scaleLinear()
     .range([height, 0]);
+
+// Define the line
+var line = d3.line()
+    .x(function(d) { return x(+d.Year); })
+    .y(function(d) { return y(+d.Cholesterol); });
 
 // Create the svg canvas in the "graph" div
 var svg = d3.select("#chart-area-6")
@@ -34,34 +38,25 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     // Format the data
     data.forEach(function(d) {
         d.Country = d.Country;
-        d.Male = +d.Male;
-        d.Female = +d.Female;
-        d.Year = parseYear(+d.Year);
+        d.Cholesterol = +d.Cholesterol;
+        d.Gender = d.Gender;
+        d.Year = (parseYear(+d.Year));
     });
+
+    // console.log(data);
 
     var nest = d3.nest()
         .key(function(d){
             return d.Country;
         })
         .key(function(d){
-            return d.Year;
+            return +d.Year;
         })
         .entries(data);
 
-    // define the 1st line
-    var line = d3.line()
-        .x(function(d) { return x(d.Year); })
-        .y(function(d) { return y(d.Male); });
-
-// define the 2nd line
-    var line2 = d3.line()
-        .x(function(d) { return x(d.Year); })
-        .y(function(d) { return y(d.Female); });
-
     // Scale the range of the data
-    x.domain(d3.extent(data, function(d) { return d.Year; }));
-    y.domain([0, d3.max(data, function(d) {
-        return Math.max(d.Male, d.Female); })]);
+    x.domain(d3.extent(data, function(d) { return +d.Year; }));
+    y.domain([0, d3.max(data, function(d) { return d.Cholesterol; })]);
 
     // Set up the x axis
     var xAxis = svg.append("g")
@@ -114,91 +109,75 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
 
         // Filter the data to include only fruit of interest
         var selectCountry = nest.filter(function(d){
-            return d.key = country;
+            return d.key == country;
         });
 
-        var selectCountryGroups = svg.selectAll(".country-group")
+        var selectCountryGroups = svg.selectAll(".CountryGroups")
             .data(selectCountry, function(d){
                 return d ? d.key : this.key;
             })
             .enter()
             .append("g")
-            .attr("class", "country-group");
+            .attr("class", "CountryGroups");
 
-        var initialPath1 = selectCountryGroups.selectAll(".lineCholesterol")
-            .data(function(d) { return d.Male; })
+        var initialPath = selectCountryGroups.selectAll(".line")
+            .data(function(d) { return d.values; })
             .enter()
             .append("path");
 
-        initialPath1
+        initialPath
             .attr("d", function(d){
-                return line(d.Male)
+                return line(d.values)
             })
-            .attr("class", "line");
-
-        var initialPath2 = selectCountryGroups.selectAll(".lineCholesterol")
-            .data(function(d) { return d.Female; })
-            .enter()
-            .append("path");
-
-        initialPath2
-            .attr("d", function(d){
-                return line(d.Female)
-            })
-            .style("stroke", "red")
             .attr("class", "line");
 
     };
 
     // Create initial graph
-    initialGraph("United States of America");
+    initialGraph("Afghanistan");
 
 
     // Update the data
     var updateGraph = function(country){
 
-        // Filter the data to include only fruit of interest
+        // Filter the data to include only country of interest
         var selectCountry = nest.filter(function(d){
-            return d.key = country;
-        });
+            return d.key == country;
+        })
 
         // Select all of the grouped elements and update the data
-        var selectCountryGroups = svg.selectAll(".country-group")
+        var selectCountryGroups = svg.selectAll(".CountryGroups")
             .data(selectCountry);
 
         // Select all the lines and transition to new positions
         selectCountryGroups.selectAll("path.line")
             .data(function(d){
-                return (d.Male);
-            })
-            .data(function(d){
-                return (d.Female);
+                return (d.values);
             })
             .transition()
             .duration(1000)
             .attr("d", function(d){
-                return line(d.Male)
+                return line(d.values);
             })
-            .attr("d", function(d){
-                return line2(d.Female)
-            });
 
 
-    };
+
+    }
 
 
     // Run update function when dropdown selection changes
     countryList.on('change', function(){
 
-        // Find which fruit was selected from the dropdown
+        // Find which country was selected from the dropdown
         var selectedCountry = d3.select(this)
             .select("select")
             .property("value");
 
+        //console.log(selectedCountry);
+
         // Run update function with the selected fruit
         updateGraph(selectedCountry);
 
-
     });
 
-})
+});
