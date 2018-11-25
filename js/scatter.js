@@ -13,7 +13,7 @@ function drawGraph(xText, yText) {
     var margin = {top: 30, right: 200, bottom: 40, left: 50};
 
     var width = 960 - margin.left - margin.right;
-    var height = 500 - margin.top - margin.bottom;
+    var height = 470 - margin.top - margin.bottom;
 
     var svg = d3.select('#chart-area-5')
         .append('svg')
@@ -136,7 +136,14 @@ function drawGraph(xText, yText) {
 
         // I feel I understand legends much better now.
         // define a group element for each color i, and translate it to (0, i * 20).
-        var clicked = "";
+        function toggleDataPoints(colorClass) {
+            g
+                .selectAll('circle.${colorClass}')
+                .data(data)
+                .classed('hidden', function() {  // toggle "hidden" class
+                    return !d3.select(this).classed('hidden');
+                });
+        }
         svg.selectAll("title_text")
             .data(["Region"])
             .enter()
@@ -148,22 +155,12 @@ function drawGraph(xText, yText) {
   //          .style("font-size", "10px")
     //        .style("color", "Black")
             .text(function (d) { return d; })
-
-            .on("click",function(d){
-                d3.selectAll(".symbol").style("opacity",1)
-
-                if (clicked !== d){
-                    d3.selectAll(".symbol")
-                        .filter(function(e){
-                            return e.region !== d;
-                        })
-                        .style("opacity",0.1)
-                    clicked = d
-                }
-                else{
-                    clicked = ""
-                }
-            });
+            .on('cellclick', function(d) {
+                toggleDataPoints(d);
+                const legendCell = d3.select(this);
+                legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
+            })
+            ;
 
 
 
@@ -183,7 +180,8 @@ function drawGraph(xText, yText) {
             .attr('x', width)
             .attr('width', 18)
             .attr('height', 18)
-            .style('fill', color);
+            .style('fill', color)
+        ;
 
         // add text to the legend elements.
         // rects are defined at x value equal to width, we define text at width - 6, this will print name of the legends before the rects.
@@ -194,7 +192,8 @@ function drawGraph(xText, yText) {
             .style('text-anchor', 'end')
             .text(function (d) {
                 return d;
-            });
+            })
+        ;
 
 
 
