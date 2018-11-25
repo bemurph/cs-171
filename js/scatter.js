@@ -280,7 +280,7 @@ function drawGraph(xText, yText) {
             var b = (e - f) / n;
 
             // Print the equation below the chart
-            document.getElementsByClassName("equation")[0].innerHTML = xText+ "s in the year " +yText+ ": every 1 mmHg increase in systolic blood pressure wass associated with a " + m + " unit increase in CVD DALYs";
+            document.getElementsByClassName("equation")[0].innerHTML = xText+ "s in the year " +yText+ ": every 1 mmHg increase in systolic blood pressure was associated with a " + m + " unit increase in CVD DALYs";
             document.getElementsByClassName("equation")[1].innerHTML = "Analysis excludes outliers. Size of circle represents size of the population";
 
             // return an object of two points
