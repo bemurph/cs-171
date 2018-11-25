@@ -163,19 +163,15 @@ function drawGraph(xText, yText) {
   //          .style("font-size", "10px")
     //        .style("color", "Black")
             .text(function (d) { return d; })
-
-            ;
-
-
-        const colorLegend = d3.legendColor()
-            .scale(colorScale)
-            .shape('circle')
-            .shapeRadius(7)
             .on('cellclick', function(d) {
                 toggleDataPoints(d);
                 const legendCell = d3.select(this);
                 legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-            });
+            })
+            ;
+
+
+
         var legend = svg.selectAll('legend')
 
             .data(color.domain())
@@ -193,7 +189,14 @@ function drawGraph(xText, yText) {
             .attr('width', 18)
             .attr('height', 18)
             .style('fill', color)
+            .on('cellclick', function(d) {
+                toggleDataPoints(d);
+                const legendCell = d3.select(this);
+                legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
+            })
         ;
+
+
 
         // add text to the legend elements.
         // rects are defined at x value equal to width, we define text at width - 6, this will print name of the legends before the rects.
