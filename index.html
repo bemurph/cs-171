@@ -19,35 +19,30 @@
 	<div class="navigation-tooltip"></div>
 
 	<div class="navigation-dot-container">
-		<div id="Title-1" class="navigation-dot"></div>
-		<div id="Title-2" class="navigation-dot"></div>
-		<div id="Title-3" class="navigation-dot"></div>
-		<div id="Title-4" class="navigation-dot"></div>
-		<div id="Title-5" class="navigation-dot"></div>
-		<div id="Title-6" class="navigation-dot"></div>
-		<div id="Title-7" class="navigation-dot"></div>
-		<div id="Title-8" class="navigation-dot"></div>
-		<div id="Title-9" class="navigation-dot"></div>
-		<div id="Title-10" class="navigation-dot"></div>
+		<a href="#view-1"><div data-title="Title" class="navigation-dot"></div></a>
+		<a href="#view-2"><div data-title="Risk factors" class="navigation-dot"></div></a>
+		<a href="#view-3"><div data-title="Atlas" class="navigation-dot"></div></a>
+		<a href="#view-4"><div data-title="Risk factors" class="navigation-dot"></div></a>
+		<a href="#view-5"><div data-title="Blood pressure" class="navigation-dot"></div></a>
+		<a href="#view-6"><div data-title="Cholesterol" class="navigation-dot"></div></a>
+		<a href="#view-7"><div data-title="Summary" class="navigation-dot"></div></a>
 	</div>	
 <div class="tooltip-map"></div>
 <div class="tooltip-bar"></div>
 <div class="mainbag">
-
 		<!-- VIEW-1 -->
 		<div vs-anchor="view-1" class="mainview view1">
 			<div class="container">
 				<h1>the beating heart of the world</h1>
 				<div class="row">
 					<div class="col-6" style="padding-right: 3rem">
-							<p class="introduction-text">With 610,000 people dying of heart disease in the United States every year, heart disease is the leading cause of death for both men and women 1. Even when heart disease does not cause death, it can cause disability and decrease the overall quality of life2. We want to raise awareness about heart disease, the different factors which contribute to this disease, and ways that one can mitigate their risk.</p>
+							<p class="introduction-text">With 610,000 people dying of heart disease in the United States every year, heart disease is the leading cause of death for both men and women. Even when heart disease does not cause death, it can cause disability and decrease one's overall quality of life. There many different factors which contribute to this disease, but many of them can be mitigated to reduce one's risk.</p>
 					</div>
 					<div class="col-6" style="text-align: left; padding-left: 3rem; border-left: 1px solid #778bb986">
-						<p class="key-indicators">CVDs are the <span class="highlight">number 1</span> cause of death globally</p>
-						<!-- <p class="key-indicators"><span class="highlight count-1">0</span> people die of heart disease in the US every year</p> -->
+						<p class="key-indicators">Cardiovascular diseases (CVDs) are the <span class="highlight">number 1</span> cause of death globally</p>
 						<p class="key-indicators">An estimated <span class="highlight"><span class="count-1">17.9</span> million</span> people died from CVDs in 2016</p>
 						<p class="key-indicators"> Of these deaths, <span class="highlight"><span class="count-2">85 </span>%</span> are due to heart attack and stroke.</p>
-						<p class="key-indicators">Most <span class="highlight">CVD can be prevented</span> by addressing behavioural risk factors</p>
+						<p class="key-indicators">Most CVDs <span class="highlight">can be prevented</span> by addressing behavioural risk factors</p>
 					</div>
 				</div>
 				<div class="next-content">
@@ -58,23 +53,27 @@
 
 		<!-- VIEW-2 -->
 		<div vs-anchor="view-2" class="mainview view2">
-			<div class="container height-100">
-				<h2>Risk factors for noncommunicable disease</h2>
-				<div class="row height-100">
-					<div class="col-md-8 height-100">
-						<div id="chart-area-2">
+			<div class="vs-center-wrap">
+				<div class="container">
+					<h2>Risk factors for noncommunicable disease</h2>
+					<div class="row">
+						<div class="col-md-8">
+							<div id="chart-area-2">
+							</div>
+							<p>Click on the heart to pause the animation</p>
+						</div>
+						<div class="col-md-4">
+							<h5>Many deaths can be directly attributed to modifiable risk factors</h5>
+							<p class="key-indicators blood-pressure-indicator"><strong>High blood pressure</strong> accounts for <span class="highlight">13%</span> of deaths globally</p>
+							<p class="key-indicators smoking-indicator"><strong>Tobacco use</strong> accounts for <span class="highlight">9%</span></p>
+							<p class="key-indicators sugar-indicator"><strong>High blood sugar</strong> accounts for <span class="highlight">6%</span></p>
+							<p class="key-indicators inactivity-indicator"><strong>Physical inactivity</strong> accounts for <span class="highlight">6%</span></p>
+							<p class="key-indicators obesity-indicator"><strong>Obesity</strong> accounts for <span class="highlight">5%</span></p>
 						</div>
 					</div>
-					<div class="col-md-4">
-						<p>Many deaths can be directly attributed to modifiable risk factors</p>
-						<p><strong>High blood pressure</strong> accounts for <span class="highlight">13%</span> of deaths globally</p>
-						<p><strong>Tobacco use</strong> accounts for <span class="highlight">9%</span></p>
-						<p><strong>High blood sugar</strong> and <strong>physical inactivity</strong> account for <span class="highlight">6%</span> each</p>
-						<p>And <strong>obesity</strong> accounts for <span class="highlight">5%</span></p>
+					<div class="next-content">
+							<span>NEXT: Global Atlas of Cardiovascular Disease</span>
 					</div>
-				</div>
-				<div class="next-content">
-						<span>NEXT: Global Atlas of Cardiovascular Disease</span>
 				</div>
 			</div>
 		</div>
@@ -86,7 +85,7 @@
 						<h2>Global Atlas of Cardiovascular Disease</h2>
 				</div>
 			</div>
-						
+
 						<div id="chart-area-3"></div>
 						<div class="worldmap-legend"></div>
 						<div class="bar-area">
@@ -96,7 +95,7 @@
 							<p class="bar-area-ratio"></p>
 							<p style="color:#26438e; margin-top:20px; display:none" class="compare"> Top 10 diseases causing the most deaths worldwide. <span style="font-size:12px">(Hover to see name of the diseases)</span></p>
 						</div>
-					
+
 						<div class="worldmap-button-area">
 								<form class="form-inline">
 										<div class="form-group" id="select-box-rank">
@@ -122,7 +121,7 @@
 								</form>
 						</div>
 
-						
+
 				<div class="next-content">
 					<span>NEXT: TITLE-3</span>
 				</div>
@@ -135,20 +134,51 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h2>Risk Factors to Cardiovascular Disease</h2>
-						<h3>There are many factors which contribute to having a heart attack or stroke. Two of the leading modifiable risk factors are blood pressure and cholesterol </h3>
-<br>
-						<h3>Blood pressure is the pressure of your blood on the walls of your arteries as your heart pumps it around your body. It’s a vital part of how your heart and circulation works.
+						<h3>Two of the leading modifiable risk factors are blood pressure and cholesterol </h3>
 
-							Your blood pressure naturally goes up and down all the time, adjusting to your heart’s needs depending on what you are doing. High blood pressure is when your blood pressure is persistently higher than normal.
-
-							A blood pressure reading under 120/80mmHg is considered optimal. Readings over 120/80mmHg and up to 139/89mmHg are in the normal to high normal range.
-
-							Blood pressure that’s high over a long time is one of the main risk factors for heart disease. As you get older, the chances of having persistently high blood pressure increases.
-
-							It’s very important to get your blood pressure checked regularly, and if it’s persistently high it needs to be controlled. Uncontrolled high blood pressure can lead to a heart attack or stroke. It may also affect your kidneys.
-
+						<h3>Blood pressure is the pressure of your blood on the walls of your arteries as your heart pumps
+							it around your body. It’s a vital part of how your heart and circulation works.
+							Your blood pressure naturally goes up and down all the time, adjusting to your heart’s needs
+							depending on what you are doing. High blood pressure is when your blood pressure is persistently higher than normal.
+							A blood pressure reading under 120/80mmHg is considered optimal. Readings over 120/80mmHg and
+							up to 139/89mmHg are in the normal to high normal range.
+							Blood pressure that’s high over a long time is one of the main risk factors for heart disease.
+							As you get older, the chances of having persistently high blood pressure increases.
+							It’s very important to get your blood pressure checked regularly, and if it’s persistently
+							high it needs to be controlled. Uncontrolled high blood pressure can lead to a heart attack or stroke. It may also affect your kidneys.
 							The medical name for high blood pressure over a long period of time is hypertension. </h3>
+
 						<img src="images/blood_pressure_target.gif" alt="Blood pressure target" style="width:20%">
+						<img src="http://www.clevelandclinic.org/healthinfo/ShowImage.ashx?PIC=4231&width=300" alt="Cholesterol Diagram" style="width=10%">
+
+						<p><h3>
+
+						Cholesterol is one of the other major risk factors that contributes to cardiovascular disease.
+						Your total blood cholesterol is a measure of the cholesterol components LDL (low-density lipoprotein)
+						cholesterol, HDL (high-density lipoprotein) cholesterol, and VLDL (very low-density lipoprotein,
+						which is the triglyceride-carrying component of lipids). It is optimal to have LDL levels below 2.6mmol/L (or 100mg/dL),
+						HDL levels above 1.5mmol/L (or 60mg/dL), and triglycerides levels below 1.7mmol/L (or 150mg/dL) [2].
+
+						<br>
+						A diet high in LDL cholesterol causes your liver to produce more cholesterol than you need, which increases the risk that
+						cholesterol will slowly build up in the inner walls of the arteries that feed the heart and brain.
+						Cholesterol can join with other substances to form a thick, hard deposit on the inside of the arteries.
+						This can narrow the arteries and make them less flexible – a condition known as atherosclerosis.
+						If a blood clot forms and blocks one of these narrowed arteries, a heart attack or stroke can result.
+						<br>
+						High cholesterol is one of the major controllable risk factors for coronary heart disease, heart attack and stroke.
+						If you have other risk factors such as smoking, high blood pressure or diabetes, your risk increases even more.
+						The more risk factors you have and the more severe they are, the more your overall risk is compounded. [1]
+						<br>
+
+
+						References: <br>
+						<h3><a href="http://www.heart.org/en/health-topics/cholesterol/about-cholesterol">1. Why Cholesterol Matters</a></h3>
+						<h3><a href="https://my.clevelandclinic.org/health/articles/11920-cholesterol-numbers-what-do-they-mean">2. Cholesterol Numbers: What Do They Mean</a></h3>
+
+
+						</p></h3>
+
 						<div id="chart-area-4">
 						</div>
 					</div>
@@ -210,7 +240,8 @@
 						<div id="chart-area-6"></div>
 					</div>
 					<div class="col-md-3">
-						<h2>High cholesterol is another risk for cardiovascular disease.</h2>
+						<h3>Prevalence of High Cholesterol in Selected Country:</h3>
+						<div id="chart-area-7"></div>
 
 					</div>
 				</div>
@@ -241,7 +272,7 @@
 						Brendan Murphy<br>
 						Nil Tuzcu<br>
 						Ka Ning Yip</h3>
-						<div id="chart-area-7">
+						<div id="chart-area-8">
 						</div>
 					</div>
 				</div>
@@ -257,7 +288,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h2>TITLE 7</h2>
-							<div id="chart-area-8">
+							<div id="chart-area-9">
 							</div>
 						</div>
 					</div>
@@ -273,7 +304,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h2>TITLE 8</h2>
-							<div id="chart-area-9">
+							<div id="chart-area-10">
 							</div>
 						</div>
 					</div>
@@ -302,7 +333,7 @@
 	<!-- <script src="js/load_data.js"></script>
 	<script src="js/load_data_cholesterol.js"></script> -->
 	<script src="js/worldmap.js"></script>
-<script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.min.js"></script>
+	<script src="https://unpkg.com/simple-statistics@6.1.0/dist/simple-statistics.min.js"></script>
 	<!-- Visualization objects -->
 
 	<!-- Load data, create visualizations -->
@@ -310,6 +341,7 @@
 	<script src="js/load_data.js"></script>
 	<script src="js/scatter.js"></script>
 	<script src="js/cholesterol_line.js"></script>
+	<script src="js/cholesterol_gauge.js"></script>
 	<script src="js/main.js"></script>
 	<!-- <script src="js/scatter.js"></script> -->
 </body>
