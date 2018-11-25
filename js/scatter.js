@@ -43,7 +43,10 @@ function drawGraph(xText, yText) {
 
 // again scaleOrdinal
     var color = d3.scaleOrdinal(d3.schemeCategory10);
+    var symbols = d3.scaleOrdinal(d3.symbols);
 
+// creates a generator for symbols
+    var symbol = d3.symbol().size(100);
     d3.csv('data/data_bp_combined_excl_china_india_russia_USA_smlpop.csv', function (error, data) {
         data.forEach(function (d) {
             xValue=xText+'_'+yText;
@@ -107,7 +110,7 @@ function drawGraph(xText, yText) {
                 return radius(d.population);
             })
             .text(function (d) {
-                return d.country;
+                return d.country + " has a " +yText+" "+xText+ " population of "+ d.population;
             });
 
         // adding label. For x-axis, it's at (10, 10), and for y-axis at (width, height-10).
@@ -133,7 +136,7 @@ function drawGraph(xText, yText) {
 
         // I feel I understand legends much better now.
         // define a group element for each color i, and translate it to (0, i * 20).
-
+        var clicked = "";
         svg.selectAll("title_text")
             .data(["Region"])
             .enter()
@@ -144,7 +147,25 @@ function drawGraph(xText, yText) {
 //            .style("font-family", "sans-serif")
   //          .style("font-size", "10px")
     //        .style("color", "Black")
-            .text(function (d) { return d; });
+            .text(function (d) { return d; })
+
+            .on("click",function(d){
+                d3.selectAll(".symbol").style("opacity",1)
+
+                if (clicked !== d){
+                    d3.selectAll(".symbol")
+                        .filter(function(e){
+                            return e.region !== d;
+                        })
+                        .style("opacity",0.1)
+                    clicked = d
+                }
+                else{
+                    clicked = ""
+                }
+            });
+
+
 
         var legend = svg.selectAll('legend')
 
@@ -176,27 +197,15 @@ function drawGraph(xText, yText) {
             });
 
 
-        // d3 has a filter fnction similar to filter function in JS. Here it is used to filter d3 components.
-        legend.on('click', function (type) {
-            d3.selectAll('.bubble')
-                .style('opacity', 0.15)
-                .filter(function (d) {
-                    return d.country == type;
-                })
-                .style('opacity', 1);
-        })
-
-
-
 
         var lg = calcLinear(data, "bloodPressure", "CVD", d3.min(data, function(d){ return d.bloodPressure}), d3.min(data, function(d){ return d.CVD}));
-      console.log(lg);
-        svg.append("line")
-            .attr("class", "chart")
-            .attr("x1", x(lg.ptA.x))
-            .attr("y1", y(lg.ptA.y))
-            .attr("x2", x(lg.ptB.x))
-            .attr("y2", y(lg.ptB.y));
+     // console.log(lg);
+       // svg.append("line")
+         //   .attr("class", "chart")
+           // .attr("x1", x(lg.ptA.x))
+      //      .attr("y1", y(lg.ptA.y))
+        //    .attr("x2", x(lg.ptB.x))
+          //  .attr("y2", y(lg.ptB.y));
 
 
         function types(d){
@@ -272,8 +281,8 @@ function drawGraph(xText, yText) {
             var b = (e - f) / n;
 
             // Print the equation below the chart
-            document.getElementsByClassName("equation")[0].innerHTML = "Every 1 mmHg increase in systolic blood pressure is associated with a " + m + " unit increase in CVD DALYs";
-            document.getElementsByClassName("equation")[1].innerHTML = "Analysis excludes outliers";
+            document.getElementsByClassName("equation")[0].innerHTML = xText+ "s in the year " +yText+ ": every 1 mmHg increase in systolic blood pressure wass associated with a " + m + " unit increase in CVD DALYs";
+            document.getElementsByClassName("equation")[1].innerHTML = "Analysis excludes outliers. Size of circle represents size of the population";
 
             // return an object of two points
             // each point is an object with an x and y coordinate
@@ -298,7 +307,7 @@ function drawGraph(xText, yText) {
     })
 
 }
-drawGraph('Female', '2010');
+drawGraph('Male', '2000');
 
 function setGraph() {
     drawGraph($('#x-value').val(), $('#y-value').val());
