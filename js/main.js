@@ -4,7 +4,6 @@ $('.mainbag').viewScroller({
     changeWhenAnim: false,
     afterChange: function() {
         $('.navigation-dot').removeClass('active');
-        console.log($('a[href="'+window.location.hash+'"] .navigation-dot'));
         $('a[href="'+window.location.hash+'"] .navigation-dot').addClass('active');
     }
 });
