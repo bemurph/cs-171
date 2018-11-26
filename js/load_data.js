@@ -1,4 +1,5 @@
 const yearParser = d3.timeParse("%Y-%m-%d");
+let heart;
 
 function processDALYRow(d) {
     return {
@@ -65,13 +66,5 @@ queue()
 
 function printData(error, daly_2000, daly_2010, daly_2015, daly_2016, daly_country_2000, daly_country_2010,
                    daly_country_2015, daly_country_2016, risk_factors) {
-    // console.log(daly_2000);
-    // console.log(daly_2010);
-    // console.log(daly_2015);
-    // console.log(daly_2016);
-    // console.log(daly_country_2000);
-    // console.log(daly_country_2010);
-    // console.log(daly_country_2015);
-    // console.log(daly_country_2016);
-    heart = new BeatingHeart('#chart-area-2', risk_factors)
+    heart = new BeatingHeart('#chart-area-2', risk_factors);
 }

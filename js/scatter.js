@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 function drawGraph(xText, yText) {
     $('svg').remove();
     var margin = {top: 30, right: 200, bottom: 40, left: 50};
@@ -47,6 +37,20 @@ function drawGraph(xText, yText) {
 
 // creates a generator for symbols
     var symbol = d3.symbol().size(100);
+    const g = svg
+        .append('g')
+        .attr('transform', `translate(${margin.left}, ${margin.top})`);
+
+    const colorLegendG = g
+        .append('g')
+        .attr('transform', 'translate(${innerWidth + 50}, 0)');
+
+    const colorValue = d => d.dataset;
+    const colorClass = d => {
+        return colorLegendKeys
+            .find(item => item.key === colorValue(d))
+            .className;
+    };
     d3.csv('data/data_bp_combined_excl_china_india_russia_USA_smlpop.csv', function (error, data) {
         data.forEach(function (d) {
             xValue=xText+'_'+yText;
@@ -181,7 +185,14 @@ function drawGraph(xText, yText) {
             .attr('width', 18)
             .attr('height', 18)
             .style('fill', color)
+            .on('cellclick', function(d) {
+                toggleDataPoints(d);
+                const legendCell = d3.select(this);
+                legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
+            })
         ;
+
+
 
         // add text to the legend elements.
         // rects are defined at x value equal to width, we define text at width - 6, this will print name of the legends before the rects.
@@ -194,7 +205,25 @@ function drawGraph(xText, yText) {
                 return d;
             })
         ;
+        const colorScale = d3.scaleOrdinal()
+            .range(d3.schemeCategory10);
 
+        const colorLegend = d3.legendColor()
+            .scale(colorScale)
+            .shape('circle')
+            .shapeRadius(7)
+            .on('cellclick', function(d) {
+                toggleDataPoints(d);
+                const legendCell = d3.select(this);
+                legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
+            });
+
+        // add circles representing the data
+
+
+        // add color legend
+
+        colorLegendG.call(colorLegend);
 
 
         var lg = calcLinear(data, "bloodPressure", "CVD", d3.min(data, function(d){ return d.bloodPressure}), d3.min(data, function(d){ return d.CVD}));
