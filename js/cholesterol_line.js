@@ -1,6 +1,6 @@
 var marginC = {top: 60, right: 100, bottom: 20, left: 80},
-    widthC = 850 - marginC.left - marginC.right,
-    heightC = 370 - marginC.top - marginC.bottom;
+    widthC = 800 - marginC.left - marginC.right,
+    heightC = 600 - marginC.top - marginC.bottom;
 
 //to do: define scales; initVis; enter, update, exit based on user selection
 //sources of data: js/load_data_cholesterol.js
@@ -181,8 +181,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
                 return (d.key == "Male") ? ("5, 5") : ("0, 0")});
 
 
-        document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
-            "cholesterol for " + country + " is: "
+     //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
+       //     "cholesterol for " + country + " is: "
     };
 
     // Create initial graph
