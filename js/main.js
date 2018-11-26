@@ -1,8 +1,13 @@
 //SCROLL LIBRARY
 $('.mainbag').viewScroller({
-                useScrollbar: false,
-                changeWhenAnim: false,
-            });
+    useScrollbar: false,
+    changeWhenAnim: false,
+    afterChange: function() {
+        $('.navigation-dot').removeClass('active');
+        console.log($('a[href="'+window.location.hash+'"] .navigation-dot'));
+        $('a[href="'+window.location.hash+'"] .navigation-dot').addClass('active');
+    }
+});
 
 //NAVIGATION DOTS
 var windowWidth = $( window ).width() - 200;
@@ -30,4 +35,6 @@ $(document).ready(function() {
         $('.recommendation').hide();
         recommendation.fadeIn('slow');
     });
+    let activeView = window.location.hash ? window.location.hash : '#view-1';
+    $('a[href="'+activeView+'"] .navigation-dot').addClass('active');
 });
