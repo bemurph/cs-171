@@ -265,3 +265,23 @@ h3{
 .obesity-indicator strong {
   color: #377eb8;
 }
+
+.view4 h2 {
+  margin-bottom: 4rem;
+}
+
+.view4 p {
+  font-size: 1.25rem;
+}
+
+.detail-text {
+  font-size: 1.25rem;
+}
+
+.view5 label {
+  color: #9e1d35;
+}
+
+.view5 select {
+  margin-left: 1rem;
+}
