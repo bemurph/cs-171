@@ -196,7 +196,7 @@ var vis_corophlet = function(){
                 $(".world-data-bar").css("opacity",1);
                 $(".compare").css("display","block");
                 $(".bar-area-name").html("Country: "+ countryData[d.id][selectYear].Country);
-                $(".bar-area-population").html("Population: "+ countryData[d.id][selectYear].Population_Total+"K");
+                $(".bar-area-population").html("Population: "+ countryData[d.id][selectYear].Population_Total.toLocaleString()+",000");
                 $(".bar-area-ratio").html("Cardiovascular Diseases Ratio: "+ ratioFormat(countryData[d.id][selectYear].ratio_Total));
 
                   if (countryData[d.id]){                      
