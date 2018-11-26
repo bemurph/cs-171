@@ -170,16 +170,26 @@ function onDocumentReady() {
     });
     powerGauge.render();
 
-    function updateReadings() {
-        // just pump in random data here...
-        powerGauge.update(Math.random() * 10);
-    }
+    countrySelect.on('change', function(){
 
-    // every few seconds update reading values
-    updateReadings();
-    setInterval(function() {
+        // Find which country was selected from the dropdown
+        var selectedCountry = d3.select(#cholesterol)
+            .select("select")
+            .property("value");
+
+        //console.log(selectedCountry);
+
+        function updateReadings() {
+
+            powerGauge.update(selectedCountry);
+
+        }
+
+        // Run update function with the selected fruit
         updateReadings();
-    }, 5 * 1000);
+
+    });
+
 }
 
 if ( !window.isLoaded ) {
@@ -189,3 +199,4 @@ if ( !window.isLoaded ) {
 } else {
     onDocumentReady();
 }
+
