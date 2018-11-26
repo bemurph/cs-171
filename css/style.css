@@ -265,6 +265,16 @@ h3{
   color: #377eb8;
 }
 
+.line {
+  fill: none;
+  stroke: #990000;
+  stroke-width: 3px;
+}
+
+.selected {
+  stroke: #377eb8;
+}
+
 .view4 h2 {
   margin-bottom: 4rem;
 }
