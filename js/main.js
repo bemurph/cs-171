@@ -20,3 +20,14 @@ var windowWidth = $( window ).width() - 200;
 
 $(".count-1").animateNumber({ number: 17.9});
 $(".count-2").animateNumber({ number: 85});
+
+$(document).ready(function() {
+    $('#risk-factor-list a').click(function(event) {
+        let element = $(event.target);
+        $('#risk-factor-list a').removeClass('active');
+        element.addClass('active');
+        let recommendation = $(element.data('target'));
+        $('.recommendation').hide();
+        recommendation.fadeIn('slow');
+    });
+});

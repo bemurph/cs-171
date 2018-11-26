@@ -122,12 +122,12 @@ BeatingHeart.prototype.startAnimation = function() {
     }
     function loopHeartTransition() {
         vis.heart
-            .transition().duration(vis.fadeOutDuration).ease(t => d3.easePolyOut(t, 1))
+            .transition().duration(vis.fadeOutDuration*2).ease(t => d3.easePolyOut(t, 1))
                 .attr('width', vis.heartSize/2)
                 .attr('height', vis.heartSize/2)
                 .attr('x', vis.centerX(vis.heartSize/2))
                 .attr('y', vis.centerY(vis.heartSize/2))
-            .transition().delay(vis.fadeOutDuration).duration(vis.transitionDuration-vis.fadeOutDuration).ease(t => d3.easePolyOut(t, 1))
+            .transition().delay(vis.fadeOutDuration).duration(vis.transitionDuration-2*vis.fadeOutDuration).ease(t => d3.easePolyOut(t, 1))
                 .attr('width', vis.heartSize)
                 .attr('height', vis.heartSize)
                 .attr('x', vis.centerX(vis.heartSize))

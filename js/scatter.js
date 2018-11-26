@@ -22,7 +22,7 @@ function drawGraph(xText, yText) {
 
 // square root scale.
     var radius = d3.scaleSqrt()
-        .range([2, 5]);
+        .range([2, 10]);
 
 // the axes are much cleaner and easier now. No need to rotate and orient the axis, just call axisBottom, axisLeft etc.
     var xAxis = d3.axisBottom()
@@ -309,7 +309,7 @@ function drawGraph(xText, yText) {
             var b = (e - f) / n;
 
             // Print the equation below the chart
-            document.getElementsByClassName("equation")[0].innerHTML = xText+ "s in the year " +yText+ ": every 1 mmHg increase in systolic blood pressure was associated with a " + m + " unit increase in CVD DALYs";
+            document.getElementsByClassName("equation")[0].innerHTML = "For "+ xText.toLowerCase() + "s in " +yText+ ", every 1 mmHg increase in systolic blood pressure was associated with a " + Math.round(m) + " unit increase in CVD DALYs*";
             document.getElementsByClassName("equation")[1].innerHTML = "Analysis excludes outliers. Size of circle represents size of the population";
 
             // return an object of two points

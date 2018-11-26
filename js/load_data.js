@@ -32,6 +32,7 @@ function processDALYRow(d) {
     }
 }
 
+
 const DALYStringColumns = ['sex', 'cause_of_death_0', 'cause_of_death_1', 'cause_of_death_2', 'cause_of_death_3',
     'cause_of_death_4', 'year'];
 
@@ -52,19 +53,10 @@ function processDALYCountryRow(d) {
 
 
 queue()
-    .defer(d3.csv, 'data/DALY_Global_2000.csv', processDALYRow)
-    .defer(d3.csv, 'data/DALY_Global_2010.csv', processDALYRow)
-    .defer(d3.csv, 'data/DALY_Global_2015.csv', processDALYRow)
-    .defer(d3.csv, 'data/DALY_Global_2016.csv', processDALYRow)
-    .defer(d3.csv, 'data/DALY-2000-country-all.csv', processDALYCountryRow)
-    .defer(d3.csv, 'data/DALY-2010-country-all.csv', processDALYCountryRow)
-    .defer(d3.csv, 'data/DALY-2015-country-all.csv', processDALYCountryRow)
-    .defer(d3.csv, 'data/DALY-2016-country-all.csv', processDALYCountryRow)
     .defer(d3.json, 'data/risk_factors.json')
-    .await(printData);
+    .await(createVisualizations);
 
 
-function printData(error, daly_2000, daly_2010, daly_2015, daly_2016, daly_country_2000, daly_country_2010,
-                   daly_country_2015, daly_country_2016, risk_factors) {
+function createVisualizations(error, risk_factors) {
     heart = new BeatingHeart('#chart-area-2', risk_factors);
 }
