@@ -19,7 +19,7 @@ Belgium,62.4,64.6,59.9
 Belize,34,30.7,37.4
 Benin,20.3,18.9,21.4
 Bhutan,31.6,32.2,30.6
-Bolivia (Plurinational State of),36.2,34.3,37.7
+Bolivia,36.2,34.3,37.7
 Bosnia and Herzegovina,39.2,38.5,39.5
 Botswana,37.9,36.1,38.9
 Brazil,44.2,44,44
@@ -38,15 +38,13 @@ China,33.4,31.5,35.1
 Colombia,42.4,41.1,43.2
 Comoros,24,22.7,25
 Congo,29,26.7,30.7
+Congo,16.1,14.2,17.6
 Cook Islands,59,59.3,58.3
 Costa Rica,41.1,37.4,44.6
-C™te d'Ivoire,21,19.2,22.8
 Croatia,49.8,49.4,49.7
 Cuba,31.9,27.9,35.5
 Cyprus,57.1,58.7,55.5
 Czechia,53.9,54.4,52.7
-Democratic People's Republic of Korea,26.4,24,28.1
-Democratic Republic of the Congo,16.1,14.2,17.6
 Denmark,65.2,68.3,61.8
 Djibouti,36.7,36.8,36.3
 Dominica,37.9,31.7,43.4
@@ -79,11 +77,12 @@ Hungary,55.2,55.4,54
 Iceland,69.8,72.5,67
 India,27.9,26.3,29.5
 Indonesia,35.8,33.1,38.2
-Iran (Islamic Republic of),54.1,49.8,58.1
+Iran,54.1,49.8,58.1
 Iraq,44,43.7,44.1
 Ireland,62.6,65.5,59.5
 Israel,53.5,51.8,54.8
 Italy,62.2,62.3,61.6
+Ivory Coast,21,19.2,22.8
 Jamaica,30.7,27.1,34
 Japan,57.1,58.2,55.7
 Jordan,48.8,47.8,49.6
@@ -92,7 +91,7 @@ Kenya,26.9,26.3,27.2
 Kiribati,35.5,32.6,38.2
 Kuwait,56.2,56.2,55.7
 Kyrgyzstan,30.1,28.3,31.2
-Lao People's Democratic Republic,31.4,28.8,33.6
+Laos,31.4,28.8,33.6
 Latvia,55.7,55.3,55.2
 Lebanon,44.2,41,47
 Lesotho,23,21.1,24.1
@@ -100,6 +99,7 @@ Liberia,16.1,14.1,17.8
 Libya,35.6,34.8,36.6
 Lithuania,54.8,54.9,54
 Luxembourg,66.9,69.5,64.1
+Macedonia,43.2,42.4,43.7
 Madagascar,24.4,23.8,24.8
 Malawi,24.1,23.1,24.9
 Malaysia,52.1,50,54
@@ -110,8 +110,7 @@ Marshall Islands,46.1,43.1,49
 Mauritania,22.2,21.3,22.9
 Mauritius,47.1,47.8,46
 Mexico,50.7,47.4,53.6
-Micronesia (Federated States of),48.1,48.5,47.5
-Monaco,#VALUE!,#VALUE!,#VALUE!
+Micronesia,48.1,48.5,47.5
 Mongolia,37.3,37,37.4
 Montenegro,48.3,48.4,47.9
 Morocco,37.2,35.3,39
@@ -125,7 +124,7 @@ New Zealand,56.2,56.8,55.4
 Nicaragua,30,27,32.9
 Niger,15.2,14.2,16.5
 Nigeria,16.8,14,19.4
-Niue,#VALUE!,#VALUE!,#VALUE!
+North Korea,42.5,41.7,42.7
 Norway,61.9,64.2,59.3
 Oman,49.6,48.4,50.7
 Pakistan,31,30.5,31.4
@@ -138,7 +137,6 @@ Philippines,43.3,39.3,46.7
 Poland,57.1,59.9,53.8
 Portugal,55.9,57.2,54.3
 Qatar,57,56.8,57.5
-Republic of Korea,42.5,41.7,42.7
 Republic of Moldova,36.5,35.2,36.9
 Romania,45.8,46,45.2
 Russian Federation,50.6,47.3,52.1
@@ -147,7 +145,6 @@ Saint Kitts and Nevis,41.8,39.3,44.1
 Saint Lucia,37.7,34.7,40.4
 Saint Vincent and the Grenadines,36.3,33,39.2
 Samoa,34.6,31.4,37.8
-San Marino,#VALUE!,#VALUE!,#VALUE!
 Sao Tome and Principe,18.1,15.9,19.7
 Saudi Arabia,39,36.4,42.1
 Senegal,21.4,19.9,22.9
@@ -160,6 +157,7 @@ Slovenia,56.3,56.8,55.3
 Solomon Islands,33.2,30.1,36.5
 Somalia,24.7,23.6,25.5
 South Africa,35.5,31.6,38
+South Korea,26.4,24,28.1
 Spain,56.1,58.9,52.9
 Sri Lanka,35.8,32.9,38.3
 Sudan,32.9,33.1,32.6
@@ -168,8 +166,8 @@ Sweden,51.8,56.1,47
 Switzerland,59.2,61.1,56.9
 Syrian Arab Republic,40.5,38.3,42.4
 Tajikistan,24,22.5,25.3
+Tanzania,23.7,21.6,25.5
 Thailand,55.5,54.6,56.1
-The former Yugoslav republic of Macedonia,43.2,42.4,43.7
 Timor-Leste,26.7,24.1,29.1
 Togo,17.1,15.2,18.7
 Tonga,49.7,53.4,45.4
@@ -177,17 +175,15 @@ Trinidad and Tobago,39.1,36.5,41.1
 Tunisia,40.7,37.3,43.8
 Turkey,39.7,38.1,41
 Turkmenistan,35.1,33.8,35.8
-Tuvalu,#VALUE!,#VALUE!,#VALUE!
 Uganda,22.2,20,24
 Ukraine,44.4,43.1,44.7
 United Arab Emirates,57.6,56.8,58.2
-United Kingdom of Great Britain and Northern Ireland,63.4,65.2,61.3
-United Republic of Tanzania,23.7,21.6,25.5
+United Kingdom,63.4,65.2,61.3
 United States of America,53.8,52.9,54.2
 Uruguay,42.3,43.3,40.9
 Uzbekistan,26.8,24.2,28.9
 Vanuatu,37.6,36.1,39.3
-Venezuela (Bolivarian Republic of),38.4,33.4,43.1
+Venezuela,38.4,33.4,43.1
 Viet Nam,36.1,33.9,38.1
 Yemen,32.3,30.7,33.6
 Zambia,27.7,26.5,28.5

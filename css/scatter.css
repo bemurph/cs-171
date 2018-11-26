@@ -55,3 +55,11 @@ text {
 .axis--x path {
     display: none;
 }
+
+.data-point.hidden {
+    opacity: 0;
+}
+
+.legendCells .hidden {
+    opacity: 0.2;
+}
