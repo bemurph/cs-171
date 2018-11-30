@@ -23,9 +23,13 @@ var lineC = d3.line()
     .x(function(d) { return x(+d.Year); })
     .y(function(d) { return y(+d.Cholesterol); });
 
-var lineT = d3.line()
+var lineTL = d3.line()
     .x(function(d){ return x(d.Year); })
     .y(function(d){ return y(+d.Threshold); });
+
+var lineTH = d3.line()
+    .x(function(d){ return x(d.Year); })
+    .y(function(d){ return y(+d.High); });
 
 // Create the svg canvas in the "graph" div
 var svgC = d3.select("#chart-area-6")
@@ -58,6 +62,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         d.Gender = d.Gender;
         d.Year = (parseYear(+d.Year));
         d.Threshold = +d.Threshold;
+        d.High = +d.High;
     });
 
    // console.log(data);
@@ -96,7 +101,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     // Scale the range of the data
     x.domain(d3.extent(mean_cholesterol, function(d) { return +d.Year; }));
     y.domain([d3.min(mean_cholesterol, function(d) { return +d.Cholesterol; }),
-        d3.max(mean_cholesterol, function(d) { return +d.Cholesterol; })]);
+        0.5 + d3.max(mean_cholesterol, function(d) { return +d.Cholesterol; })]);
 
     // Set up the x axis
     var xAxis = svgC.append("g")
@@ -178,8 +183,13 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
 
         svgC.append("path")
             .data([mean_cholesterol])
-            .attr("class", "line threshold")
-            .attr("d", lineT);
+            .attr("class", "line low_threshold")
+            .attr("d", lineTL);
+
+        svgC.append("path")
+            .data([mean_cholesterol])
+            .attr("class", "line high_threshold")
+            .attr("d", lineTH);
 
         //Tooltips
         var focus = svgC.append("g")
