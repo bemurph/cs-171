@@ -4,13 +4,13 @@
  * BeatingHeart - Object constructor function
  * @param _parentElement 	-- the HTML element in which to draw the visualization
  * @param _data				-- the data
+ * @param _height           -- the height of the visualization
  */
 
-BeatingHeart = function(_parentElement, _data){
+BeatingHeart = function(_parentElement, _data, _height){
     this.parentElement = _parentElement;
     this.data = _data;
-    this.iconSize = 45;
-    this.heartSize = this.iconSize * 8;
+    this.height = _height;
     this.transitionDuration = 3000;
     this.fadeOutDuration = this.transitionDuration/5;
     this.animating = false;
@@ -27,11 +27,13 @@ BeatingHeart.prototype.initVis = function(){
     let vis = this;
 
     const boundingBox = d3.select(vis.parentElement).node().getBoundingClientRect();
+    vis.iconSize = Math.min(boundingBox.width, vis.height)*.065;
+    vis.heartSize = vis.iconSize * 8;
 
     vis.margin = { top: vis.iconSize, right: vis.iconSize, bottom: vis.iconSize, left: vis.iconSize };
 
     vis.width = boundingBox.width - vis.margin.left - vis.margin.right;
-    vis.height = 700 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.height - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select(vis.parentElement).append("svg")

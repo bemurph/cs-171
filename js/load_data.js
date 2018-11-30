@@ -58,5 +58,6 @@ queue()
 
 
 function createVisualizations(error, risk_factors) {
-    heart = new BeatingHeart('#chart-area-2', risk_factors);
+    const heartHeight = 2*$('#view-3').height()/3;
+    heart = new BeatingHeart('#chart-area-2', risk_factors, heartHeight);
 }
