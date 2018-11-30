@@ -279,6 +279,19 @@ h4{
   stroke-width: 3px;
 }
 
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.focus {
+  font-size: 14px;
+}
+
+.focus circle {
+  fill: #5e8dc9;
+}
+
 .selected {
   stroke: #377eb8;
 }

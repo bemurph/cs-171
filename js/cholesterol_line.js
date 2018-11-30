@@ -36,6 +36,11 @@ var svgC = d3.select("#chart-area-6")
 
 var color = d3.scaleOrdinal(d3.schemeCategory10);
 
+// Define the div for the tooltip
+var div = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("opacity", 0);
+
 // Import the CSV data
 d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, data) {
     if (error) throw error;
@@ -141,6 +146,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             return d.key == country;
         });
 
+
         var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry, function(d){
                 return d ? d.key : this.key;
@@ -163,44 +169,45 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .style("stroke-dasharray", function(d){
                 return (d.key == "Male") ? ("3, 3") : ("0, 0")});
 
-        var legendVals1 = d3.scaleOrdinal()
-            .domain(function(d) { return d.value.gender; })
-            .range(["#1F77B4", "#FF7F0E"]);
-
-
-        //D3 Vertical Legend//////////////////////////
-        var legend3 = svgC.selectAll('.legend3')
-            .data(legendVals1.domain())
-            .enter().append('g')
-            .attr("class", "legends3")
-            .attr("transform", function (d, i) {
-                {
-                    return "translate(0," + i * 20 + ")"
-                }
+        //Tooltips
+        var focus = svgC.append("g")
+            .attr("class", "focus")
+            .style("display", "none")
+            .on("mouseover", function(d) {
+                div.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                div
+                    .html(formatYear(+mean_cholesterol.Year) + "<br/>"  + mean_cholesterol.Cholesterol)
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
             })
+            .on("mouseout", function(d) {
+                div.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
 
-        legend3.append('rect')
-            .attr("x", 0)
-            .attr("y", 0)
-            .attr("width", 10)
-            .attr("height", 10)
-            .style("fill", function (d, i) {
-                return color(i)
-            })
+        //Adds circle to focus point on line
+        focus.append("circle")
+            .attr("r", 4);
 
-        legend3.append('text')
-            .attr("x", 20)
-            .attr("y", 10)
-            //.attr("dy", ".35em")
-            .text(function (d, i) {
-                return d
-            })
-            .attr("class", "textselected")
-            .style("text-anchor", "start")
-            .style("font-size", 15)
+        //Adds text to focus point on line
+        focus.append("text")
+            .attr("x", 9)
+            .attr("dy", ".35em");
+
+        //Creates larger area for tooltip
+        var overlay = svgC.append("rect")
+            .attr("class", "overlay")
+            .attr("width", widthC)
+            .attr("height", heightC);
 
 
-     //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
+
+
+
+        //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
        //     "cholesterol for " + country + " is: "
     };
 
