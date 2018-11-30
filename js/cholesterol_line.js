@@ -178,7 +178,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
                     .duration(200)
                     .style("opacity", .9);
                 div
-                    .html(formatYear(+mean_cholesterol.Year) + "<br/>"  + mean_cholesterol.Cholesterol)
+                    .html(formatYear(+mean_cholesterol.Year) + "<br/>"  + +mean_cholesterol.Cholesterol)
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
