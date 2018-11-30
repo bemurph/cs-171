@@ -319,3 +319,18 @@ h4{
   color: var(--main-color);
 }
 
+.source {
+  color: #435999;
+  font-size: 0.8rem;
+}
+
+.absolute-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.bottom-0 {
+  margin-bottom: 0;
+}
