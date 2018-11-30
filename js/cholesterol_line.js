@@ -34,7 +34,9 @@ var svgC = d3.select("#chart-area-6")
     .attr("transform","translate(" + marginC.left + "," + marginC.top + ")")
     .attr("class", "svg");
 
-var color = d3.scaleOrdinal(d3.schemeCategory10);
+var color = d3.scaleOrdinal()
+    .domain(["Male", "Female"])
+    .range(["#4071FF", "#FE57FF"]);
 
 // Define the div for the tooltip
 var div = d3.select("body").append("div")
@@ -85,7 +87,6 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             return {cholesterol:cholesterol, gender:gender};
         })
         .entries(mean_cholesterol);
-
 
     // Scale the range of the data
     x.domain(d3.extent(mean_cholesterol, function(d) { return +d.Year; }));
@@ -166,8 +167,9 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
                 return lineC(d.values)
             })
             .attr("class", "line")
-            .style("stroke-dasharray", function(d){
-                return (d.key == "Male") ? ("3, 3") : ("0, 0")});
+            // .style("stroke-dasharray", function(d){
+            //     return (d.key == "Male") ? ("3, 3") : ("0, 0")})
+            .attr('stroke', d => color(d.key));
 
         //Tooltips
         var focus = svgC.append("g")
