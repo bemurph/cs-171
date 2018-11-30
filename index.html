@@ -173,16 +173,16 @@
                     <div class="col-md-6">
 
                         <p class="detail-text">Your blood pressure naturally goes up and down all the time, adjusting to your heart’s needs
-                            depending on what you are doing. <strong>Systolic blood pressure</strong> (the first number) indicates how much pressure your blood is exerting against your artery walls when the heart beats.
-                            <strong>Diastolic blood pressure</strong> (the second number) indicates how much pressure your blood is exerting against your artery walls while the heart is resting between beats.
+                            depending on what you are doing.
                             A blood pressure reading under 120/80mmHg is considered optimal.
                             Blood pressure that’s high (over 120/80mmHg) over a long time is one of the main risk factors
                             for heart disease.
-                            Uncontrolled high blood pressure can lead to a heart attack or stroke. It may also affect your
-                            kidneys.</p>
+                            Uncontrolled high systolic blood pressure can lead to a heart attack or stroke. It may also affect your
+                            kidneys.
+                        </p>
                     </div>
                     <div class="col-md-6">
-                        <img src="images/blood_pressure_target.gif">
+                        <img src="images/sysdias.jpg">
                     </div>
                 </div>
             </div>
@@ -197,19 +197,18 @@
 
         <div class="vs-center-wrap">
             <div class="container">
-                <h2 class="heart-icon">Association between mean systolic blood pressure and cardiovascular disease in countries with
-                    a population greater than 20 million people</b></h2>
+                <h2 class="heart-icon">Association between mean systolic blood pressure and cardiovascular disease in countries that have the potential to have the greatest imapct on worldwide CVD burden</b></h2>
                 <div class="row">
                     <div class="col-md-9">
                         <form class="form-inline">
                             <div class="form-group" id="bp-gender">
                                 <label for="x-value">Gender</label>
-                                <select class="form-control" id="x-value" onchange="setGraph()">
+                                <select class="form-control" id="x-value">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
                                 <label style="margin-left: 2rem" for="y-value">Year</label>
-                                <select class="form-control" id="y-value" onchange="setGraph()">
+                                <select class="form-control" id="y-value">
                                     <option value="2000">2000</option>
                                     <option value="2010">2010</option>
                                 </select>
@@ -220,13 +219,17 @@
                     </div>
                     <div class="col-md-3">
                         <p class="chart"></p>
-                        <p class="equation detail-text"></p>
-                        <p class="equation detail-text"></p>
-                    </div>
+                        <p class="equation1 detail-text"></p>
+                        <p class="equation0 detail-text"></p>
+                        <p class="equation0 detail-text"></p>
+                        <p class="equation0 detail-text"></p>
+                        <p class="equation1 detail-text"></p>
+                        <p class="equation1 detail-text"></p>
+                        </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability.
+                        <p>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability. Analysis excludes outliers and is limited to countries with a population greater than 20 million people. Size of circle represents size of the population.
                         <a href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source: World Health Organization</a></p>
                     </div>
                 </div>

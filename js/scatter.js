@@ -1,18 +1,19 @@
+var margin = {top: 30, right: 200, bottom: 40, left: 50};
+
+var width = 960 - margin.left - margin.right;
+var height = 470 - margin.top - margin.bottom;
+var svgscatter;
+
+// set initial values
+var currentKeyX = "Male";
+var currentKeyY = "2000";
+
+const tooltip = d3.select('body').append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0);
+
+
 function drawGraph(xText, yText) {
-    $('svg').remove();
-    var margin = {top: 30, right: 200, bottom: 40, left: 50};
-
-    var width = 960 - margin.left - margin.right;
-    var height = 470 - margin.top - margin.bottom;
-
-    var svg = d3.select('#chart-area-5')
-        .append('svg')
-        .attr('width', width + margin.left + margin.right)
-        .attr('height', height + margin.top + margin.bottom)
-        .append('g')
-        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
-
-
 // The API for scales have changed in v4. There is a separate module d3-scale which can be used instead. The main change here is instead of d3.scale.linear, we have d3.scaleLinear.
     var xScale = d3.scaleLinear()
         .range([0, width]);
@@ -37,13 +38,13 @@ function drawGraph(xText, yText) {
 
 // creates a generator for symbols
     var symbol = d3.symbol().size(100);
-    const g = svg
+    const g = svgscatter
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
-    const colorLegendG = g
-        .append('g')
-        .attr('transform', 'translate(${innerWidth + 50}, 0)');
+   // const colorLegendG = g
+     //   .append('g')
+       // .attr('transform', 'translate(${innerWidth + 50}, 0)');
 
     const colorValue = d => d.dataset;
     const colorClass = d => {
@@ -52,6 +53,7 @@ function drawGraph(xText, yText) {
             .className;
     };
     d3.csv('data/data_bp_combined_excl_china_india_russia_USA_smlpop.csv', function (error, data) {
+        svgscatter.selectAll("*").remove();
         data.forEach(function (d) {
             xValue=xText+'_'+yText;
             yValue=xText+'_'+yText+'_CVD';
@@ -79,23 +81,54 @@ function drawGraph(xText, yText) {
         })).nice();
 
         // adding axes is also simpler now, just translate x-axis to (0,height) and it's alread defined to be a bottom axis.
-        svg.append('g')
+        svgscatter.append('g')
             .attr('transform', 'translate(0,' + height + ')')
             .attr('class', 'x axis')
             .call(xAxis);
 
         // y-axis is translated to (0,0)
-        svg.append('g')
+        svgscatter.append('g')
             .attr('transform', 'translate(0,0)')
             .attr('class', 'y axis')
             .call(yAxis);
 
+       var bubble = svgscatter.selectAll('.bubble')
+            .data(data);
 
-        var bubble = svg.selectAll('.bubble')
+        //EXIT
+        bubble.exit()
+            .style("fill", "#b26745")
+            .transition(t)
+            .attr("r", 1e-6)
+            .remove();
 
-            .data(data)
-            .enter().append('circle')
+        //UPDATE
+        bubble
+            .transition(t)
+            .style("fill", "#3a403d")
+            .attr("r", function(d){ return d.r })
+            .attr("cx", function(d){ return d.x; })
+            .attr("cy", function(d){ return d.y; });
+
+        bubble.enter()
+            .append('circle')
+            .on("mouseover", function(d){
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("In " +yText+ ", "+ d.country + " had a "+xText+ " population of "+ d.population +".")
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function(d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+            .transition(t)
             .attr('class', 'bubble')
+            .attr("id", "redLine")
+
             .attr('cx', function (d) {
                 return xScale(d.bloodPressure);
             })
@@ -107,19 +140,29 @@ function drawGraph(xText, yText) {
             })
             .style('fill', function (d) {
                 return color(d.region);
-            });
+            })
 
-        bubble.append('title')
+
+
+
+   /*     text.enter().append("text")
+            .attr("opacity", 1e-6)
+            .attr("x", function(d){ return radius(d.population); })
+            .attr("y", function(d){ return d.y; })
+            .text(function(d){ return d.country + " has a " +yText+" "+xText+ " population of "+ d.population; })
+            .transition(t)
+            .attr("opacity", 1);*/
+
+/*        bubble.append('title')
             .attr('x', function (d) {
                 return radius(d.population);
             })
             .text(function (d) {
                 return d.country + " has a " +yText+" "+xText+ " population of "+ d.population;
-            });
+            });*/
 
         // adding label. For x-axis, it's at (10, 10), and for y-axis at (width, height-10).
-        svg.append('text')
-
+        svgscatter.append('text')
           .attr("transform", "rotate(-90)")
             .attr("y", 6)
             .attr("dy", ".71em")
@@ -130,15 +173,13 @@ function drawGraph(xText, yText) {
             .attr('class', 'label')
             .text('Disability adjusted life years from Cardiovascular Disease');
 
-
-        svg.append('text')
+        svgscatter.append('text')
             .attr('x', width)
             .attr('y', height - 10)
             .attr('text-anchor', 'end')
             .attr('class', 'label')
             .text('Blood pressure');
 
-        // I feel I understand legends much better now.
         // define a group element for each color i, and translate it to (0, i * 20).
         function toggleDataPoints(colorClass) {
             g
@@ -148,34 +189,38 @@ function drawGraph(xText, yText) {
                     return !d3.select(this).classed('hidden');
                 });
         }
-        svg.selectAll("title_text")
+        svgscatter.selectAll("title_text")
             .data(["Region"])
             .enter()
             .append("text")
             .attr("x", 700)
-            .attr("y", 1)
+            .attr("y", -10)
             .attr('class', 'legend')
 //            .style("font-family", "sans-serif")
   //          .style("font-size", "10px")
     //        .style("color", "Black")
             .text(function (d) { return d; })
-            .on('cellclick', function(d) {
-                toggleDataPoints(d);
-                const legendCell = d3.select(this);
-                legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-            })
+
             ;
 
-
-
-        var legend = svg.selectAll('legend')
+        var legend = svgscatter.selectAll('legend')
 
             .data(color.domain())
+            //.selectAll('g').remove()
             .enter().append('g')
             .attr('class', 'legend')
 
             .attr('transform', function (d, i) {
                 return 'translate(0,' + i * 40 + ')';
+            })
+            .on("click", function(){
+                // determine if current line is visible
+                var active   = redLine.active ? false : true,
+                    newOpacity = active ? 0 : 1;
+                // hide or show the elements
+                d3.select("#redLine").style("opacity", newOpacity);
+                // update whether or not the elements are active
+                redLine.active = active;
             });
 
         // give x value equal to the legend elements.
@@ -185,24 +230,26 @@ function drawGraph(xText, yText) {
             .attr('width', 18)
             .attr('height', 18)
             .style('fill', color)
-            .on('cellclick', function(d) {
-                toggleDataPoints(d);
-                const legendCell = d3.select(this);
-                legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-            })
         ;
-
-
 
         // add text to the legend elements.
         // rects are defined at x value equal to width, we define text at width - 6, this will print name of the legends before the rects.
         legend.append('text')
-            .attr('x', width - 6)
+            .attr('x', width )
             .attr('y', 9)
             .attr('dy', '.35em')
             .style('text-anchor', 'end')
             .text(function (d) {
                 return d;
+            })
+            .on("click", function(){
+                // determine if current line is visible
+                var active   = redLine.active ? false : true,
+                    newOpacity = active ? 0 : 1;
+                // hide or show the elements
+                d3.select("#redLine").style("opacity", newOpacity);
+                // update whether or not the elements are active
+                redLine.active = active;
             })
         ;
         const colorScale = d3.scaleOrdinal()
@@ -219,11 +266,14 @@ function drawGraph(xText, yText) {
             });
 
         // add circles representing the data
+     //   d3.selectAll('bubble') // move the circles
+
+         //   .attr('cy',function (d) { return yScale(d[value]) })
 
 
         // add color legend
 
-        colorLegendG.call(colorLegend);
+       // colorLegendG.call(colorLegend);
 
 
         var lg = calcLinear(data, "bloodPressure", "CVD", d3.min(data, function(d){ return d.bloodPressure}), d3.min(data, function(d){ return d.CVD}));
@@ -309,9 +359,14 @@ function drawGraph(xText, yText) {
             var b = (e - f) / n;
 
             // Print the equation below the chart
-            document.getElementsByClassName("equation")[0].innerHTML = "For "+ xText.toLowerCase() + "s in " +yText+ ", every 1 mmHg increase in systolic blood pressure was associated with a " + Math.round(m) + " unit increase in CVD DALYs*";
-            document.getElementsByClassName("equation")[1].innerHTML = "Analysis excludes outliers. Size of circle represents size of the population";
 
+
+                    document.getElementsByClassName("equation1")[0].innerHTML = xText.toLowerCase() + "s in " +yText +":";
+                                document.getElementsByClassName("equation0")[0].innerHTML = " every 1 mmHg increase in";
+            document.getElementsByClassName("equation0")[1].innerHTML = "systolic blood pressure was";
+            document.getElementsByClassName("equation0")[2].innerHTML = "associated with a";
+            document.getElementsByClassName("equation1")[1].innerHTML = Math.round(m) + " unit increase in CVD";
+            document.getElementsByClassName("equation1")[2].innerHTML = "DALYs*";
             // return an object of two points
             // each point is an object with an x and y coordinate
             return {
@@ -335,10 +390,37 @@ function drawGraph(xText, yText) {
     })
 
 }
-drawGraph('Male', '2000');
 
-function setGraph() {
-    drawGraph($('#x-value').val(), $('#y-value').val());
-}
+var t = d3.transition()
+    .delay(1000)
+    .duration(500)
+    .ease(d3.easeBounceIn);
 
+// event handlers for changning views
+d3.select('#x-value').on('change', function(a) {
+    // Change the current key and call the function to update the colors.
+    currentKeyX = d3.select(this).property('value');
+    console.log(currentKeyX);
+    drawGraph(currentKeyX, currentKeyY);
+});
 
+d3.select('#y-value').on('change', function(a) {
+    // Change the current key and call the function to update the colors.
+    currentKeyY = d3.select(this).property('value');
+    console.log(currentKeyY);
+    drawGraph(currentKeyX, currentKeyY);
+});
+
+function setupGraph() {
+    svgscatter = d3.select('#chart-area-5')
+    // .selectAll('svg').remove()
+        .append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+};
+
+// set initial value
+setupGraph();
+drawGraph(currentKeyX, currentKeyY);

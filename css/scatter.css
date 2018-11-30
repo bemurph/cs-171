@@ -40,8 +40,10 @@
     fill-opacity:1;
 }
 
-text {
+.equation1{
     font-family: sans-serif;
+    color: red;
+    font-weight: bold;
 }
 
 .bar {
@@ -63,3 +65,24 @@ text {
 .legendCells .hidden {
     opacity: 0.2;
 }
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: 100px;
+    height: 75px;
+    padding: 2px;
+    font: 12px sans-serif;
+    background: #e0a800;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+
+
+
