@@ -282,14 +282,14 @@ h4{
     fill: none;
     stroke: #e41a1c;
     stroke-width: 3px;
-    stroke-dasharray: 10;
+    stroke-dasharray: 3;
 }
 
 .high_threshold {
     fill: none;
     stroke: #9e1d35;
     stroke-width: 3px;
-    stroke-dasharray: 10;
+    stroke-dasharray: 3;
 }
 
 .overlay {
