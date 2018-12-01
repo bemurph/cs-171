@@ -124,7 +124,7 @@ function drawGraph(xText, yText) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) 
             .transition(t)
             .attr('class', 'bubble')
             .attr("id", "redLine")
