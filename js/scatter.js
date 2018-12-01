@@ -4,6 +4,7 @@ ScatterPlot = function(_parentElement, _data) {
     this.filteredData = this.data;
     this.selectedGender = 'Male';
     this.selectedYear = 2000;
+    this.transitionDuration = 1000;
     this.textFriendlyGenders = {
         Male: 'men',
         Female: 'women',
@@ -30,12 +31,12 @@ ScatterPlot.prototype.initVis = function() {
     vis.xScale = d3.scaleLinear()
         .range([0, vis.width]);
 
-    vis.yScale = d3.scaleLinear()
+    vis.yScale = d3.scaleLog()
         .range([vis.height, 0]);
 
 // square root scale.
     vis.radius = d3.scaleSqrt()
-        .range([2, 10]);
+        .range([5, 20]);
 
 // the axes are much cleaner and easier now. No need to rotate and orient the axis, just call axisBottom, axisLeft etc.
     vis.xAxis = d3.axisBottom()
@@ -87,28 +88,41 @@ ScatterPlot.prototype.updateVis = function() {
     vis.xScale.domain(d3.extent(vis.filteredData, d => d.bloodPressure)).nice();
     vis.yScale.domain(d3.extent(vis.filteredData, d => d.CVD)).nice();
     vis.radius.domain(d3.extent(vis.filteredData, d => d.population)).nice();
-    vis.yAxisElement.transition()
+    vis.yAxisElement.transition().duration(vis.transitionDuration)
         .call(vis.xAxis);
-    vis.yAxisElement.transition()
+    vis.yAxisElement.transition().duration(vis.transitionDuration)
         .call(vis.yAxis);
 
     let bubbles = vis.svg.selectAll('.bubble')
-        .data(vis.filteredData);
+        .data(vis.filteredData, d => d.country);
 
     bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('fill', d => vis.continentColor(d.region))
-        .merge(bubbles).transition()
+        .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
             .attr('cy', d => vis.yScale(d.CVD))
             .attr('r', d => vis.radius(d.population));
-    bubbles.exit().transition().remove();
+    bubbles.exit().transition().duration(vis.transitionDuration).remove();
 
     const cvdIncreaseValue = vis.calcLinear();
-    const cvdIncreaseText = "For "+ vis.textFriendlyGenders[vis.selectedGender] + "in " + vis.selectedYear + ", every 1 mmHg increase in systolic blood pressure was associated with a " + cvdIncreaseValue + " unit increase in CVD DALYs*";
+    const cvdIncreaseText = "For "+ vis.textFriendlyGenders[vis.selectedGender] + " in " + vis.selectedYear + ", every 1 mmHg increase in systolic blood pressure was associated with a " + cvdIncreaseValue + " unit increase in CVD DALYs*";
 
     d3.select('#cvd-increase-text').text(cvdIncreaseText);
 };
+
+ScatterPlot.prototype.setGender = function(gender) {
+    let vis = this;
+    vis.selectedGender = gender;
+    vis.filterData();
+};
+
+ScatterPlot.prototype.setYear = function(year) {
+    let vis = this;
+    vis.selectedYear = year;
+    vis.filterData();
+};
+
 
 ScatterPlot.prototype.calcLinear = function(){
     /////////
@@ -188,161 +202,3 @@ ScatterPlot.prototype.calcLinear = function(){
     // }
     return Math.round(m);
 };
-
-//
-// function drawGraph(xText, yText) {
-//     $('svg').remove();
-//
-//     d3.csv('data/data_bp_combined_excl_china_india_russia_USA_smlpop.csv', function (error, data) {
-//         data.forEach(function (d) {
-//             xValue=xText+'_'+yText;
-//             yValue=xText+'_'+yText+'_CVD';
-//             popValue=xText+'_'+yText+'_Population';
-//           // console.log("printing1",d[yValue]);
-//           //  console.log("printing2",yValue);
-//           //  console.log("printing3",xText);
-//           //  console.log("printing4",yText);
-//             d.bloodPressure = +d[xValue];
-//             d.CVD = +d[yValue];
-//             d.population = +d[popValue];
-//             d.region = d.region;
-//         });
-//
-//         // bubble.append('title')
-//         //     .attr('x', function (d) {
-//         //         return radius(d.population);
-//         //     })
-//         //     .text(function (d) {
-//         //         return d.country + " has a " +yText+" "+xText+ " population of "+ d.population;
-//         //     });
-//
-//         // adding label. For x-axis, it's at (10, 10), and for y-axis at (width, height-10).
-//
-//
-//
-//         // I feel I understand legends much better now.
-//         // define a group element for each color i, and translate it to (0, i * 20).
-// //         function toggleDataPoints(colorClass) {
-// //             g
-// //                 .selectAll('circle.${colorClass}')
-// //                 .data(data)
-// //                 .classed('hidden', function() {  // toggle "hidden" class
-// //                     return !d3.select(this).classed('hidden');
-// //                 });
-// //         }
-// //         svg.selectAll("title_text")
-// //             .data(["Region"])
-// //             .enter()
-// //             .append("text")
-// //             .attr("x", 700)
-// //             .attr("y", 1)
-// //             .attr('class', 'legend')
-// // //            .style("font-family", "sans-serif")
-// //   //          .style("font-size", "10px")
-// //     //        .style("color", "Black")
-// //             .text(function (d) { return d; })
-// //             .on('cellclick', function(d) {
-// //                 toggleDataPoints(d);
-// //                 const legendCell = d3.select(this);
-// //                 legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-// //             })
-// //             ;
-//
-//
-//
-//         // var legend = svg.selectAll('legend')
-//         //
-//         //     .data(color.domain())
-//         //     .enter().append('g')
-//         //     .attr('class', 'legend')
-//         //
-//         //     .attr('transform', function (d, i) {
-//         //         return 'translate(0,' + i * 40 + ')';
-//         //     });
-//         //
-//         // // give x value equal to the legend elements.
-//         // // no need to define a function for fill, this is automatically fill by color.
-//         // legend.append('rect')
-//         //     .attr('x', width)
-//         //     .attr('width', 18)
-//         //     .attr('height', 18)
-//         //     .style('fill', color)
-//         //     .on('cellclick', function(d) {
-//         //         toggleDataPoints(d);
-//         //         const legendCell = d3.select(this);
-//         //         legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-//         //     })
-//         // ;
-//
-//
-//
-//         // add text to the legend elements.
-//         // rects are defined at x value equal to width, we define text at width - 6, this will print name of the legends before the rects.
-//         // legend.append('text')
-//         //     .attr('x', width - 6)
-//         //     .attr('y', 9)
-//         //     .attr('dy', '.35em')
-//         //     .style('text-anchor', 'end')
-//         //     .text(function (d) {
-//         //         return d;
-//         //     })
-//         // // ;
-//         // const colorScale = d3.scaleOrdinal()
-//         //     .range(d3.schemeCategory10);
-//         //
-//         // const colorLegend = d3.legendColor()
-//         //     .scale(colorScale)
-//         //     .shape('circle')
-//         //     .shapeRadius(7)
-//         //     .on('cellclick', function(d) {
-//         //         toggleDataPoints(d);
-//         //         const legendCell = d3.select(this);
-//         //         legendCell.classed('hidden', !legendCell.classed('hidden'));  // toggle opacity of legend item
-//         //     });
-//
-//         // add circles representing the data
-//
-//
-//         // add color legend
-//
-//         // colorLegendG.call(colorLegend);
-//
-//
-//         var lg =
-//      // console.log(lg);
-//        // svg.append("line")
-//          //   .attr("class", "chart")
-//            // .attr("x1", x(lg.ptA.x))
-//       //      .attr("y1", y(lg.ptA.y))
-//         //    .attr("x2", x(lg.ptB.x))
-//           //  .attr("y2", y(lg.ptB.y));
-//
-//
-//         // function types(d){
-//         //     d.x = +d.bloodPressure;
-//         //     d.y = +d.CVD;
-//         //     console.log(d.x);
-//         //     return d;
-//         // }
-//         // Calculate a linear regression from the data
-//
-//         // Takes 5 parameters:
-//         // (1) Your data
-//         // (2) The column of data plotted on your x-axis
-//         // (3) The column of data plotted on your y-axis
-//         // (4) The minimum value of your x-axis
-//         // (5) The minimum value of your y-axis
-//
-//         // Returns an object with two points, where each point is an object with an x and y coordinate
-//
-//
-//     })
-//
-// }
-// drawGraph('Male', '2000');
-//
-// function setGraph() {
-//     drawGraph($('#x-value').val(), $('#y-value').val());
-// }
-
-

@@ -203,12 +203,12 @@
                         <form class="form-inline">
                             <div class="form-group" id="bp-gender">
                                 <label for="x-value">Gender</label>
-                                <select class="form-control" id="x-value" onchange="setGraph()">
+                                <select class="form-control" id="x-value" onchange="scatter.setGender(this.value)">
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>
                                 <label style="margin-left: 2rem" for="y-value">Year</label>
-                                <select class="form-control" id="y-value" onchange="setGraph()">
+                                <select class="form-control" id="y-value" onchange="scatter.setYear(+this.value)">
                                     <option value="2000">2000</option>
                                     <option value="2010">2010</option>
                                 </select>
