@@ -76,7 +76,6 @@
             </div>
         </div>
     </div>
-
     <div vs-anchor="view-2" class="mainview view2">
         <div class="vs-center-wrap">
 
@@ -219,9 +218,9 @@
                         </div>
                     </div>
                     <div class="col-md-3">
-                        <p class="chart"></p>
-                        <p class="equation detail-text"></p>
-                        <p class="equation detail-text"></p>
+                        <p id="cvd-increase-text"></p>
+                        <p class="equation detail-text">Analysis excludes outliers. Size of circle represents size of the population"</p>                       </p>
+                        <div id="world-legend"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -434,6 +433,7 @@
 <!-- Visualization objects -->
 
 <!-- Load data, create visualizations -->
+<script src="js/world_legend.js"></script>
 <script src="js/heart.js"></script>
 <script src="js/scatter.js"></script>
 <script src="js/load_data.js"></script>

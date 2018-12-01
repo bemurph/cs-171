@@ -1,5 +1,7 @@
 const yearParser = d3.timeParse("%Y-%m-%d");
 let heart;
+let worldLegend;
+let scatter;
 
 function processDALYRow(d) {
     return {
@@ -51,13 +53,29 @@ function processDALYCountryRow(d) {
     return d;
 }
 
+function processBPRow(d) {
+    return {
+        country: d.country,
+        region: d.region,
+        year: +d.year,
+        gender: d.gender,
+        population: +d.population,
+        CVD: +d.CVD,
+        bloodPressure: +d.bloodpressure
+    }
+}
+
 
 queue()
     .defer(d3.json, 'data/risk_factors.json')
+    .defer(d3.json, 'data/continents.json')
+    .defer(d3.csv, 'data/data_bp_combined_fixed.csv', processBPRow)
     .await(createVisualizations);
 
 
-function createVisualizations(error, risk_factors) {
+function createVisualizations(error, risk_factors, continents, bp_data) {
     const heartHeight = 2*$('#view-3').height()/3;
     heart = new BeatingHeart('#chart-area-2', risk_factors, heartHeight);
+    worldLegend = new WorldLegend('#world-legend', continents);
+    scatter = new ScatterPlot('#chart-area-5', bp_data)
 }
