@@ -278,6 +278,20 @@ h4{
   stroke-width: 3px;
 }
 
+.low_threshold {
+    fill: none;
+    stroke: #e41a1c;
+    stroke-width: 3px;
+    stroke-dasharray: 10;
+}
+
+.high_threshold {
+    fill: none;
+    stroke: #9e1d35;
+    stroke-width: 3px;
+    stroke-dasharray: 10;
+}
+
 .overlay {
   fill: none;
   pointer-events: all;
