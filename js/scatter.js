@@ -1,4 +1,4 @@
-ScatterPlot = function(_parentElement, _data) {
+ScatterPlot = function(_parentElement, _data, _legendElement, _legendData) {
     this.parentElement = _parentElement;
     this.data = _data;
     this.filteredData = this.data;
@@ -9,6 +9,9 @@ ScatterPlot = function(_parentElement, _data) {
         Male: 'men',
         Female: 'women',
     };
+    this.legendElement = _legendElement;
+    this.legendData = _legendData;
+
     this.initVis();
 };
 
@@ -69,16 +72,21 @@ ScatterPlot.prototype.initVis = function() {
         .text('Disability adjusted life years from Cardiovascular Disease');
 
     vis.continentColor = d3.scaleOrdinal()
-        .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3'])
-        .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania']);
+        .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
+        .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
 
+    vis.mapLegend = new WorldLegend(vis.legendElement, vis.legendData, vis.continentColor);
 
     vis.filterData();
 };
 
 ScatterPlot.prototype.filterData = function() {
     let vis = this;
-    vis.filteredData = vis.data.filter(d => d.gender === vis.selectedGender && d.year === vis.selectedYear);
+    vis.filteredData = vis.data.filter(d =>
+        d.gender === vis.selectedGender &&
+        d.year === vis.selectedYear &&
+        (vis.mapLegend.selectedRegions.length === 0 || vis.mapLegend.selectedRegions.includes(d.region))
+    );
     vis.updateVis();
 };
 
@@ -102,8 +110,10 @@ ScatterPlot.prototype.updateVis = function() {
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
             .attr('cy', d => vis.yScale(d.CVD))
+            .style('opacity', 1)
             .attr('r', d => vis.radius(d.population));
-    bubbles.exit().transition().duration(vis.transitionDuration).remove();
+    bubbles.exit()
+        .style('opacity', 0);
 
     const cvdIncreaseValue = vis.calcLinear();
     const cvdIncreaseText = "For "+ vis.textFriendlyGenders[vis.selectedGender] + " in " + vis.selectedYear + ", every 1 mmHg increase in systolic blood pressure was associated with a " + cvdIncreaseValue + " unit increase in CVD DALYs*";

@@ -361,16 +361,20 @@ h4{
   margin-bottom: 0;
 }
 
+.continent {
+  stroke: black;
+  stroke-opacity: 0;
+}
+
 .continent-selected {
-  fill: red;
+  stroke-opacity: 1;
 }
 
 .continent-unselected {
-  opacity: 0.5;
+  opacity: 0.25;
 }
 
 .continent-hover {
-  stroke: blue;
   opacity: 1;
-  /*stroke-width: 2;*/
+  stroke-opacity: 1;
 }
