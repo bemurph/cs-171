@@ -34,7 +34,7 @@ ScatterPlot.prototype.initVis = function() {
     vis.xScale = d3.scaleLinear()
         .range([0, vis.width]);
 
-    vis.yScale = d3.scaleLog()
+    vis.yScale = d3.scaleLinear()
         .range([vis.height, 0]);
 
 // square root scale.
@@ -94,7 +94,7 @@ ScatterPlot.prototype.updateVis = function() {
     let vis = this;
 
     vis.xScale.domain(d3.extent(vis.filteredData, d => d.bloodPressure)).nice();
-    vis.yScale.domain(d3.extent(vis.filteredData, d => d.CVD)).nice();
+    vis.yScale.domain(d3.extent(vis.filteredData, d => d.popCVD)).nice();
     vis.radius.domain(d3.extent(vis.filteredData, d => d.population)).nice();
     vis.yAxisElement.transition().duration(vis.transitionDuration)
         .call(vis.xAxis);
@@ -109,7 +109,7 @@ ScatterPlot.prototype.updateVis = function() {
             .attr('fill', d => vis.continentColor(d.region))
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
-            .attr('cy', d => vis.yScale(d.CVD))
+            .attr('cy', d => vis.yScale(d.popCVD))
             .style('opacity', 1)
             .attr('r', d => vis.radius(d.population));
     bubbles.exit()

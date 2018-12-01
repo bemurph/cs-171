@@ -61,7 +61,8 @@ function processBPRow(d) {
         gender: d.gender,
         population: +d.population,
         CVD: +d.CVD,
-        bloodPressure: +d.bloodpressure
+        bloodPressure: +d.bloodpressure,
+        popCVD: +d.CVD/(+d.population)
     }
 }
 
