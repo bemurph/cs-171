@@ -1,0 +1,689 @@
+country,region,year,gender,population,CVD,bloodpressure
+Afghanistan,Asia,2000,Male,10347000,613.3,124.8
+Afghanistan,Asia,2010,Male,14798000,762.1,126.1
+Afghanistan,Asia,2000,Female,9747000,470.5,123
+Afghanistan,Asia,2010,Female,14005000,631,124.6
+Albania,Europe,2000,Male,1578000,126.4,132.3
+Albania,Europe,2010,Male,1475000,156.3,134.9
+Albania,Europe,2000,Female,1544000,85.5,128.5
+Albania,Europe,2010,Female,1465000,113.8,129.3
+Algeria,Africa,2000,Male,15803000,759.3,127.5
+Algeria,Africa,2010,Male,18230000,713.6,127.7
+Algeria,Africa,2000,Female,15381000,724.7,128.2
+Algeria,Africa,2010,Female,17887000,685.2,125.8
+Angola,Africa,2000,Male,8034000,328.2,130.3
+Angola,Africa,2010,Male,11433000,315,130.8
+Angola,Africa,2000,Female,8407000,341.3,127.9
+Angola,Africa,2010,Female,11936000,323.1,128.5
+Antigua and Barbuda,Americas,2000,Male,39000,2.3,127.1
+Antigua and Barbuda,Americas,2010,Male,45000,2.3,128.3
+Antigua and Barbuda,Americas,2000,Female,44000,2,121.2
+Antigua and Barbuda,Americas,2010,Female,49000,2,122.3
+Argentina,Americas,2000,Male,18131000,1200.7,128
+Argentina,Americas,2010,Male,20164000,1120.1,128.2
+Argentina,Americas,2000,Female,18926000,838.8,121
+Argentina,Americas,2010,Female,21060000,860.7,120.5
+Armenia,Asia,2000,Male,1441000,130.7,131.3
+Armenia,Asia,2010,Male,1346000,134.5,132.4
+Armenia,Asia,2000,Female,1629000,118.9,129.2
+Armenia,Asia,2010,Female,1531000,110.2,128.7
+Australia,Oceania,2000,Male,9512000,483.6,128
+Australia,Oceania,2010,Male,11061000,419.4,125.2
+Australia,Oceania,2000,Female,9554000,385.4,119.7
+Australia,Oceania,2010,Female,11059000,337.4,116.7
+Austria,Europe,2000,Male,3916000,325.5,130.8
+Austria,Europe,2010,Male,4099000,265,128.7
+Austria,Europe,2000,Female,4153000,327.1,124.4
+Austria,Europe,2010,Female,4311000,254.1,121.6
+Azerbaijan,Asia,2000,Male,3971000,361.4,128.6
+Azerbaijan,Asia,2010,Male,4475000,387,129.6
+Azerbaijan,Asia,2000,Female,4151000,305.5,126
+Azerbaijan,Asia,2010,Female,4557000,309.5,126.1
+Bahamas,Americas,2000,Male,145000,6.7,129
+Bahamas,Americas,2010,Male,176000,8.8,128.9
+Bahamas,Americas,2000,Female,153000,5.8,123.1
+Bahamas,Americas,2010,Female,184000,6.8,121.6
+Bahrain,Asia,2000,Male,381000,12,127.3
+Bahrain,Asia,2010,Male,774000,13.9,127
+Bahrain,Asia,2000,Female,283000,7.7,123.9
+Bahrain,Asia,2010,Female,467000,8.2,121.2
+Bangladesh,Asia,2000,Male,67145000,1800.4,120.7
+Bangladesh,Asia,2010,Male,76941000,3190,120.1
+Bangladesh,Asia,2000,Female,64437000,2079.4,121.3
+Bangladesh,Asia,2010,Female,75208000,3021.8,120.3
+Barbados,Americas,2000,Male,130000,9.5,128.3
+Barbados,Americas,2010,Male,134000,9.3,129.1
+Barbados,Americas,2000,Female,140000,9.2,124.8
+Barbados,Americas,2010,Female,145000,7.9,124.7
+Belarus,Europe,2000,Male,4663000,980.1,134.8
+Belarus,Europe,2010,Male,4403000,1015.5,134.6
+Belarus,Europe,2000,Female,5271000,877.9,128.3
+Belarus,Europe,2010,Female,5070000,817.7,126.4
+Belgium,Europe,2000,Male,5035000,362.1,130.3
+Belgium,Europe,2010,Male,5372000,296.5,129.9
+Belgium,Europe,2000,Female,5247000,320.4,122.2
+Belgium,Europe,2010,Female,5567000,265.9,121.3
+Belize,Americas,2000,Male,125000,5.7,125.1
+Belize,Americas,2010,Male,161000,6.5,125.4
+Belize,Americas,2000,Female,123000,4.6,118.5
+Belize,Americas,2010,Female,161000,4.6,118.4
+Benin,Africa,2000,Male,3383000,135.8,130.6
+Benin,Africa,2010,Male,4569000,172.2,129.2
+Benin,Africa,2000,Female,3483000,137.7,127.9
+Benin,Africa,2010,Female,4630000,177.4,126.8
+Bhutan,Asia,2000,Male,293000,15.7,125.3
+Bhutan,Asia,2010,Male,386000,19.3,127.2
+Bhutan,Asia,2000,Female,281000,15.4,123.7
+Bhutan,Asia,2010,Female,342000,17.3,125.5
+Bolivia (Plurinational State of),Americas,2000,Male,4181000,254,123.4
+Bolivia (Plurinational State of),Americas,2010,Male,4970000,246.8,123.9
+Bolivia (Plurinational State of),Americas,2000,Female,4158000,223.9,120.9
+Bolivia (Plurinational State of),Americas,2010,Female,4948000,205.3,120.2
+Bosnia and Herzegovina,Europe,2000,Male,1850000,218.6,129.4
+Bosnia and Herzegovina,Europe,2010,Male,1828000,215.3,131.6
+Bosnia and Herzegovina,Europe,2000,Female,1917000,195.2,129.9
+Bosnia and Herzegovina,Europe,2010,Female,1894000,198,128.9
+Botswana,Africa,2000,Male,852000,27.4,132.2
+Botswana,Africa,2010,Male,996000,31.1,132.2
+Botswana,Africa,2000,Female,876000,25.2,130.3
+Botswana,Africa,2010,Female,1019000,33.6,129.8
+Brazil,Americas,2000,Male,86623000,5133.2,131.2
+Brazil,Americas,2010,Male,96932000,5179,132.4
+Brazil,Americas,2000,Female,88664000,3910.4,125.3
+Brazil,Americas,2010,Female,99864000,3894,124.3
+Brunei Darussalam,Asia,2000,Male,169000,5,126.4
+Brunei Darussalam,Asia,2010,Male,201000,6.2,126.4
+Brunei Darussalam,Asia,2000,Female,164000,3.1,120.5
+Brunei Darussalam,Asia,2010,Female,188000,3.9,119.4
+Bulgaria,Europe,2000,Male,3898000,892.5,133.6
+Bulgaria,Europe,2010,Male,3605000,767.9,133.8
+Bulgaria,Europe,2000,Female,4100000,710.4,127.8
+Bulgaria,Europe,2010,Female,3799000,629.9,126
+Burkina Faso,Africa,2000,Male,5702000,207.5,129.7
+Burkina Faso,Africa,2010,Male,7738000,254.6,129.1
+Burkina Faso,Africa,2000,Female,5906000,210.9,127
+Burkina Faso,Africa,2010,Female,7868000,287,126.4
+Burundi,Africa,2000,Male,3141000,100.4,127.5
+Burundi,Africa,2010,Male,4305000,151.9,129.6
+Burundi,Africa,2000,Female,3260000,111,124.8
+Burundi,Africa,2010,Female,4462000,149.7,127.7
+Cambodia,Asia,2000,Male,5906000,236.9,122.5
+Cambodia,Asia,2010,Male,6970000,257.8,123.7
+Cambodia,Asia,2000,Female,6246000,255.5,117.9
+Cambodia,Asia,2010,Female,7338000,291.6,118
+Cameroon,Africa,2000,Male,7614000,364.8,129.9
+Cameroon,Africa,2010,Male,9985000,422.8,130.4
+Cameroon,Africa,2000,Female,7661000,346,125.2
+Cameroon,Africa,2010,Female,9985000,369.9,126.4
+Canada,Americas,2000,Male,15225000,808.4,124.6
+Canada,Americas,2010,Male,16952000,719.3,120.5
+Canada,Americas,2000,Female,15511000,622.1,118.2
+Canada,Americas,2010,Female,17216000,546.6,113.6
+Central African Republic,Africa,2000,Male,1848000,93.7,130.4
+Central African Republic,Africa,2010,Male,2195000,109.2,130.8
+Central African Republic,Africa,2000,Female,1907000,99,128.2
+Central African Republic,Africa,2010,Female,2254000,112,129.1
+Chad,Africa,2000,Male,4155000,202.6,131
+Chad,Africa,2010,Male,5945000,269.6,131.1
+Chad,Africa,2000,Female,4187000,169.5,128.5
+Chad,Africa,2010,Female,5942000,249.2,129.4
+Chile,Americas,2000,Male,7546000,274.3,128.2
+Chile,Americas,2010,Male,8410000,330.5,128.2
+Chile,Americas,2000,Female,7717000,215.7,122.4
+Chile,Americas,2010,Female,8583000,251.9,120.4
+China,Asia,2000,Male,662480000,33268.2,123.4
+China,Asia,2010,Male,703436000,41947.4,125.1
+China,Asia,2000,Female,627810000,30892.8,119.1
+China,Asia,2010,Female,663881000,39511.9,120.4
+Colombia,Americas,2000,Male,19981000,805.5,124.7
+Colombia,Americas,2010,Male,22641000,945.3,125.6
+Colombia,Americas,2000,Female,20423000,692.3,120.2
+Colombia,Americas,2010,Female,23277000,756.7,119.4
+Comoros,Africa,2000,Male,273000,12.2,128.5
+Comoros,Africa,2010,Male,348000,14.3,129.7
+Comoros,Africa,2000,Female,270000,10.5,126.9
+Comoros,Africa,2010,Female,342000,11.7,128.4
+Congo,Africa,2000,Male,1611000,73.5,131.2
+Congo,Africa,2010,Male,2194000,66.7,130.8
+Congo,Africa,2000,Female,1615000,86.9,129.5
+Congo,Africa,2010,Female,2193000,83.5,128.7
+Costa Rica,Americas,2000,Male,1970000,66.8,126.8
+Costa Rica,Americas,2010,Male,2277000,85.1,126.4
+Costa Rica,Americas,2000,Female,1955000,46.7,121.1
+Costa Rica,Americas,2010,Female,2268000,57.9,120.5
+Côte d'Ivoire,Africa,2000,Male,8610000,461.7,133.7
+Côte d'Ivoire,Africa,2010,Male,10409000,664,133.4
+Côte d'Ivoire,Africa,2000,Female,8077000,362.2,129
+Côte d'Ivoire,Africa,2010,Female,9992000,543.6,128.7
+Croatia,Europe,2000,Male,2132000,269.8,134
+Croatia,Europe,2010,Male,2085000,234.1,136
+Croatia,Europe,2000,Female,2296000,259.5,127.7
+Croatia,Europe,2010,Female,2243000,226.4,127.6
+Cuba,Americas,2000,Male,5594000,367.9,125.2
+Cuba,Americas,2010,Male,5678000,393.6,123.7
+Cuba,Americas,2000,Female,5556000,287.5,120.4
+Cuba,Americas,2010,Female,5655000,305.9,118.3
+Cyprus,Asia,2000,Male,475000,31.1,128.5
+Cyprus,Asia,2010,Male,556000,30.7,127.4
+Cyprus,Asia,2000,Female,468000,21.8,122.1
+Cyprus,Asia,2010,Female,557000,20.4,119.5
+Czechia,Europe,2000,Male,5006000,580.7,131
+Czechia,Europe,2010,Male,5171000,515.3,131.4
+Czechia,Europe,2000,Female,5284000,514.9,123.9
+Czechia,Europe,2010,Female,5365000,455.3,121.8
+Denmark,Europe,2000,Male,2643000,198.1,132.4
+Denmark,Europe,2010,Male,2756000,149.4,129.5
+Denmark,Europe,2000,Female,2698000,166.1,123.5
+Denmark,Europe,2010,Female,2799000,118,120.7
+Djibouti,Africa,2000,Male,361000,16.7,130.4
+Djibouti,Africa,2010,Male,428000,17.5,130.2
+Djibouti,Africa,2000,Female,357000,13.6,128.3
+Djibouti,Africa,2010,Female,424000,14.6,127.4
+Dominican Republic,Americas,2000,Male,4291000,227.1,127
+Dominican Republic,Americas,2010,Male,4941000,275.1,127.5
+Dominican Republic,Americas,2000,Female,4271000,174.6,123.7
+Dominican Republic,Americas,2010,Female,4957000,215.3,122.9
+Ecuador,Americas,2000,Male,6331000,222.7,122.5
+Ecuador,Americas,2010,Male,7472000,221.1,123.6
+Ecuador,Americas,2000,Female,6297000,177.7,119.5
+Ecuador,Americas,2010,Female,7462000,178.3,119.1
+Egypt,Africa,2000,Male,35164000,2150.9,126.9
+Egypt,Africa,2010,Male,42466000,2915.6,128.5
+Egypt,Africa,2000,Female,34742000,1918.8,126.9
+Egypt,Africa,2010,Female,41642000,2586,126.4
+El Salvador,Americas,2000,Male,2827000,121.3,123.5
+El Salvador,Americas,2010,Male,2919000,110.1,124
+El Salvador,Americas,2000,Female,3040000,108.5,119.3
+El Salvador,Americas,2010,Female,3246000,97.3,118.7
+Equatorial Guinea,Africa,2000,Male,318000,18.9,130.6
+Equatorial Guinea,Africa,2010,Male,516000,22.4,130.9
+Equatorial Guinea,Africa,2000,Female,296000,15.1,127.4
+Equatorial Guinea,Africa,2010,Female,435000,17.2,127.7
+Eritrea,Africa,2000,Male,1696000,90.7,123.7
+Eritrea,Africa,2010,Male,2198000,98,124.3
+Eritrea,Africa,2000,Female,1697000,77.9,120.5
+Eritrea,Africa,2010,Female,2193000,81.3,121.3
+Estonia,Europe,2000,Male,653000,110.6,132
+Estonia,Europe,2010,Male,620000,81.5,133.7
+Estonia,Europe,2000,Female,747000,102.4,125.1
+Estonia,Europe,2010,Female,712000,76.2,124
+Ethiopia,Africa,2000,Male,33177000,1317.6,125.7
+Ethiopia,Africa,2010,Male,43768000,1489.2,127.6
+Ethiopia,Africa,2000,Female,33361000,1057.4,123
+Ethiopia,Africa,2010,Female,43935000,1199.7,125.9
+Fiji,Oceania,2000,Male,412000,40.8,128.4
+Fiji,Oceania,2010,Male,439000,41.2,129.9
+Fiji,Oceania,2000,Female,399000,23.7,125.1
+Fiji,Oceania,2010,Female,421000,20.3,126.8
+Finland,Europe,2000,Male,2533000,227.7,131.6
+Finland,Europe,2010,Male,2633000,211.2,128.5
+Finland,Europe,2000,Female,2655000,178.1,124.8
+Finland,Europe,2010,Female,2732000,151.3,120.8
+France,Europe,2000,Male,29224000,1610.8,130.2
+France,Europe,2010,Male,30933000,1413.3,128.4
+France,Europe,2000,Female,30384000,1316,121.5
+France,Europe,2010,Female,32093000,1178.1,118.4
+Gabon,Africa,2000,Male,611000,21.3,132
+Gabon,Africa,2010,Male,837000,24.4,130.9
+Gabon,Africa,2000,Female,620000,27,128.4
+Gabon,Africa,2010,Female,803000,27.9,126.7
+Gambia,Africa,2000,Male,612000,28.8,132.3
+Gambia,Africa,2010,Male,838000,32.4,132.5
+Gambia,Africa,2000,Female,620000,22.8,129.5
+Gambia,Africa,2010,Female,854000,26.4,130.9
+Georgia,Asia,2000,Male,2238000,365.9,132.5
+Georgia,Asia,2010,Male,2010000,370.3,133.7
+Georgia,Asia,2000,Female,2484000,323.3,127.4
+Georgia,Asia,2010,Female,2222000,297.5,127.4
+Germany,Europe,2000,Male,39680000,3408.7,132.8
+Germany,Europe,2010,Male,39656000,3002.7,128.5
+Germany,Europe,2000,Female,41807000,3271.3,125
+Germany,Europe,2010,Female,41238000,2714.3,119.4
+Ghana,Africa,2000,Male,9565000,297.9,128.3
+Ghana,Africa,2010,Male,12134000,337.6,127.3
+Ghana,Africa,2000,Female,9374000,456.1,125.7
+Ghana,Africa,2010,Female,12378000,666.2,124.2
+Greece,Europe,2000,Male,5539000,505.6,127.3
+Greece,Europe,2010,Male,5642000,450.1,126.5
+Greece,Europe,2000,Female,5603000,422.5,120.8
+Greece,Europe,2010,Female,5804000,379.7,118.2
+Grenada,Americas,2000,Male,50000,2.9,129.1
+Grenada,Americas,2010,Male,52000,3,131
+Grenada,Americas,2000,Female,51000,3.3,124
+Grenada,Americas,2010,Female,52000,2.7,125.7
+Guatemala,Americas,2000,Male,5717000,138.4,123.6
+Guatemala,Americas,2010,Male,7186000,147.8,124.6
+Guatemala,Americas,2000,Female,5934000,126.6,118.8
+Guatemala,Americas,2010,Female,7444000,136.4,119.4
+Guinea,Africa,2000,Male,4386000,188.5,131.5
+Guinea,Africa,2010,Male,5400000,239,132.4
+Guinea,Africa,2000,Female,4422000,211,130.8
+Guinea,Africa,2010,Female,5394000,245.8,132.5
+Guinea-Bissau,Africa,2000,Male,608000,25.4,130.6
+Guinea-Bissau,Africa,2010,Male,763000,27.7,131.1
+Guinea-Bissau,Africa,2000,Female,635000,27.2,128.5
+Guinea-Bissau,Africa,2010,Female,793000,28.8,128.9
+Guyana,Americas,2000,Male,375000,24.5,125.9
+Guyana,Americas,2010,Male,373000,28,126.8
+Guyana,Americas,2000,Female,379000,20.9,122.1
+Guyana,Americas,2010,Female,373000,25.2,123.2
+Haiti,Americas,2000,Male,4221000,297.2,125.9
+Haiti,Americas,2010,Male,4943000,290.4,127.2
+Haiti,Americas,2000,Female,4328000,302.4,123.7
+Haiti,Americas,2010,Female,5056000,314.3,124.4
+Hungary,Europe,2000,Male,4863000,742.9,135.4
+Hungary,Europe,2010,Male,4711000,644.9,135.1
+Hungary,Europe,2000,Female,5358000,642.2,128.4
+Hungary,Europe,2010,Female,5217000,579,126.3
+Iceland,Europe,2000,Male,140000,7.5,126.5
+Iceland,Europe,2010,Male,161000,7,125.7
+Iceland,Europe,2000,Female,140000,5.4,118.4
+Iceland,Europe,2010,Female,159000,4.6,116.7
+India,Asia,2000,Male,545514000,28392.1,125.5
+India,Asia,2010,Male,638472000,36896.6,127.1
+India,Asia,2000,Female,507537000,21099,123.3
+India,Asia,2010,Female,592509000,25799.1,124.5
+Indonesia,Asia,2000,Male,105868000,6990.4,127.5
+Indonesia,Asia,2010,Male,122278000,8917.7,128.2
+Indonesia,Asia,2000,Female,105672000,6055,125.7
+Indonesia,Asia,2010,Female,120246000,7041.1,126.2
+Iran (Islamic Republic of),Asia,2000,Male,33531000,2048.1,122.9
+Iran (Islamic Republic of),Asia,2010,Male,37717000,2129.3,123
+Iran (Islamic Republic of),Asia,2000,Female,32601000,1838.7,121.5
+Iran (Islamic Republic of),Asia,2010,Female,36851000,1596.3,119.4
+Iraq,Asia,2000,Male,11890000,573.3,128.6
+Iraq,Asia,2010,Male,15549000,625.8,129
+Iraq,Asia,2000,Female,11676000,505,129.2
+Iraq,Asia,2010,Female,15214000,573.9,127.4
+Ireland,Europe,2000,Male,1914000,138.4,133.4
+Ireland,Europe,2010,Male,2305000,97.9,130.8
+Ireland,Europe,2000,Female,1935000,100,123.8
+Ireland,Europe,2010,Female,2322000,70.4,120.4
+Israel,Asia,2000,Male,2964000,129.5,126.3
+Israel,Asia,2010,Male,3668000,107.8,125
+Israel,Asia,2000,Female,3050000,102.1,122.3
+Israel,Asia,2010,Female,3758000,84.3,118.5
+Italy,Europe,2000,Male,27798000,2025.3,131.2
+Italy,Europe,2010,Male,29017000,1718.8,129.2
+Italy,Europe,2000,Female,29496000,1795,124.7
+Italy,Europe,2010,Female,30713000,1583.4,121.5
+Jamaica,Americas,2000,Male,1320000,58.2,125
+Jamaica,Americas,2010,Male,1399000,51.6,126
+Jamaica,Americas,2000,Female,1337000,51.2,122.8
+Jamaica,Americas,2010,Female,1418000,52.6,123.2
+Japan,Asia,2000,Male,62630000,3211.2,127.2
+Japan,Asia,2010,Male,62879000,3349,126
+Japan,Asia,2000,Female,64904000,2621.3,120.1
+Japan,Asia,2010,Female,65673000,2774.8,117.8
+Jordan,Asia,2000,Male,2645000,107,123.6
+Jordan,Asia,2010,Male,3663000,142.2,123.8
+Jordan,Asia,2000,Female,2458000,78.3,123
+Jordan,Asia,2010,Female,3519000,105.5,120.4
+Kazakhstan,Asia,2000,Male,7243000,1076,130.3
+Kazakhstan,Asia,2010,Male,7927000,1098.7,131.9
+Kazakhstan,Asia,2000,Female,7814000,815.9,126.3
+Kazakhstan,Asia,2010,Female,8472000,810.8,125.9
+Kenya,Africa,2000,Male,15619000,290,127.2
+Kenya,Africa,2010,Male,20554000,285.3,129
+Kenya,Africa,2000,Female,15831000,222.8,124.9
+Kenya,Africa,2010,Female,20796000,236.3,127.4
+Kiribati,Oceania,2000,Male,42000,2.6,126.9
+Kiribati,Oceania,2010,Male,51000,3.3,128.7
+Kiribati,Oceania,2000,Female,43000,1.9,119.4
+Kiribati,Oceania,2010,Female,52000,2.3,121.2
+Kuwait,Asia,2000,Male,1199000,45.9,128.5
+Kuwait,Asia,2010,Male,1734000,74,128
+Kuwait,Asia,2000,Female,852000,17.7,126.8
+Kuwait,Asia,2010,Female,1264000,29.1,122.7
+Kyrgyzstan,Asia,2000,Male,2433000,218.9,128.8
+Kyrgyzstan,Asia,2010,Male,2680000,241.9,130.6
+Kyrgyzstan,Asia,2000,Female,2488000,182,124.5
+Kyrgyzstan,Asia,2010,Female,2743000,180.5,125.7
+Lao People's Democratic Republic,Asia,2000,Male,2657000,138.2,124.1
+Lao People's Democratic Republic,Asia,2010,Male,3107000,153.9,124.3
+Lao People's Democratic Republic,Asia,2000,Female,2672000,167.4,121.1
+Lao People's Democratic Republic,Asia,2010,Female,3139000,180.1,121.4
+Latvia,Europe,2000,Male,1096000,199,134.4
+Latvia,Europe,2010,Male,970000,179.5,134.8
+Latvia,Europe,2000,Female,1289000,181.7,127.9
+Latvia,Europe,2010,Female,1149000,159.8,125.7
+Lebanon,Asia,2000,Male,1605000,112.1,129.1
+Lebanon,Asia,2010,Male,2212000,152.8,129.4
+Lebanon,Asia,2000,Female,1630000,88.1,125.2
+Lebanon,Asia,2010,Female,2125000,109.2,121.9
+Lesotho,Africa,2000,Male,899000,32.3,127.6
+Lesotho,Africa,2010,Male,988000,38.3,127.2
+Lesotho,Africa,2000,Female,969000,50.2,128.2
+Lesotho,Africa,2010,Female,1052000,56.5,129.4
+Liberia,Africa,2000,Male,1441000,46,131.1
+Liberia,Africa,2010,Male,1985000,58.8,131.1
+Liberia,Africa,2000,Female,1443000,44.4,129.3
+Liberia,Africa,2010,Female,1963000,56.6,129.5
+Libya,Africa,2000,Male,2780000,155.1,131.4
+Libya,Africa,2010,Male,3150000,166,133
+Libya,Africa,2000,Female,2575000,126.3,130.7
+Libya,Africa,2010,Female,3020000,123,129.6
+Lithuania,Europe,2000,Male,1639000,215.8,136.3
+Lithuania,Europe,2010,Male,1438000,234.9,136.8
+Lithuania,Europe,2000,Female,1863000,196.9,130.4
+Lithuania,Europe,2010,Female,1686000,210.1,128
+Luxembourg,Europe,2000,Male,215000,14.1,133.8
+Luxembourg,Europe,2010,Male,252000,12.3,130.9
+Luxembourg,Europe,2000,Female,221000,12.8,124.7
+Luxembourg,Europe,2010,Female,256000,10.5,121.8
+Madagascar,Africa,2000,Male,7850000,391.3,129.1
+Madagascar,Africa,2010,Male,10536000,458,130.1
+Madagascar,Africa,2000,Female,7916000,356.3,127.6
+Madagascar,Africa,2010,Female,10615000,419.6,129.1
+Malawi,Africa,2000,Male,5610000,200.4,131.3
+Malawi,Africa,2010,Male,7499000,159.4,133.8
+Malawi,Africa,2000,Female,5766000,156.1,128.2
+Malawi,Africa,2010,Female,7668000,135.8,131.2
+Malaysia,Asia,2000,Male,11813000,512,128.5
+Malaysia,Asia,2010,Male,14488000,684.8,129.9
+Malaysia,Asia,2000,Female,11373000,388.2,125.2
+Malaysia,Asia,2010,Female,13624000,471.6,126.1
+Maldives,Asia,2000,Male,142000,7.3,126.4
+Maldives,Asia,2010,Male,200000,6.9,128.2
+Maldives,Asia,2000,Female,138000,4.7,122.2
+Maldives,Asia,2010,Female,165000,3.8,124.8
+Mali,Africa,2000,Male,5440000,238,127.1
+Mali,Africa,2010,Male,7531000,264.9,127.3
+Mali,Africa,2000,Female,5527000,339.2,126.5
+Mali,Africa,2010,Female,7544000,356.3,127.1
+Malta,Europe,2000,Male,198000,13.6,131.8
+Malta,Europe,2010,Male,207000,12.5,129.8
+Malta,Europe,2000,Female,199000,11.6,125.5
+Malta,Europe,2010,Female,209000,10.3,121.2
+Mauritania,Africa,2000,Male,1354000,41.1,132.4
+Mauritania,Africa,2010,Male,1812000,54.8,132.1
+Mauritania,Africa,2000,Female,1355000,44.1,129.3
+Mauritania,Africa,2010,Female,1797000,61.3,128.9
+Mauritius,Africa,2000,Male,588000,53.6,127.1
+Mauritius,Africa,2010,Male,619000,44.2,129.3
+Mauritius,Africa,2000,Female,597000,38.1,123.7
+Mauritius,Africa,2010,Female,629000,29,125.5
+Mexico,Americas,2000,Male,50507000,1224.4,125.9
+Mexico,Americas,2010,Male,58388000,1701.3,126.6
+Mexico,Americas,2000,Female,51213000,1060.3,122.6
+Mexico,Americas,2010,Female,58931000,1346.4,122.5
+Micronesia (Federated States of),Oceania,2000,Male,54000,2.8,126.9
+Micronesia (Federated States of),Oceania,2010,Male,53000,2.9,128.5
+Micronesia (Federated States of),Oceania,2000,Female,53000,2.8,120.5
+Micronesia (Federated States of),Oceania,2010,Female,51000,2.7,123.1
+Mongolia,Asia,2000,Male,1196000,101.5,131.9
+Mongolia,Asia,2010,Male,1346000,115.9,133.1
+Mongolia,Asia,2000,Female,1202000,89.8,126.6
+Mongolia,Asia,2010,Female,1367000,77.4,126.7
+Montenegro,Europe,2000,Male,303000,34.7,132.7
+Montenegro,Europe,2010,Male,308000,35,134.5
+Montenegro,Europe,2000,Female,311000,32.6,127.4
+Montenegro,Europe,2010,Female,317000,31.7,126.1
+Morocco,Africa,2000,Male,14294000,911.1,126.9
+Morocco,Africa,2010,Male,15973000,666.3,127.5
+Morocco,Africa,2000,Female,14556000,890.5,126.8
+Morocco,Africa,2010,Female,16437000,670.6,125.3
+Mozambique,Africa,2000,Male,8666000,373.3,132.2
+Mozambique,Africa,2010,Male,11761000,322.6,133.4
+Mozambique,Africa,2000,Female,9401000,390.7,130.1
+Mozambique,Africa,2010,Female,12460000,343.2,131.9
+Myanmar,Asia,2000,Male,22520000,966.9,124.2
+Myanmar,Asia,2010,Male,24478000,1232.7,125.6
+Myanmar,Asia,2000,Female,23576000,1106.2,121.4
+Myanmar,Asia,2010,Female,25678000,1334,122.6
+Namibia,Africa,2000,Male,929000,37.1,130.6
+Namibia,Africa,2010,Male,1052000,36.9,130.2
+Namibia,Africa,2000,Female,971000,37.7,128.2
+Namibia,Africa,2010,Female,1121000,40.6,126.8
+Nepal,Asia,2000,Male,11806000,652.1,123.3
+Nepal,Asia,2010,Male,13182000,767.6,126.1
+Nepal,Asia,2000,Female,11935000,448.3,121.8
+Nepal,Asia,2010,Female,13842000,483.2,123.9
+Netherlands,Europe,2000,Male,7889000,528.4,131.6
+Netherlands,Europe,2010,Male,8284000,382.4,130
+Netherlands,Europe,2000,Female,8037000,422.4,123.9
+Netherlands,Europe,2010,Female,8399000,319.1,121.9
+New Zealand,Oceania,2000,Male,1894000,111.9,128.1
+New Zealand,Oceania,2010,Male,2146000,97.1,126.6
+New Zealand,Oceania,2000,Female,1965000,88,120.7
+New Zealand,Oceania,2010,Female,2224000,78.1,118.1
+Nicaragua,Americas,2000,Male,2487000,79.1,126.6
+Nicaragua,Americas,2010,Male,2827000,79.1,126.7
+Nicaragua,Americas,2000,Female,2540000,81,122.7
+Nicaragua,Americas,2010,Female,2911000,77,122.5
+Niger,Africa,2000,Male,5635000,215.9,136
+Niger,Africa,2010,Male,8210000,314,136.3
+Niger,Africa,2000,Female,5718000,222.9,131.6
+Niger,Africa,2010,Female,8216000,310.4,133.2
+Nigeria,Africa,2000,Male,61685000,2475.7,128.2
+Nigeria,Africa,2010,Male,80204000,2877.8,126.6
+Nigeria,Africa,2000,Female,60667000,2882.7,126.7
+Nigeria,Africa,2010,Female,78374000,3215.2,124.1
+Norway,Europe,2000,Male,2229000,166.7,133.9
+Norway,Europe,2010,Male,2442000,122.3,132.2
+Norway,Europe,2000,Female,2270000,139.5,126.7
+Norway,Europe,2010,Female,2443000,99,123.3
+Oman,Asia,2000,Male,1273000,58.7,130.2
+Oman,Asia,2010,Male,1835000,66.9,131.4
+Oman,Asia,2000,Female,995000,35.4,126.9
+Oman,Asia,2010,Female,1207000,30.9,124.2
+Pakistan,Asia,2000,Male,71471000,4514.5,124.8
+Pakistan,Asia,2010,Male,87687000,5491,127.6
+Pakistan,Asia,2000,Female,67052000,3041.8,124
+Pakistan,Asia,2010,Female,82873000,3823.9,126.1
+Panama,Americas,2000,Male,1527000,46,127.2
+Panama,Americas,2010,Male,1830000,64,127.5
+Panama,Americas,2000,Female,1503000,33.6,121.9
+Panama,Americas,2010,Female,1813000,43.8,121.6
+Papua New Guinea,Oceania,2000,Male,2831000,156.9,124.3
+Papua New Guinea,Oceania,2010,Male,3615000,184,125.8
+Papua New Guinea,Oceania,2000,Female,2741000,134.2,120.7
+Papua New Guinea,Oceania,2010,Female,3493000,154.8,123.6
+Paraguay,Americas,2000,Male,2683000,122.6,128.9
+Paraguay,Americas,2010,Male,3150000,131,129.3
+Paraguay,Americas,2000,Female,2619000,105.3,122.6
+Paraguay,Americas,2010,Female,3059000,109,122.5
+Peru,Americas,2000,Male,12951000,402,121.6
+Peru,Americas,2010,Male,14676000,471.3,122.8
+Peru,Americas,2000,Female,12964000,325.2,116.6
+Peru,Americas,2010,Female,14698000,359.7,115.6
+Philippines,Asia,2000,Male,39280000,2184.1,123.5
+Philippines,Asia,2010,Male,47310000,3442.4,125
+Philippines,Asia,2000,Female,38711000,1585.3,117.2
+Philippines,Asia,2010,Female,46417000,2275.5,118.8
+Poland,Europe,2000,Male,18715000,2151.2,133.4
+Poland,Europe,2010,Male,18529000,1978.8,134
+Poland,Europe,2000,Female,19835000,1679.9,127.4
+Poland,Europe,2010,Female,19794000,1551.4,124.7
+Portugal,Europe,2000,Male,4997000,425.2,132.1
+Portugal,Europe,2010,Male,5100000,305.7,129.8
+Portugal,Europe,2000,Female,5358000,386.1,126.5
+Portugal,Europe,2010,Female,5552000,289.9,121.4
+Qatar,Asia,2000,Male,386000,7.9,128.3
+Qatar,Asia,2010,Male,1349000,19.5,127.8
+Qatar,Asia,2000,Female,206000,3.2,126.3
+Qatar,Asia,2010,Female,430000,4.8,121.4
+Romania,Europe,2000,Male,10825000,1728.3,131.9
+Romania,Europe,2010,Male,9924000,1559.7,134.1
+Romania,Europe,2000,Female,11303000,1488.3,126.1
+Romania,Europe,2010,Female,10516000,1345.5,126.2
+Russian Federation,Europe,2000,Male,68509000,15457,131
+Russian Federation,Europe,2010,Male,66389000,13791.9,130.5
+Russian Federation,Europe,2000,Female,77887000,13014.9,127.5
+Russian Federation,Europe,2010,Female,76765000,11396.8,124.3
+Rwanda,Africa,2000,Male,3915000,193.8,126.9
+Rwanda,Africa,2010,Male,5017000,118.9,127.7
+Rwanda,Africa,2000,Female,4111000,228.8,124.6
+Rwanda,Africa,2010,Female,5230000,121.1,126.1
+Saint Lucia,Americas,2000,Male,77000,4.1,128.9
+Saint Lucia,Americas,2010,Male,85000,4.9,130.6
+Saint Lucia,Americas,2000,Female,80000,4.2,123.1
+Saint Lucia,Americas,2010,Female,88000,4.2,124.6
+Saint Vincent and the Grenadines,Americas,2000,Male,54000,2.5,127.3
+Saint Vincent and the Grenadines,Americas,2010,Male,55000,3.2,128.3
+Saint Vincent and the Grenadines,Americas,2000,Female,54000,2.6,123
+Saint Vincent and the Grenadines,Americas,2010,Female,54000,3.2,122.9
+Samoa,Oceania,2000,Male,91000,5.8,128.3
+Samoa,Oceania,2010,Male,96000,5.1,130.2
+Samoa,Oceania,2000,Female,84000,3.3,121.7
+Samoa,Oceania,2010,Female,90000,2.9,123.8
+Sao Tome and Principe,Africa,2000,Male,69000,2.2,134.3
+Sao Tome and Principe,Africa,2010,Male,87000,2.3,134.5
+Sao Tome and Principe,Africa,2000,Female,70000,2.8,132
+Sao Tome and Principe,Africa,2010,Female,88000,3,132.1
+Saudi Arabia,Asia,2000,Male,11309000,396.2,126.1
+Saudi Arabia,Asia,2010,Male,15401000,562.6,126.3
+Saudi Arabia,Asia,2000,Female,9455000,284,125.4
+Saudi Arabia,Asia,2010,Female,12025000,359.8,121.7
+Senegal,Africa,2000,Male,4864000,191.9,131.4
+Senegal,Africa,2010,Male,6324000,203.4,131
+Senegal,Africa,2000,Female,5020000,204.6,129.2
+Senegal,Africa,2010,Female,6592000,225.6,129.1
+Serbia,Europe,2000,Male,4656000,714.7,133.5
+Serbia,Europe,2010,Male,4416000,589.1,135.2
+Serbia,Europe,2000,Female,4832000,659.5,128.6
+Serbia,Europe,2010,Female,4614000,562.9,127
+Seychelles,Africa,2000,Male,40000,2.9,132.6
+Seychelles,Africa,2010,Male,47000,3.7,133.3
+Seychelles,Africa,2000,Female,41000,2.1,125.7
+Seychelles,Africa,2010,Female,44000,2.2,125.6
+Sierra Leone,Africa,2000,Male,2253000,187.7,131.7
+Sierra Leone,Africa,2010,Male,3190000,193.1,131.6
+Sierra Leone,Africa,2000,Female,2311000,168.7,131
+Sierra Leone,Africa,2010,Female,3269000,204.5,130.8
+Singapore,Asia,2000,Male,1955000,90.5,126.1
+Singapore,Asia,2010,Male,2504000,107.2,123.9
+Singapore,Asia,2000,Female,1959000,67.5,121
+Singapore,Asia,2010,Female,2570000,66.3,117.7
+Slovakia,Europe,2000,Male,2622000,315.4,132.2
+Slovakia,Europe,2010,Male,2621000,289.8,132.4
+Slovakia,Europe,2000,Female,2778000,262.5,124.2
+Slovakia,Europe,2010,Female,2783000,252.3,121.6
+Slovenia,Europe,2000,Male,971000,81.8,135.2
+Slovenia,Europe,2010,Male,1012000,67.8,136.7
+Slovenia,Europe,2000,Female,1018000,69.3,128.1
+Slovenia,Europe,2010,Female,1034000,62.7,127.2
+Solomon Islands,Oceania,2000,Male,212000,11.7,122.7
+Solomon Islands,Oceania,2010,Male,268000,12.3,123.2
+Solomon Islands,Oceania,2000,Female,201000,9.9,121.1
+Solomon Islands,Oceania,2010,Female,260000,9.6,123.6
+Somalia,Africa,2000,Male,4516000,203.6,130.7
+Somalia,Africa,2010,Male,6017000,224.3,131.9
+Somalia,Africa,2000,Female,4495000,173.7,127.3
+Somalia,Africa,2010,Female,6036000,204,128.9
+South Africa,Africa,2000,Male,22440000,995.3,129.8
+South Africa,Africa,2010,Male,25329000,1211.2,128
+South Africa,Africa,2000,Female,23288000,900.9,126.8
+South Africa,Africa,2010,Female,26255000,1077.6,124.5
+Spain,Europe,2000,Male,20077000,1193.1,129.1
+Spain,Europe,2010,Male,23133000,1077.6,128.4
+Spain,Europe,2000,Female,20826000,1010.8,120.6
+Spain,Europe,2010,Female,23656000,902.3,118.2
+Sri Lanka,Asia,2000,Male,9368000,614.9,125.6
+Sri Lanka,Asia,2010,Male,9829000,627,127.1
+Sri Lanka,Asia,2000,Female,9414000,379.3,121.2
+Sri Lanka,Asia,2010,Female,10369000,389.4,122.9
+Suriname,Americas,2000,Male,238000,17.8,127.2
+Suriname,Americas,2010,Male,265000,18.1,127.5
+Suriname,Americas,2000,Female,234000,13.5,123.8
+Suriname,Americas,2010,Female,262000,12.5,123.1
+Sweden,Europe,2000,Male,4392000,380.9,132.6
+Sweden,Europe,2010,Male,4677000,302.9,129.3
+Sweden,Europe,2000,Female,4489000,314.6,123.7
+Sweden,Europe,2010,Female,4713000,253.8,120.1
+Switzerland,Europe,2000,Male,3502000,211.3,129
+Switzerland,Europe,2010,Male,3856000,184.1,126.8
+Switzerland,Europe,2000,Female,3666000,184.8,120.4
+Switzerland,Europe,2010,Female,3976000,157.9,116.9
+Syrian Arab Republic,Asia,2000,Male,8302000,428.3,128.8
+Syrian Arab Republic,Asia,2010,Male,10609000,560.4,129
+Syrian Arab Republic,Asia,2000,Female,8109000,291.7,128.1
+Syrian Arab Republic,Asia,2010,Female,10410000,411.4,126.1
+Tajikistan,Asia,2000,Male,3114000,149.4,128.1
+Tajikistan,Asia,2010,Male,3851000,192.3,129.6
+Tajikistan,Asia,2000,Female,3103000,138.6,125.2
+Tajikistan,Asia,2010,Female,3790000,157.8,126.5
+Thailand,Asia,2000,Male,31096000,1434,122.7
+Thailand,Asia,2010,Male,32938000,1672.1,124.3
+Thailand,Asia,2000,Female,31862000,1014.7,118.7
+Thailand,Asia,2010,Female,34271000,1158.3,120.2
+Timor-Leste,Asia,2000,Male,442000,19.8,125.9
+Timor-Leste,Asia,2010,Male,563000,19.5,127
+Timor-Leste,Asia,2000,Female,430000,17.7,122.7
+Timor-Leste,Asia,2010,Female,546000,17.8,124.2
+Togo,Africa,2000,Male,2465000,115.2,130.2
+Togo,Africa,2010,Male,3237000,143.6,129.5
+Togo,Africa,2000,Female,2505000,108.7,127.2
+Togo,Africa,2010,Female,3266000,135.4,126.9
+Tonga,Oceania,2000,Male,50000,2.2,128.8
+Tonga,Oceania,2010,Male,52000,2.3,131.1
+Tonga,Oceania,2000,Female,48000,1.6,123
+Tonga,Oceania,2010,Female,52000,1.5,126.4
+Trinidad and Tobago,Americas,2000,Male,631000,49.5,126.2
+Trinidad and Tobago,Americas,2010,Male,657000,49.3,128.3
+Trinidad and Tobago,Americas,2000,Female,637000,39.1,119.3
+Trinidad and Tobago,Americas,2010,Female,671000,35.9,121.7
+Tunisia,Africa,2000,Male,4866000,328.9,126.1
+Tunisia,Africa,2010,Male,5276000,372.7,126.4
+Tunisia,Africa,2000,Female,4833000,221.5,126.8
+Tunisia,Africa,2010,Female,5364000,269.6,123.7
+Turkey,Asia,2000,Male,31144000,1934.4,123.4
+Turkey,Asia,2010,Male,35564000,2037,121.1
+Turkey,Asia,2000,Female,32096000,1301.2,126.2
+Turkey,Asia,2010,Female,36763000,1438.9,121
+Turkmenistan,Asia,2000,Male,2223000,206.6,128.1
+Turkmenistan,Asia,2010,Male,2503000,230.7,129
+Turkmenistan,Asia,2000,Female,2293000,162,126.3
+Turkmenistan,Asia,2010,Female,2585000,175.3,127
+Uganda,Africa,2000,Male,11884000,382,127.8
+Uganda,Africa,2010,Male,16841000,419.7,128.5
+Uganda,Africa,2000,Female,12155000,300.1,123.4
+Uganda,Africa,2010,Female,17075000,384.3,125.3
+Ukraine,Europe,2000,Male,22734000,4855.8,133
+Ukraine,Europe,2010,Male,21137000,4612.8,134.1
+Ukraine,Europe,2000,Female,26106000,4721.4,128.9
+Ukraine,Europe,2010,Female,24656000,4534.3,128
+United Arab Emirates,Asia,2000,Male,2129000,64,127.6
+United Arab Emirates,Asia,2010,Male,6161000,144.9,126.9
+United Arab Emirates,Asia,2000,Female,1026000,18.8,122.7
+United Arab Emirates,Asia,2010,Female,2109000,27.6,120.1
+United Kingdom of Great Britain and Northern Ireland,Europe,2000,Male,28722000,2419.3,132.4
+United Kingdom of Great Britain and Northern Ireland,Europe,2010,Male,31100000,1801.9,128.2
+United Kingdom of Great Britain and Northern Ireland,Europe,2000,Female,30229000,1999.5,125.7
+United Kingdom of Great Britain and Northern Ireland,Europe,2010,Female,32207000,1427.8,120.1
+United States of America,Americas,2000,Male,138883000,9513,122
+United States of America,Americas,2010,Male,152448000,8604,123
+United States of America,Americas,2000,Female,143099000,8039.9,116
+United States of America,Americas,2010,Female,156194000,6734.6,116.8
+Uruguay,Americas,2000,Male,1607000,119,130.1
+Uruguay,Americas,2010,Male,1627000,100.4,128.1
+Uruguay,Americas,2000,Female,1714000,95.2,123.4
+Uruguay,Americas,2010,Female,1747000,87.6,121.3
+Uzbekistan,Asia,2000,Male,12357000,888.5,126.3
+Uzbekistan,Asia,2010,Male,14228000,1163.2,129.2
+Uzbekistan,Asia,2000,Female,12492000,803.3,122.2
+Uzbekistan,Asia,2010,Female,14378000,932.1,124.9
+Vanuatu,Oceania,2000,Male,95000,5.4,130.8
+Vanuatu,Oceania,2010,Male,120000,6.1,131.8
+Vanuatu,Oceania,2000,Female,90000,4,127.6
+Vanuatu,Oceania,2010,Female,116000,4.6,129.8
+Venezuela (Bolivarian Republic of),Americas,2000,Male,12294000,576.7,128.5
+Venezuela (Bolivarian Republic of),Americas,2010,Male,14490000,684.6,125.9
+Venezuela (Bolivarian Republic of),Americas,2000,Female,12194000,380,123.9
+Venezuela (Bolivarian Republic of),Americas,2010,Female,14538000,435.3,120.2
+Viet Nam,Asia,2000,Male,39551000,1826,124.2
+Viet Nam,Asia,2010,Male,43683000,2191.8,126.3
+Viet Nam,Asia,2000,Female,40734000,1063.2,119.1
+Viet Nam,Asia,2010,Female,44789000,1283.7,120.3
+Yemen,Asia,2000,Male,9041000,693.5,126.7
+Yemen,Asia,2010,Male,11928000,825.6,128.4
+Yemen,Asia,2000,Female,8834000,649.4,126.5
+Yemen,Asia,2010,Female,11678000,785.6,126.6
+Zambia,Africa,2000,Male,5208000,180.5,129.9
+Zambia,Africa,2010,Male,6864000,175.8,131.5
+Zambia,Africa,2000,Female,5323000,186.6,127.1
+Zambia,Africa,2010,Female,6986000,189,129.2
+Zimbabwe,Africa,2000,Male,6007000,208.2,127.7
+Zimbabwe,Africa,2010,Male,6859000,213.1,127.7
+Zimbabwe,Africa,2000,Female,6215000,236.8,129
+Zimbabwe,Africa,2010,Female,7227000,278,129

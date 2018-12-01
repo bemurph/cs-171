@@ -6,6 +6,8 @@ var marginC = {top: 20, right: 80, bottom: 20, left: 80},
 //sources of data: js/load_data_cholesterol.js
 //generate line plots (male vs. female) for selected country over time
 
+var countrySelect = [];
+
 var parseYear = d3.timeParse("%Y");
 var formatYear = d3.timeFormat("%Y");
 
@@ -23,8 +25,16 @@ var lineC = d3.line()
     .x(function(d) { return x(+d.Year); })
     .y(function(d) { return y(+d.Cholesterol); });
 
+var lineTL = d3.line()
+    .x(function(d){ return x(d.Year); })
+    .y(function(d){ return y(+d.Threshold); });
+
+var lineTH = d3.line()
+    .x(function(d){ return x(d.Year); })
+    .y(function(d){ return y(+d.High); });
+
 // Create the svg canvas in the "graph" div
-var svgC = d3.select("#chart-area-6")
+var svgC = d3.select("#chart-area-7")
     .append("svg")
     .style("width", widthC + marginC.left + marginC.right)
     .style("height", heightC + marginC.top + marginC.bottom)
@@ -53,6 +63,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         d.Cholesterol = +d.Cholesterol;
         d.Gender = d.Gender;
         d.Year = (parseYear(+d.Year));
+        d.Threshold = +d.Threshold;
+        d.High = +d.High;
     });
 
    // console.log(data);
@@ -91,7 +103,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     // Scale the range of the data
     x.domain(d3.extent(mean_cholesterol, function(d) { return +d.Year; }));
     y.domain([d3.min(mean_cholesterol, function(d) { return +d.Cholesterol; }),
-        d3.max(mean_cholesterol, function(d) { return +d.Cholesterol; })]);
+        0.5 + d3.max(mean_cholesterol, function(d) { return +d.Cholesterol; })]);
 
     // Set up the x axis
     var xAxis = svgC.append("g")
@@ -147,6 +159,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             return d.key == country;
         });
 
+        countrySelect = selectCountry;
+
 
         var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry, function(d){
@@ -167,46 +181,66 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
                 return lineC(d.values)
             })
             .attr("class", "line")
-            // .style("stroke-dasharray", function(d){
-            //     return (d.key == "Male") ? ("3, 3") : ("0, 0")})
             .attr('stroke', d => color(d.key));
 
-        //Tooltips
-        var focus = svgC.append("g")
-            .attr("class", "focus")
-            .style("display", "none")
-            .on("mouseover", function(d) {
+        svgC.append("path")
+            .data([mean_cholesterol])
+            .attr("class", "line low_threshold")
+            .attr("d", lineTL);
+
+        svgC.append("path")
+            .data([mean_cholesterol])
+            .attr("class", "line high_threshold")
+            .attr("d", lineTH);
+
+        var legendRectSize = 10;
+        var legendSpacing = 4;
+
+        var legend = svgC.selectAll('.legend')
+            .data(color.domain())
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr('transform', function(d, i) {
+                var heightL = legendRectSize + legendSpacing;
+                var offset =  heightL * color.domain().length / 2;
+                var horz = -2 * legendRectSize;
+                var vert = i * heightL - offset;
+                return 'translate(' + horz + ',' + vert + ')';
+            });
+
+        legend.append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .style('fill', color)
+            .style('stroke', color);
+
+        legend.append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize - legendSpacing)
+            .text(function(d) { return d; });
+
+
+        var dot = svgC.selectAll("dot")
+            .data(mean_cholesterol)
+            .enter().append("circle")
+            .attr("r", 1);
+
+        dot
+            .attr("cx", function (d) {
+                return x(d.Year);
+            })
+            .attr("cy", function (d) {
+                return y(d.Cholesterol);
+            })
+            .on("mouseover", function (d) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div
-                    .html(formatYear(+mean_cholesterol.Year) + "<br/>"  + mean_cholesterol.Cholesterol)
+                div.html("Year: " + formatYear(d.Year) + "<p>" + d.Cholesterol + "mmol/L </p>")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
-                div.transition()
-                    .duration(500)
-                    .style("opacity", 0);
             });
-
-        //Adds circle to focus point on line
-        focus.append("circle")
-            .attr("r", 4);
-
-        //Adds text to focus point on line
-        focus.append("text")
-            .attr("x", 9)
-            .attr("dy", ".35em");
-
-        //Creates larger area for tooltip
-        var overlay = svgC.append("rect")
-            .attr("class", "overlay")
-            .attr("width", widthC)
-            .attr("height", heightC);
-
-
-
 
 
         //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
