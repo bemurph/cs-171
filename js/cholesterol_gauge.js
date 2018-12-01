@@ -173,7 +173,13 @@ function onDocumentReady() {
     //UPDATE HERE
     function updateReadings() {
         // just pump in random data here...
-        powerGauge.update(Math.random() * 100);
+        var gaugeSelect = svgC.selectAll(".CountryGroups")
+            .data(countrySelect, function(d){
+                return d ? d.key : this.key;
+            })
+            .enter()
+            .append("g")
+            .attr("class", "CountryGroups");
     }
 
     // every few seconds update reading values

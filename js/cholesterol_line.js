@@ -6,6 +6,8 @@ var marginC = {top: 20, right: 80, bottom: 20, left: 80},
 //sources of data: js/load_data_cholesterol.js
 //generate line plots (male vs. female) for selected country over time
 
+var countrySelect = [];
+
 var parseYear = d3.timeParse("%Y");
 var formatYear = d3.timeFormat("%Y");
 
@@ -157,6 +159,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             return d.key == country;
         });
 
+        countrySelect = selectCountry;
+
 
         var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry, function(d){
@@ -177,8 +181,6 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
                 return lineC(d.values)
             })
             .attr("class", "line")
-            // .style("stroke-dasharray", function(d){
-            //     return (d.key == "Male") ? ("3, 3") : ("0, 0")})
             .attr('stroke', d => color(d.key));
 
         svgC.append("path")
@@ -191,42 +193,54 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .attr("class", "line high_threshold")
             .attr("d", lineTH);
 
-        //Tooltips
-        var focus = svgC.append("g")
-            .attr("class", "focus")
-            .style("display", "none")
-            .on("mouseover", function(d) {
+        var legendRectSize = 10;
+        var legendSpacing = 4;
+
+        var legend = svgC.selectAll('.legend')
+            .data(color.domain())
+            .enter()
+            .append("g")
+            .attr("class", "legend")
+            .attr('transform', function(d, i) {
+                var heightL = legendRectSize + legendSpacing;
+                var offset =  heightL * color.domain().length / 2;
+                var horz = -2 * legendRectSize;
+                var vert = i * heightL - offset;
+                return 'translate(' + horz + ',' + vert + ')';
+            });
+
+        legend.append('rect')
+            .attr('width', legendRectSize)
+            .attr('height', legendRectSize)
+            .style('fill', color)
+            .style('stroke', color);
+
+        legend.append('text')
+            .attr('x', legendRectSize + legendSpacing)
+            .attr('y', legendRectSize - legendSpacing)
+            .text(function(d) { return d; });
+
+
+        var dot = svgC.selectAll("dot")
+            .data(mean_cholesterol)
+            .enter().append("circle")
+            .attr("r", 1);
+
+        dot
+            .attr("cx", function (d) {
+                return x(d.Year);
+            })
+            .attr("cy", function (d) {
+                return y(d.Cholesterol);
+            })
+            .on("mouseover", function (d) {
                 div.transition()
                     .duration(200)
                     .style("opacity", .9);
-                div
-                    .html(formatYear(+mean_cholesterol.Year) + "<br/>"  + +mean_cholesterol.Cholesterol)
+                div.html("Year: " + formatYear(d.Year) + "<p>" + d.Cholesterol + "mmol/L </p>")
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
-                div.transition()
-                    .duration(500)
-                    .style("opacity", 0);
             });
-
-        //Adds circle to focus point on line
-        focus.append("circle")
-            .attr("r", 4);
-
-        //Adds text to focus point on line
-        focus.append("text")
-            .attr("x", 9)
-            .attr("dy", ".35em");
-
-        //Creates larger area for tooltip
-        var overlay = svgC.append("rect")
-            .attr("class", "overlay")
-            .attr("width", widthC)
-            .attr("height", heightC);
-
-
-
 
 
         //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
