@@ -235,8 +235,8 @@
         </div>
     </div>
 
-    <!-- VIEW-8 if necessary -->
-    <div vs-anchor="view-8" class="mainview view8">
+    <!-- VIEW-6 -->
+    <div vs-anchor="view-6" class="mainview view6">
         <div class="vs-center-wrap">
             <div class="container">
                 <h2 class="heart-icon">High Cholesterol</h2>
@@ -273,7 +273,7 @@
                             <br>
                         </p>
 
-                        <div id="chart-area-9">
+                        <div id="chart-area-6">
                         </div>
                     </div>
                 </div>
@@ -284,14 +284,14 @@
         </div>
     </div>
 
-    <!-- VIEW-6 -->
-    <div vs-anchor="view-6" class="mainview view6">
+    <!-- VIEW-7 -->
+    <div vs-anchor="view-7" class="mainview view7">
         <div class="container">
+            <h2 class="heart-icon">Average Cholesterol Levels in Adults 25 Years and Older</h2>
             <div class="row">
                 <div class="col-md-8">
-                    <h2 class="heart-icon">Average Cholesterol Levels in Adults 25 Years and Older</h2>
                     <div id="cholesterol">Select a Country: </div>
-                    <div id="chart-area-6"></div>
+                    <div id="chart-area-7"></div>
                 </div>
                 <div class="col-md-4">
                     <p><br><br><br><br><h4>The optimal total blood cholesterol level for an adult is below 5.2mmol/L.
@@ -301,8 +301,40 @@
 
                     <p>The prevalence of high cholesterol in your country is: </p>
 
-                    <div id="chart-area-7"></div>
+                    <div id="chart-area-8"></div>
                     <!-- to implement gauge to show prevalence of high cholesterol in each country -->
+
+                </div>
+            </div>
+            <div class="next-content">
+                <span>NEXT: Prevalence of High Cholesterol, Physical Inactivity, and Obesity</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- VIEW-8 -->
+    <div vs-anchor="view-8" class="mainview view8">
+        <div class="container">
+            <h2 class="heart-icon">Prevalence of High Cholesterol, Physical Inactivity, and Obesity</h2>
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="ranking-type">Group by</label>
+                    <select class="form-control" id="ranking-type">
+                        <option value="Cholesterol_high">High Cholesterol</option>
+                        <option value="Physical_inactivity">Physical Inactivity</option>
+                    </select>
+
+                    <button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>
+                    <div id="chart-area-9"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+
+                    <p>The prevalence of overweight and obesity in your country is: </p>
+
+                    <div id="chart-area-10"></div>
+                    <!-- obesity plot -->
 
                 </div>
             </div>
@@ -312,8 +344,8 @@
         </div>
     </div>
 
-    <!-- VIEW-7 -->
-    <div vs-anchor="view-7" class="mainview view7">
+    <!-- VIEW-9 -->
+    <div vs-anchor="view-9" class="mainview view9">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -325,10 +357,10 @@
                 <div class="col-md-6">
                     <h3>If you have...</h3>
                     <div id="risk-factor-list">
-                        <h3><a href="#view-7" data-target="#blood-pressure-recommendation" class="active">High blood pressure</a></h3>
-                        <h3><a href="#view-7" data-target="#cholesterol-recommendation">High cholesterol</a></h3>
-                        <h3><a href="#view-7" data-target="#diabetes-recommendation">Diabetes</a></h3>
-                        <h3><a href="#view-7" data-target="#smoking-recommendation">A smoking habit</a></h3>
+                        <h3><a href="#view-9" data-target="#blood-pressure-recommendation" class="active">High blood pressure</a></h3>
+                        <h3><a href="#view-9" data-target="#cholesterol-recommendation">High cholesterol</a></h3>
+                        <h3><a href="#view-9" data-target="#diabetes-recommendation">Diabetes</a></h3>
+                        <h3><a href="#view-9" data-target="#smoking-recommendation">A smoking habit</a></h3>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -383,29 +415,10 @@
                 Brendan Murphy<br>
                 Nil Tuzcu<br>
                 Ka Ning Yip</h3>
-            <div id="chart-area-8">
+            <div id="chart-area-11">
             </div>
         </div>
     </div>
-</div>
-</div>
-
-
-<!-- VIEW-9 if necessary --
-<div vs-anchor="view-9" class="mainview view9">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>TITLE 8</h2>
-                    <div id="chart-area-10">
-                    </div>
-                </div>
-            </div>
-            <div class="next-content">
-                <span>NEXT: TITLE-9</span>
-            </div>
-        </div>
-</div> -->
 </div>
 
 <script src="js/jquery.min.js"></script>
@@ -436,6 +449,7 @@
 <script src="js/load_data.js"></script>
 <script src="js/cholesterol_line.js"></script>
 <script src="js/cholesterol_gauge.js"></script>
+<script src="js/Prevalence.js"></script>
 <script src="js/main.js"></script>
 <!-- <script src="js/scatter.js"></script> -->
 </body>

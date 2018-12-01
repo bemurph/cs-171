@@ -34,7 +34,7 @@ var lineTH = d3.line()
     .y(function(d){ return y(+d.High); });
 
 // Create the svg canvas in the "graph" div
-var svgC = d3.select("#chart-area-6")
+var svgC = d3.select("#chart-area-7")
     .append("svg")
     .style("width", widthC + marginC.left + marginC.right)
     .style("height", heightC + marginC.top + marginC.bottom)

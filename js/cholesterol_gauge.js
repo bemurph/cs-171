@@ -160,7 +160,7 @@ var gauge = function(container, configuration) {
 };
 
 function onDocumentReady() {
-    var powerGauge = gauge('#chart-area-7', {
+    var powerGauge = gauge('#chart-area-8', {
         size: 300,
         clipWidth: 300,
         clipHeight: 300,
@@ -173,10 +173,8 @@ function onDocumentReady() {
     //UPDATE HERE
     function updateReadings() {
         // just pump in random data here...
-        var gaugeSelect = svgC.selectAll(".CountryGroups")
-            .data(countrySelect, function(d){
-                return d ? d.key : this.key;
-            })
+        var gaugeSelect = svg.selectAll(".CountryGroups")
+            .data(data)
             .enter()
             .append("g")
             .attr("class", "CountryGroups");
