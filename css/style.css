@@ -408,12 +408,12 @@ h4{
 }
 
 .d3-tip {
-  line-height: 1;
+  line-height: 1.25rem;
   font-weight: bold;
-  padding: 12px;
+  padding: 0.75rem;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  border-radius: 2px;
+  border-radius: 0.5rem;
 }
 
 /* Creates a small triangle extender for the tooltip */
