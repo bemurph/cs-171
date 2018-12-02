@@ -71,9 +71,11 @@ h4{
   font-weight: 600;
 }
 
-.key-indicators{
+.landing-indicators .key-indicators{
   font-size: 1rem;
   color: var(--main-color);
+  margin-bottom: 0 !important;
+  text-shadow: 0px 2px 1px #2b438942;
 }
 
 .key-indicators::before{
@@ -246,12 +248,12 @@ h4{
   color: #ff7f00;
 }
 
-.sugar-indicator::before{
-  background-image: url('../images/candy.svg');
+.cho-indicator::before{
+  background-image: url('../images/cho.svg');
 }
 
-.sugar-indicator strong {
-  color: #984ea3;
+.cho-indicator strong {
+  color: #00c0ff;
 }
 
 .inactivity-indicator::before{
@@ -582,7 +584,6 @@ h4{
   padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
 @media screen and (max-width: 650px) {
   .column {
       width: 100%;

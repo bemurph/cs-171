@@ -69,7 +69,7 @@ ScatterPlot.prototype.initVis = function() {
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .attr('class', 'label')
-        .text('CVD DALYs per 1,000,000 people');
+        .text('Heart disease DALYs per 1,000,000 people');
 
     continentColor = d3.scaleOrdinal()
         .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
@@ -81,7 +81,7 @@ ScatterPlot.prototype.initVis = function() {
         .html(function(d) {
             return "<strong>Country:</strong> <span style='color: " + continentColor(d.region) + "'>" + d.country + "</span>" +
                 "<br><strong>" + vis.selectedGender + " population:</strong> " + d.population.toLocaleString() +
-                "<br><strong>CVD DALYs per million:</strong> <span style='color:red'>" + Math.round(d.popCVD) + "</span>"+
+                "<br><strong>Heart disease DALYs per million:</strong> <span style='color:red'>" + Math.round(d.popCVD) + "</span>"+
                 "<br><strong>Mean systolic blood pressure:</strong> <span style='color:red'>" + d.bloodPressure + "</span> mmHg";
         });
 

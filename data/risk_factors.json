@@ -10,11 +10,6 @@
     "name": "smoking"
   },
   {
-    "source": "images/candy.svg",
-    "number": 6,
-    "name": "sugar"
-  },
-  {
     "source": "images/lazy.svg",
     "number": 6,
     "name": "inactivity"
@@ -23,5 +18,10 @@
     "source": "images/eating.svg",
     "number": 5,
     "name": "obesity"
+  },
+  {
+    "source": "images/cho.svg",
+    "number": 5,
+    "name": "cholesterol"
   }
 ]
