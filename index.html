@@ -215,7 +215,7 @@
                     <div class="col-md-12">
                         <p class="bottom-0">Systolic blood pressure is the maximum pressure in the arteries when the heart contracts, and is therefore a major determinant of heart disease risk.
                             The visualization below explores the correlation between a country's mean systolic blood pressure and CVD DALYs*.
-                        You can click on the different regions in the world map to filter by those regions. Hover over the dots for more information about individual countries.</p>
+                        You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</p>
                         <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a cardiovascular risk factor.</a>
                     </div>
                 </div>
@@ -311,26 +311,29 @@
         <div class="container">
             <h2 class="cho-title" id="chol_view_7">Average Cholesterol Levels in Adults 25 Years and Older</h2>
             <div class="row">
-                <div class="col-md-8">
+                <p><h4>The <strong>optimal</strong> total blood cholesterol level for an adult is below 5.2 mmol/L,
+                and an individual is considered to have high cholesterol when the total blood cholesterol level is above
+                6.2mmol/L. Although in recent years, cholesterol levels have improved in many countries, average cholesterol
+                levels are often elevated above the desirable level.
+                <br><br>
+                If you have high cholesterol, that puts you at risk for heart disease, stroke, and peripheral arterial
+                disease. However, your personal cholesterol goal depends on other risk factors you may have,
+                like <a href="#rf_view_8">smoking, being overweight, and being physically inactive</a>.
+               </h4></p>
+
+                <div class="col-md-12">
                     <div id="cholesterol">Select a Country: </div>
                     <div id="chart-area-7"></div>
                 </div>
-                <div class="col-md-4">
-                    <p><br><br><br><br><h4>The <strong>optimal</strong> total blood cholesterol level for an adult is below 5.2 mmol/L.
-                    Although in recent years, cholesterol levels have improved in many countries, average cholesterol levels are often elevated above the desirable level.
-                    <br><br>
-                    No matter your level of cholesterol, it is important to be <a href="#rf_view_8">physically active and maintain a healthy body weight</a> to keep your heart healthy now and into the future</h4></p>
+               <!-- <div class="col-md-4">
 
-                    <p>The prevalence of high cholesterol in your country is: </p>
-
-                    <div id="chart-area-8"></div>
+                    <div id="chart-area-8"></div>-->
 
                     <!-- to implement gauge to show prevalence of high cholesterol in each country -->
 
                 </div>
-                <h4>If you have high cholesterol, that puts you at risk for heart disease, stroke, and peripheral arterial
-                    disease. However, your personal cholesterol goal depends on other risk factors you may have, like <a href="#rf_view_8">smoking,
-                        being overweight, and being physically inactive</a>. </h4>
+                <h4>No matter your level of cholesterol, it is important to be <a href="#rf_view_8">physically active and
+                    maintain a healthy body weight</a> to keep your heart healthy now and into the future</h4>
             </div>
 
             <div class="next-content">
@@ -352,13 +355,13 @@
                     The prevalence of these modifiable risk factors varies across different countries.
                     </h4>
                     <label for="ranking-type">Group by</label>
-                    <select class="form-control" id="ranking-type">
-                        <option value="Overweight">Overweight</option>
-                        <option value="Obese">Obesity</option>
-                        <option value="Physical_inactivity">Physical Inactivity</option>
+                    <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
+                        <option value="overweight">Overweight</option>
+                        <option value="obese">Obesity</option>
+                        <option value="physicallyInactive">Physical Inactivity</option>
                     </select>
 
-                    <button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>
+                    <button type="button" class="btn btn-link" id="change-sorting" onclick="barChart.reverse()"><i class="glyphicon glyphicon-sort"></i> Sort</button>
                     <div id="chart-area-9"></div>
                 </div>
             </div>

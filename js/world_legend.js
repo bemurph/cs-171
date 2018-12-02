@@ -1,9 +1,9 @@
 
-WorldLegend = function(_parentElement, _data, _colorScale){
+WorldLegend = function(_parentElement, _data, _filterFunction){
     this.parentElement = _parentElement;
     this.data = _data;
-    this.colorScale = _colorScale;
     this.selectedRegions = [];
+    this.filterFunction = _filterFunction;
     this.initVis();
 };
 
@@ -30,7 +30,7 @@ WorldLegend.prototype.initVis = function() {
         .data(vis.data.features)
         .enter().append('path')
         .attr('d', vis.path)
-        .attr('fill', d => vis.colorScale(d.properties.CONTINENT))
+        .attr('fill', d => continentColor(d.properties.CONTINENT))
         .classed('continent', true)
         .on('mouseover', function() {
             d3.select(this).classed('continent-hover', true);
@@ -57,7 +57,7 @@ WorldLegend.prototype.initVis = function() {
         })
         .on('mouseout', function(d) {
             d3.select(this).classed('continent-hover', false);
-            d3.select(this).attr('fill', d => vis.colorScale(d.properties.CONTINENT));
+            d3.select(this).attr('fill', d => continentColor(d.properties.CONTINENT));
         });
 };
 

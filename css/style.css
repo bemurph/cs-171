@@ -40,6 +40,20 @@ h1{
   margin-bottom:5rem;
 }
 
+<<<<<<< HEAD
+=======
+.heart-icon:before{
+  display: inline-block;
+    content: ' ';
+    background-image: url('../images/heart_red.svg');
+    background-size: 1.5rem 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    background-repeat: no-repeat;
+    margin-right: 6px;
+}
+
+>>>>>>> a443041188821cdc31acc667a536e49586086b5e
 h2{
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -371,13 +385,13 @@ h4{
 /**************************/
 
 
-.bar {
-  fill: #e41a1c;
-}
+/*.bar {*/
+  /*fill: #e41a1c;*/
+/*}*/
 
-.bar:hover {
-  fill: #9e1d35 ;
-}
+/*.bar:hover {*/
+  /*fill: #9e1d35 ;*/
+/*}*/
 
 .axis {
   font: 10px sans-serif;
