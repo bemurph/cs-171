@@ -356,16 +356,14 @@ h4{
   stroke-width: 1px;
 }
 
-.dot {
-  font-size: 14px;
-}
-
-.dot circle {
-  fill: #5e8dc9;
-}
-
-.selected {
-  stroke: #377eb8;
+div.tooltip {
+  position: absolute;
+  border: 2px solid #333;
+  border-radius: 8px;
+  padding: 5px;
+  background-color: #fee0d2;
+  z-index: 2000;
+  font-size: 10px;
 }
 
 /**************************/
