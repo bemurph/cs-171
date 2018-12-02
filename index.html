@@ -317,7 +317,7 @@
                     <p><br><br><br><br><h4>The optimal total blood cholesterol level for an adult is below 5.2mmol/L.
                     The average cholesterol levels in many countries are above this level. Since we get a large portion of
                 our cholesterol through our diets, it is ever more important to change our diet and incorporate exercise
-                to lower the total blood cholesterol level, which in turn decreases the risks of cardiovascular disease.</h4><br></p>
+                to lower the total blood cholesterol level, which in turn decreases the risks of cardiovascular disease.</h4></p>
 
                     <p>The prevalence of high cholesterol in your country is: </p>
 
@@ -326,9 +326,13 @@
                     <!-- to implement gauge to show prevalence of high cholesterol in each country -->
 
                 </div>
+                <h4>If you have high cholesterol, that puts you at risk for heart disease, stroke, and peripheral arterial
+                    disease. However, your personal cholesterol goal depends on other risk factors you may have, like smoking,
+                    being overweight, and being physically inactive. </h4>
             </div>
+
             <div class="next-content">
-                <span>NEXT: Prevalence of High Cholesterol, Physical Inactivity, and Obesity</span>
+                <span>NEXT: Prevalence of Overweight, Obesity, and Physical Inactivity</span>
             </div>
         </div>
         </div>
@@ -338,13 +342,14 @@
     <div vs-anchor="view-8" class="mainview view8">
         <div class="bag-inner">
         <div class="container">
-            <h2 class="heart-icon" id="rf_view_8">Prevalence of High Cholesterol, Physical Inactivity, and Obesity</h2>
+            <h2 class="heart-icon" id="rf_view_8">Prevalence of Overweight, Obesity, and Physical Inactivity<</h2>
             <div class="row">
                 <div class="col-md-12">
+                    <h4>Being physically inactive often leads to a higher likelihood of overweight and obesity.</h4>
                     <label for="ranking-type">Group by</label>
                     <select class="form-control" id="ranking-type">
                         <option value="Overweight">Overweight</option>
-                        <option value="Obese">Overweight</option>
+                        <option value="Obese">Obesity</option>
                         <option value="Physical_inactivity">Physical Inactivity</option>
                     </select>
 
@@ -466,7 +471,8 @@
 <script src="js/scatter.js"></script>
 <script src="js/load_data.js"></script>
 <script src="js/cholesterol_line.js"></script>
-<script src="js/cholesterol_gauge.js"></script>
+<!--<script src="js/cholesterol_gauge.js"></script>-->
+<script src="js/d3-tip.js"></script>
 <script src="js/Prevalence.js"></script>
 <script src="js/main.js"></script>
 <!-- <script src="js/scatter.js"></script> -->
