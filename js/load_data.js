@@ -62,7 +62,7 @@ function processBPRow(d) {
         population: +d.population,
         CVD: +d.CVD,
         bloodPressure: +d.bloodpressure,
-        popCVD: +d.CVD/(+d.population)
+        popCVD: (+d.CVD/(+d.population))*1000000
     }
 }
 
@@ -75,7 +75,7 @@ queue()
 
 
 function createVisualizations(error, risk_factors, continents, bp_data) {
-    const heartHeight = 2 * $('#view-3').height() / 3;
+    const heartHeight = 2 * $('.view3').height() / 3;
     heart = new BeatingHeart('#chart-area-2', risk_factors, heartHeight);
     scatter = new ScatterPlot('#chart-area-5', bp_data, '#world-legend', continents);
 }

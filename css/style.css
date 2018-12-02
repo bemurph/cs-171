@@ -2,12 +2,12 @@
 /* @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600'); */
 
 :root {
-	--main-color: #2b4388;;
+	--main-color: #2b4388;
 }
 
 body {
   background-color: #f7f7f7;
-  text-align: center;
+  /*text-align: center;*/
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -127,8 +127,8 @@ h4{
 
 /* LANDING PAGE TEXT */
 .introduction-text{
-  font-size: 1.4rem;
-  line-height: 1.4;
+  font-size: 1.1rem;
+  /*line-height: 1.4;*/
   color: var(--main-color);;
   text-align: left;
 }
@@ -159,7 +159,12 @@ h4{
   bottom: 1rem;
   left: 0;
   right: 0;
+  text-align: center;
   color: var(--main-color);
+}
+
+.next-content:hover {
+  cursor: pointer;
 }
 
 
@@ -285,18 +290,6 @@ h4{
   font-size: 1.25rem;
 }
 
-.view5 label {
-  color: #9e1d35;
-}
-
-.view5 select {
-  margin-left: 1rem;
-}
-
-.view7 li {
-  text-align: left;
-}
-
 .recommendation {
   display: none;
 }
@@ -399,12 +392,34 @@ h4{
 }
 
 .tooltip {
-  position: absolute;
-  text-align: center;
-  width: 60px;
-  height: 28px;
-  padding: 2px;
-  font: 10px sans-serif;
-  background: #f0f0e8;
-  pointer-events: none;
+   position: absolute;
+   text-align: center;
+   /*width: 100px;*/
+   /*height: 75px;*/
+   padding: 5px;
+   font: 12px sans-serif;
+   background: #e0a800;
+   border: 0px;
+   border-radius: 8px;
+   pointer-events: none;
+ }
+
+#cvd-increase-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: contents;
+  color: var(--main-color);
 }
+
+.bottom-1 {
+  margin-bottom: 1rem;
+}
+
+.center {
+  text-align: center;
+}
+
+.bag-inner {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
