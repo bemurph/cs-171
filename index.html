@@ -20,28 +20,31 @@
 
 <div class="navigation-dot-container">
     <a href="#view-1">
-        <div data-title="Title" class="navigation-dot"></div>
+        <div data-title="The Beating Heart of the World" class="navigation-dot"></div>
     </a>
     <a href="#view-2">
-        <div data-title="Atlas" class="navigation-dot"></div>
+        <div data-title="Global atlas of heart disease" class="navigation-dot"></div>
     </a>
     <a href="#view-3">
-        <div data-title="Risk Factors" class="navigation-dot"></div>
+        <div data-title="Risk factors for heart disesase" class="navigation-dot"></div>
     </a>
     <a href="#view-4">
-        <div data-title="High Blood Pressure" class="navigation-dot"></div>
+        <div data-title="High blood pressure is an important risk factor" class="navigation-dot"></div>
     </a>
     <a href="#view-5">
-        <div data-title="Systolic Blood Pressure" class="navigation-dot"></div>
+        <div data-title="Systolic blood pressure contributes to heart disease mortality" class="navigation-dot"></div>
     </a>
     <a href="#view-6">
-        <div data-title="High Cholesterol" class="navigation-dot"></div>
+        <div data-title="High cholesterol is an important risk factor" class="navigation-dot"></div>
     </a>
     <a href="#view-7">
-        <div data-title="Average Cholesterol in Adults" class="navigation-dot"></div>
+        <div data-title="Average cholesterol in adults" class="navigation-dot"></div>
     </a>
     <a href="#view-8">
-        <div data-title="Recommendations" class="navigation-dot"></div>
+        <div data-title="Prevalence of obesity and physical inactivity" class="navigation-dot"></div>
+    </a>
+    <a href="#view-9">
+        <div data-title="Recommendations to lower heart disease risk" class="navigation-dot"></div>
     </a>
 </div>
 <div class="tooltip-map"></div>
@@ -176,21 +179,22 @@
     <div vs-anchor="view-4" class="mainview view4">
         <div class="bag-inner">
             <div class="container">
-                <h2 class="heart-icon">High Blood Pressure</h2>
+                <h2 class="heart-icon" id="bp_view_4">High Blood Pressure</h2>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6" align="left">
 
-                        <p class="detail-text">Your blood pressure naturally goes up and down all the time, adjusting to your heart’s needs
-                            depending on what you are doing. <strong>Systolic blood pressure</strong> (the first number) indicates how much pressure your blood is exerting against your artery walls when the heart beats.
-                            <strong>Diastolic blood pressure</strong> (the second number) indicates how much pressure your blood is exerting against your artery walls while the heart is resting between beats.
-                            A blood pressure reading under 120/80mmHg is considered optimal.
-                            Blood pressure that’s high (over 120/80mmHg) over a long time is one of the main risk factors
-                            for heart disease.
-                            Uncontrolled high blood pressure can lead to a heart attack or stroke. It may also affect your
-                            kidneys.</p>
+                        <p class="detail-text">
+                            Blood pressure is the pressure your blood puts on your artery walls. Your blood pressure naturally goes up and down all the time, adjusting to your heart’s needs depending on what you are doing. <strong>A blood pressure reading under 120/80mmHg is considered optimal.</strong>
+                            <br><br>
+                            Blood pressure that’s high (over 120/80mmHg) over a long time is one of the main risk factors for heart disease. In fact, uncontrolled high <a href="#sys_view_5">systolic blood pressure</a> can lead to a heart attack or stroke. It may also affect your kidneys.
+                            <br><br>
+                            <strong>There are many things you can do to lower your blood pressure</strong>, such as <a href="#rf_view_8">losing excess weight, undertaking regular physical activity, and quitting smoking</a>. However, the importance of blood pressure as a risk factor is different across different geographic regions of the world.
+                            <br>
+                            <a class="source" href="https://www.mydr.com.au/heart-stroke/blood-pressure-what-is-your-target">Source: Australian Heart Foundation.</a>
+                        </p>
                     </div>
                     <div class="col-md-6">
-                        <img src="images/blood_pressure_target.gif">
+                        <img src="images/sysdias.jpg">
                     </div>
                 </div>
             </div>
@@ -204,7 +208,7 @@
     <div vs-anchor="view-5" class="mainview view5">
         <div class="bag-inner">
             <div class="container">
-                <h2 class="heart-icon">Systolic Blood Pressure</h2>
+                <h2 class="heart-icon" id="sys_view_5">Systolic Blood Pressure</h2>
                 <div class="row bottom-1">
                     <div class="col-md-12">
                         <p class="bottom-0">Systolic blood pressure is the maximum pressure in the arteries when the heart contracts, and is therefore a major determinant of heart disease risk.
@@ -242,6 +246,10 @@
                         <p><small>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability.</small>
                         <a class="source" href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source: World Health Organization</a></p>
                     </div>
+                    <div class="col-md-12">
+                        <p>1 in 3 adults have uncontrolled blood pressure, as too do 1 in 3 adults have uncontroleld cholesterol</>
+                            <a class="source" href="https://www.cdc.gov/vitalsigns/cardiovasculardisease/index.html">Source: Centers for Disease Control and PRevention</a></p>
+                    </div>
                 </div>
 
                 <div class="next-content">
@@ -259,38 +267,33 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="detail-text">
+                            Cholesterol is a waxy like substance that circulates in the blood. As the amount of cholesterol in your blood increases, so does the your risk of heart disease. It is <strong>optimal</strong> to have cholesterol levels below
+                            5.2 mmol/L (or 200 mg/dL)
+                            <br><br>
+                        </p>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="detail-text">
 
-                            Cholesterol is one of the other major risk factors that contributes to cardiovascular disease.
-                            Your total blood cholesterol is a measure of the cholesterol components LDL (low-density
-                            lipoprotein)
-                            cholesterol, HDL (high-density lipoprotein) cholesterol, and VLDL (very low-density lipoprotein,
-                            which is the triglyceride-carrying component of lipids). It is optimal to have LDL levels below
-                            2.6mmol/L (or 100mg/dL),
-                            HDL levels above 1.5mmol/L (or 60mg/dL), and triglycerides levels below 1.7mmol/L (or 150mg/dL)
-                            <a href="https://my.clevelandclinic.org/health/articles/11920-cholesterol-numbers-what-do-they-mean">[1]</a>
-
-                            <br>
-                            A diet high in LDL cholesterol causes your liver to produce more cholesterol than you need,
-                            which increases the risk that
-                            cholesterol will slowly build up in the inner walls of the arteries that feed the heart and
-                            brain.
-                            Cholesterol can join with other substances to form a thick, hard deposit on the inside of the
-                            arteries.
-                            This can narrow the arteries and make them less flexible – a condition known as atherosclerosis.
-                            If a blood clot forms and blocks one of these narrowed arteries, a heart attack or stroke can
-                            result.
-                            <br>
-                            High cholesterol is one of the major controllable risk factors for coronary heart disease, heart
-                            attack and stroke.
-                            If you have other risk factors such as smoking, high blood pressure or diabetes, your risk
-                            increases even more.
-                            The more risk factors you have and the more severe they are, the more your overall risk is
-                            compounded. <a href="http://www.heart.org/en/health-topics/cholesterol/about-cholesterol">[2]</a>
-                            <br>
+                            <strong>Your cholesterol levels are considered high if they are greater than 6.2 mmol/L (or 240 mg/dL).</strong> High cholesterol is one of the major controllable risk factors for coronary heart disease, heart
+                            attack and stroke. The reason high cholesterol levels increases your risk of heart disease is because, when there is too much cholesterol in the blood, it
+                            can build up on the inside of blood vessel walls, causing the blood vessels to narrow and less flexible. Heart attacks and strokes occur when a blood clot forms and blocks one of these narrowed arteries.
+                            <br><br>
                         </p>
 
                         <div id="chart-area-6">
+
                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/cholesterol_arteries.jpg   ">
+                    </div>
+                    <div class="col-md-12">
+                        <p class="detail-text">If you have other risk factors such as <a href="#bp_view_4">high blood pressure</a>, <a href="#rf_view_8">smoking or obesity</a>, your risk
+                            increases even more. The more risk factors you have and the more severe they are, the more your overall risk is
+                            compounded. The good news is that much can be done to improve blood cholesterol levels, and in recent years, some countries, such as the <a href="#chol_view_7">USA</a>, have managed to lower the blood cholesterol concentrations of their population.
+                            <br><br>
+                            <a href="https://www.nhlbi.nih.gov/files/docs/public/heart/wyntk.pdf">source: National Institute of Health</a>
                     </div>
                 </div>
                 <div class="next-content">
@@ -304,7 +307,7 @@
     <div vs-anchor="view-7" class="mainview view7">
         <div class="bag-inner">
         <div class="container">
-            <h2 class="heart-icon">Average Cholesterol Levels in Adults 25 Years and Older</h2>
+            <h2 class="heart-icon" id="chol_view_7">Average Cholesterol Levels in Adults 25 Years and Older</h2>
             <div class="row">
                 <div class="col-md-8">
                     <div id="cholesterol">Select a Country: </div>
@@ -335,7 +338,7 @@
     <div vs-anchor="view-8" class="mainview view8">
         <div class="bag-inner">
         <div class="container">
-            <h2 class="heart-icon">Prevalence of High Cholesterol, Physical Inactivity, and Obesity</h2>
+            <h2 class="heart-icon" id="rf_view_8">Prevalence of High Cholesterol, Physical Inactivity, and Obesity</h2>
             <div class="row">
                 <div class="col-md-12">
                     <label for="ranking-type">Group by</label>
