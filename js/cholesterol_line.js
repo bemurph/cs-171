@@ -1,12 +1,16 @@
+//Margins for the line graph
+
 var marginC = {top: 20, right: 80, bottom: 20, left: 80},
     widthC = 700 - marginC.left - marginC.right,
     heightC = 500 - marginC.top - marginC.bottom;
 
-//to do: define scales; initVis; enter, update, exit based on user selection
-//sources of data: js/load_data_cholesterol.js
-//generate line plots (male vs. female) for selected country over time
+//Margins for the circle gauge
 
-var countrySelect = [];
+var marginG = {top: 20, right: 20, bottom: 20, left: 20},
+    widthG = 300 - marginG.left - marginG.right,
+    heightG = 100 - marginG.top - marginG.bottom;
+
+//var countrySelect = [];
 
 var parseYear = d3.timeParse("%Y");
 var formatYear = d3.timeFormat("%Y");
@@ -33,7 +37,7 @@ var lineTH = d3.line()
     .x(function(d){ return x(d.Year); })
     .y(function(d){ return y(+d.High); });
 
-// Create the svg canvas in the "graph" div
+// Create the svg canvas and color scheme in the "graph" div
 var svgC = d3.select("#chart-area-7")
     .append("svg")
     .style("width", widthC + marginC.left + marginC.right)
@@ -47,6 +51,22 @@ var svgC = d3.select("#chart-area-7")
 var color = d3.scaleOrdinal()
     .domain(["Male", "Female"])
     .range(["#4071FF", "#FE57FF"]);
+
+// Create the svg canvas and color scheme in the "circle" div
+var svgG = d3.select("#chart-area-8")
+    .append("svg")
+    .style("width", widthG + marginG.left + marginG.right)
+    .style("height", heightG + marginG.top + marginG.bottom)
+    .attr("width", widthG + marginG.left + marginG.right)
+    .attr("height", heightG + marginG.top + marginG.bottom)
+    .append("g")
+    .attr("transform","translate(" + marginG.left + "," + marginG.top + ")")
+    .attr("class", "svg");
+
+var colorG = d3.scaleOrdinal()
+    .domain([0, 20, 40, 60, 80])
+    .range(['#fee5d9','#fcae91','#fb6a4a','#de2d26','#a50f15']);
+
 
 // Define the div for the tooltip
 var div = d3.select("body").append("div")
@@ -65,24 +85,11 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         d.Year = (parseYear(+d.Year));
         d.Threshold = +d.Threshold;
         d.High = +d.High;
+        d.Prevalence = d.Prevalence;
     });
 
     // console.log(data);
     mean_cholesterol = data;
-
-    var processraisedcholesterolRow = function (d) {
-        return {
-            Country: d.Country,
-            ["Both sexes"]: +d["Both sexes"],
-            Male: +d.Male,
-            Female: +d.Female
-        }
-    }
-
-    d3.csv("data/raised-total-cholesterol-adult-5plus-2008.csv", processraisedcholesterolRow, function (data2) {
-        raise_cholesterol5 = data2;
-        // console.log(data2);
-    });
 
     var nest = d3.nest()
         .key(function (d) {
@@ -95,8 +102,11 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             var gender = d3.nest().key(function (d) {
                 return d.Gender
             })
+            var prevalence = d3.nest().key(function (d) {
+                return d.Prevalence
+            })
                 .entries(leaves);
-            return {cholesterol: cholesterol, gender: gender};
+            return {cholesterol: cholesterol, gender: gender, prevalence: prevalence};
         })
         .entries(mean_cholesterol);
 
@@ -165,8 +175,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             return d.key == country;
         });
 
-        countrySelect = selectCountry;
-
+        //countrySelect = selectCountry;
 
         var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry, function (d) {
@@ -271,14 +280,25 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .style("fill", "9e1d35")
             .text("High Cholesterol");
 
+        // Generate Circle Graph
 
-        //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
-        //     "cholesterol for " + country + " is: "
+        circleRadii = [40, 20, 10];
+
+        var circles = svgG.selectAll("circle")
+                                  .data(circleRadii)
+                                  .enter()
+                                  .append("circle")
+
+        var circleAttributes = circles
+                               .attr("cx", 150)
+                               .attr("cy", 25)
+                               .attr("r", function (d) { return d; })
+                               .style("fill", d => colorG(d.key));
+
     };
 
     // Create initial graph
     initialGraph("Afghanistan");
-
 
     // Update the data
     var updateGraph = function (country) {
@@ -318,6 +338,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .on('mouseout', function (d) {
                 div.transition().style('opacity', 0);
             });
+
 
         // Update the Y-axis
         d3.select(".y")

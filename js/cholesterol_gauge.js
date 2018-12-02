@@ -155,6 +155,20 @@ var gauge = function(container, configuration) {
     return that;
 };
 
+var processraisedcholesterolRow = function (d) {
+    return {
+        Country: d.Country,
+        ["Both sexes"]: +d["Both sexes"],
+        Male: +d.Male,
+        Female: +d.Female
+    }
+}
+
+d3.csv("data/raised-total-cholesterol-adult-5plus-2008.csv", processraisedcholesterolRow, function (data2) {
+    raise_cholesterol5 = data2;
+    // console.log(data2);
+});
+
 function onDocumentReady() {
     var powerGauge = gauge('#chart-area-8', {
         size: 300,
@@ -166,16 +180,22 @@ function onDocumentReady() {
     });
     powerGauge.render();
 
+    var selectCountryGroups = svgC.selectAll(".CountryGroups")
+        .data(countrySelect, function (d) {
+            return d ? d.key : this.key;
+        })
+        .enter()
+        .append("g")
+        .attr("class", "CountryGroups");
+
     function updateReadings() {
         // just pump in random data here...
-        powerGauge.update(Math.random() * 10);
+        powerGauge.update(function (d) {
+            return d["Both sexes"];
+        });
     }
 
-    // every few seconds update reading values
     updateReadings();
-    setInterval(function() {
-        updateReadings();
-    }, 5 * 1000);
 }
 
 if ( !window.isLoaded ) {

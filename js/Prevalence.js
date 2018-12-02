@@ -23,8 +23,6 @@ var yP = d3.scaleLinear()
 
 // Tooltip
 
-var tooltip = d3.select("body").append("div").attr("class", "tooltip");
-
 var regionColor = d3.scaleOrdinal()
     .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
     .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
@@ -121,6 +119,18 @@ function updateVisualization() {
     xP.domain(data.map(function(d) { return d.Country; }));
     yP.domain([0, d3.max(data, function(d) { return d[rankingType]; })]);
 
+    var tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 100])
+        .html(function(d) {
+            return "<strong>Country:</strong> <span style='color:red'>" + d.Country + "</span><br>" +
+                "<strong>Prevalence to Physical Inactivity:</strong> <span style='color:red'>" + d.Physical_inactivity + "%" +  "</span><br>" +
+                "<strong>Prevalence to Overweight:</strong> <span style='color:red'>" + d.Overweight + "%" +  "</span><br>" +
+                "<strong>Prevalence to Obesity:</strong> <span style='color:red'>" + d.Obese + "%" +  "</span>";
+        });
+
+    svgP.call(tip);
+
     // Data join
     var bars = svgP.selectAll(".bar")
         .data(data, function(d){ return d.Country; });
@@ -150,14 +160,9 @@ function updateVisualization() {
         .attr("y", function(d) { return yP(d[rankingType]); })
         .attr("width", xP.bandwidth())
         .attr("height", function(d) { return heightP - yP(d[rankingType]); })
-        .on("mousemove", function(d){
-            tooltip
-                .style("left", d3.event.pageX - 50 + "px")
-                .style("top", d3.event.pageY - 70 + "px")
-                .style("display", "inline-block")
-                .html((d.Country) + "<br>" + (d[rankingType]));
-        })
-        .on("mouseout", function(d){ tooltip.style("display", "none");});
+        .on('mouseover', tip.show)
+        .on('mouseout', tip.hide);
+
 
     // Exit
     bars.exit().remove();
