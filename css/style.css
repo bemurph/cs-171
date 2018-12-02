@@ -11,6 +11,17 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  font-size: 18px;
+  color: #26438e;
+}
+
 /* DOT NAVIGATION TOOLTIP */
 .navigation-tooltip{
   padding:5px;
@@ -122,6 +133,7 @@ h4{
 
 .navigation-dot.active{
   background-color: var(--main-color);
+  font-weight: 600;
 }
 
 
@@ -151,7 +163,6 @@ h4{
   width: 22px;
   position: relative;
   top: 3px;
-  right: 8px;
 }
 
 .next-content{
@@ -169,6 +180,10 @@ h4{
 
 
 /* WORLD MAP STYLES */
+.activeCountry{
+  fill:orangered;
+}
+
 .tooltip-map{
   position: absolute;
   display:none;
@@ -293,6 +308,8 @@ h4{
 
 .recommendation {
   display: none;
+  box-shadow: 0px 0px 7px 2px #0000001f;
+  padding: 1.25rem;
 }
 
 #risk-factor-list a {
@@ -445,4 +462,128 @@ h4{
   overflow: hidden;
   height: 100%;
   width: 100%;
+}
+
+/**************************/
+/*  RECOMMENDATION PAGE */
+/**************************/
+
+.recom-blood-pres:before{
+  background-image: url(../images/blood_pressure.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
+  position: relative;
+  top: 3px;
+  right: 8px;
+}
+
+.recom-cholesterol:before{
+  background-image: url(../images/cho.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
+  position: relative;
+  top: 3px;
+  right: 8px;
+}
+
+.recom-diabetes:before{
+  background-image: url(../images/candy.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
+  position: relative;
+  top: 3px;
+  right: 8px;
+}
+
+.recom-smoking:before{
+  background-image: url(../images/smoking.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 28px 28px;
+  height: 28px;
+  width: 28px;
+  position: relative;
+  top: 3px;
+  right: 8px;
+}
+
+#blood-pressure-recommendation li:before{
+  background-image: url(../images/blood-ribbon.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 18px 18px;
+  height: 18px;
+  width: 18px;
+  position: relative;
+  top: 3px;
+  right: 5px
+}
+
+#cholesterol-recommendation li:before{
+  background-image: url(../images/cho-ribbon.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 18px 18px;
+  height: 18px;
+  width: 18px;
+  position: relative;
+  top: 3px;
+  right: 5px
+}
+
+#smoking-recommendation li:before{
+  background-image: url(../images/smoking-ribbon.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 18px 18px;
+  height: 18px;
+  width: 18px;
+  position: relative;
+  top: 3px;
+  right: 5px
+}
+
+#diabetes-recommendation li:before{
+  background-image: url(../images/diabetes-ribbon.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 18px 18px;
+  height: 18px;
+  width: 18px;
+  position: relative;
+  top: 3px;
+  right: 5px
+}
+
+
+.pick-risk{
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid #4f66a28a;
+}
+
+.recom-title{
+  text-align: center;
+  text-transform: uppercase;
+  border-bottom: 1px solid #4f66a28a;
+}
+
+.btn-info{
+  color: var(--main-color) !important;
+  background-color: transparent !important;
+  border-color: var(--main-color)  !important;
+}
+
+.btn-info:hover{
+  color: white !important;
+  background-color: var(--main-color)  !important;
 }

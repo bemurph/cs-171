@@ -14,7 +14,7 @@ var windowWidth = $( window ).width() - 200;
         let text = $(event.target).data('title');
         $(".navigation-tooltip").css({
             top: event.pageY - 40,
-            left: windowWidth - 10,
+            left: windowWidth-20,
             display: "block",
             width: 180,
         }).html(text)

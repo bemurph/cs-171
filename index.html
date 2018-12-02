@@ -367,78 +367,68 @@
     <!-- VIEW-9 -->
     <div vs-anchor="view-9" class="mainview view9">
         <div class="bag-inner">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h2 class="heart-icon">Recommendations</h2>
-                    <h3>Heart disease is the leading cause of mortality and morbidity world wide. The good news is that all of the biggest factors which contribute to heart disease are in your direct control.</h3>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <h3>If you have...</h3>
-                    <div id="risk-factor-list">
-                        <h3><a href="#view-9" data-target="#blood-pressure-recommendation" class="active">High blood pressure</a></h3>
-                        <h3><a href="#view-9" data-target="#cholesterol-recommendation">High cholesterol</a></h3>
-                        <h3><a href="#view-9" data-target="#diabetes-recommendation">Diabetes</a></h3>
-                        <h3><a href="#view-9" data-target="#smoking-recommendation">A smoking habit</a></h3>
+                <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2 class="heart-icon">Recommendations</h2>
+                                <h3>Heart disease is the leading cause of mortality and morbidity world wide. The good news is that all of the biggest factors which contribute to heart disease are in your direct control.</h3>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h3 class="pick-risk">If you have...  <span style="text-transform: capitalize; font-size: 14px">  (Select a risk factor)</span></h3>
+                                <div id="risk-factor-list">
+                                    <h3 class="recom-blood-pres"><a href="#view-7" data-target="#blood-pressure-recommendation" class="active">High blood pressure</a></h3>
+                                    <h3 class="recom-cholesterol"><a href="#view-7" data-target="#cholesterol-recommendation">High cholesterol</a></h3>
+                                    <h3 class="recom-diabetes"><a href="#view-7" data-target="#diabetes-recommendation">Diabetes</a></h3>
+                                    <h3 class="recom-smoking"><a href="#view-7" data-target="#smoking-recommendation">A smoking habit</a></h3>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <h3 class="recom-title">You should...</h3>
+                                <div class="recommendation" id="blood-pressure-recommendation" style="display: block">
+                                    <ul>
+                                        <li>Eat a low-sodium diet</li>
+                                        <li>Limit your alcohol intake</li>
+                                        <li>Exercise regularly</li>
+                                        <li>Manage stress</li>
+                                        <li>Quit smoking</li>
+                                    </ul>
+                                    <a class="source" href="http://www.heart.org/en/health-topics/high-blood-pressure/changes-you-can-make-to-manage-high-blood-pressure">Source</a>
+                                </div>
+                                <div class="recommendation" id="cholesterol-recommendation">
+                                    <ul>
+                                        <li>Reduce saturated fats</li>
+                                        <li>Eat more fish</li>
+                                        <li>Eat less meat</li>
+                                        <li>Use liquid vegetable oils in place of solid fats</li>
+                                        <li>Lower dairy fats</li>
+                                        <li>Increase fiber and whole grains</li>
+                                    </ul>
+                                    <a class="source" href="http://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cooking-to-lower-cholesterol">Source</a>
+                                </div>
+                                <div class="recommendation" id="diabetes-recommendation">
+                                    <ul>
+                                        <li>Reduce sweets and added sugars, such as corn syrups, soda, and candy</li>
+                                        <li>Increase fiber and whole grains, such as oatmeal, brown rice, and whole grain pasta</li>
+                                        <li>Exercise regularly</li>
+                                        <li>Limit your alcohol intake</li>
+                                        <li><a href="https://www.cdc.gov/healthyweight/assessing/index.html">Maintain a healthy weight</a></li>
+                                    </ul>
+                                    <a style="display: block; font-style: italic; text-align: left; font-size: 14px" href="http://www.heart.org/en/health-topics/diabetes/prevention--treatment-of-diabetes/living-healthy-with-diabetes">Source</a>
+                                </div>
+                                <div class="recommendation" id="smoking-recommendation">
+                                    <a class="source" href="http://www.heart.org/en/healthy-living/healthy-lifestyle/quit-smoking-tobacco">Quit. Immediately.</a>
+                                </div>
+                            </div>
+                        </div>
+            
+                        <h3>For more information, visit</h3>
+                        <button onclick="window.location.href='https://www.heartfoundation.org.au/'" type="button" class="btn btn-info">Heart Foundation</button>
+                        <button onclick="window.location.href='https://www.heart.org/'" type="button" class="btn btn-info">American Heart Association</button>
+                        <button onclick="window.location.href='https://www.who.int/cardiovascular_diseases/en/'" type="button" class="btn btn-info">World Health Organisation</button>
+                    
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <h3>You should...</h3>
-                    <div class="recommendation" id="blood-pressure-recommendation" style="display: block">
-                        <ul>
-                            <li>Eat a low-sodium diet</li>
-                            <li>Limit your alcohol intake</li>
-                            <li>Exercise regularly</li>
-                            <li>Manage stress</li>
-                            <li>Quit smoking</li>
-                        </ul>
-                        <a href="http://www.heart.org/en/health-topics/high-blood-pressure/changes-you-can-make-to-manage-high-blood-pressure">Source</a>
-                    </div>
-                    <div class="recommendation" id="cholesterol-recommendation">
-                        <ul>
-                            <li>Reduce saturated fats</li>
-                            <li>Eat more fish</li>
-                            <li>Eat less meat</li>
-                            <li>Use liquid vegetable oils in place of solid fats</li>
-                            <li>Lower dairy fats</li>
-                            <li>Increase fiber and whole grains</li>
-                        </ul>
-                        <a href="http://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cooking-to-lower-cholesterol">Source</a>
-                    </div>
-                    <div class="recommendation" id="diabetes-recommendation">
-                        <ul>
-                            <li>Reduce sweets and added sugars, such as corn syrups, soda, and candy</li>
-                            <li>Increase fiber and whole grains, such as oatmeal, brown rice, and whole grain pasta</li>
-                            <li>Exercise regularly</li>
-                            <li>Limit your alcohol intake</li>
-                            <li><a href="https://www.cdc.gov/healthyweight/assessing/index.html">Maintain a healthy weight</a></li>
-                        </ul>
-                        <a href="http://www.heart.org/en/health-topics/diabetes/prevention--treatment-of-diabetes/living-healthy-with-diabetes">Source</a>
-                    </div>
-                    <div class="recommendation" id="smoking-recommendation">
-                        <a href="http://www.heart.org/en/healthy-living/healthy-lifestyle/quit-smoking-tobacco">Quit. Immediately.</a>
-                    </div>
-                </div>
-            </div>
-
-            <h3>For more information, visit</h3>
-            <br><br>
-            <a href="https://www.heartfoundation.org.au/">Heart Foundation</a>
-            <br><br>
-            <a href="https://www.heart.org/">American Heart Association</a>
-            <br><br>
-            <a href="https://www.who.int/cardiovascular_diseases/en/">World Health Organisation</a>
-            <br><br>
-            <h2>Group Members Who Contributed to Prototype V2: <br></h2>
-            <h3>Kerry Ivey<br>
-                Brendan Murphy<br>
-                Nil Tuzcu<br>
-                Ka Ning Yip</h3>
-            <div id="chart-area-11">
-            </div>
-        </div>
         </div>
     </div>
 </div>
