@@ -75,10 +75,17 @@ ScatterPlot.prototype.initVis = function() {
         .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
         .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
 
-    vis.tooltip = d3.select('body').append('div')
-        .attr('class', 'tooltip-bar');
+    vis.tooltip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10,0])
+        .html(function(d) {
+            return "<strong>Country:</strong> <span style='color: " + continentColor(d.region) + "'>" + d.country + "</span>" +
+                "<br><strong>" + vis.selectedGender + " population:</strong> " + d.population.toLocaleString() +
+                "<br><strong>CVD DALYs per million:</strong> <span style='color:red'>" + Math.round(d.popCVD) + "</span>"+
+                "<br><strong>Mean systolic blood pressure:</strong> <span style='color:red'>" + d.bloodPressure + "</span> mmHg";
+        });
 
-
+    vis.svg.call(vis.tooltip);
     vis.filterData();
 };
 
@@ -109,22 +116,8 @@ ScatterPlot.prototype.updateVis = function() {
     bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('fill', d => continentColor(d.region))
-            .on('mouseover', function(d) {
-                vis.tooltip.transition()
-                    .duration(vis.transitionDuration/2)
-                    .style('display', 'block');
-                vis.tooltip.html("Country: "+d.country+
-                    "<br>Year: "+vis.selectedYear+
-                    "<br>"+vis.selectedGender+" population: "+d.population.toLocaleString()+
-                    "<br>CVD DALYs per million: "+Math.round(d.popCVD)+
-                    "<br>Mean systolic blood pressure: "+d.bloodPressure+" mmHg")
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function(d) {
-                vis.tooltip.transition().duration(vis.transitionDuration/2)
-                    .style('display', 'none');
-            })
+            .on('mouseover', vis.tooltip.show)
+            .on("mouseout", vis.tooltip.hide)
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
             .attr('cy', d => vis.yScale(d.popCVD))
