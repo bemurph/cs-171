@@ -200,8 +200,10 @@ h4{
 }
 
 .worldmap-button-area{
-  float: right;
+  right: 0;
   margin-right: 400px;
+  position: absolute;
+  top: 30px;
 }
 
 .worldmap-button-area .form-inline{
@@ -214,14 +216,13 @@ h4{
 }
 
 .bar-area{
-  position: absolute; 
-  top:40px; 
-  width: 600px; 
-  height: 470px; 
-  background:white; 
+  position: absolute;
+  width: 600px;
+  height: 590px;
+  background: white;
   z-index: 99999;
   right: 60px;
-  top: 130px;
+  top: 80px;
   box-shadow: 0px 1px 6px 2px #00000014;
   background-color: #f7f7f7;
   padding: 20px;
