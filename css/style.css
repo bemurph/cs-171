@@ -40,6 +40,8 @@ h1{
   margin-bottom:5rem;
 }
 
+<<<<<<< HEAD
+=======
 .heart-icon:before{
   display: inline-block;
     content: ' ';
@@ -51,6 +53,7 @@ h1{
     margin-right: 6px;
 }
 
+>>>>>>> a443041188821cdc31acc667a536e49586086b5e
 h2{
   margin-top: 2rem;
   margin-bottom: 1rem;
@@ -300,6 +303,10 @@ h4{
 
 #risk-factor-list a {
   color: gray;
+}
+
+#risk-factor-list h3 {
+  font-size: 22px;
 }
 
 #risk-factor-list .active {
@@ -580,3 +587,85 @@ h4{
   box-shadow: 0px 0px 7px 2px #0000001f;
   border: 1px solid #26438e36;
 }
+
+/* TEAM SECTION*/
+.column {
+  float: left;
+  width: 22%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+/* Display the columns below each other instead of side by side on small screens */
+@media screen and (max-width: 650px) {
+  .column {
+      width: 100%;
+      display: block;
+  }
+}
+
+/* Add some shadows to create a card effect */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card h3{
+  margin-top: 0.8rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.arrow-right:after{
+  background-image: url(../images/arrowRight.svg);
+  display: inline-block;
+  content: ' ';
+  background-size: 20px 20px;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 35px;
+  right: 20px;
+  opacity: 0.7;
+}
+
+/* Page Titles */
+
+.blood-title:before{
+  display: inline-block;
+  content: ' ';
+  background-image: url(../images/blood_pressure.svg);
+  background-size: 1.8rem 1.8rem;
+  height: 1.8rem;
+  width: 1.8rem;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 8px;
+  right: 4px;
+}
+
+.cho-title:before{
+  display: inline-block;
+  content: ' ';
+  background-image: url(../images/cho.svg);
+  background-size: 2rem 2rem;
+  height: 2rem;
+  width: 2rem;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 2px;
+}
+
+.overweight-title:before{
+  display: inline-block;
+  content: ' ';
+  background-image: url(../images/eating.svg);
+  background-size: 2rem 2rem;
+  height: 2rem;
+  width: 2rem;
+  background-repeat: no-repeat;
+  position: relative;
+  top: 6px;
+}
+
+
+
