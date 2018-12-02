@@ -1,7 +1,10 @@
 const yearParser = d3.timeParse("%Y-%m-%d");
 let heart;
-let worldLegend;
 let scatter;
+let barChart;
+let continentColor = d3.scaleOrdinal()
+    .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
+    .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
 
 function processDALYRow(d) {
     return {
@@ -66,18 +69,30 @@ function processBPRow(d) {
     }
 }
 
+function processBarRow(d) {
+    return {
+        obese: +d.Obese,
+        overweight: +d.Overweight,
+        physicallyInactive: +d.Physical_inactivity,
+        region: d.Region,
+        country: d.Country
+    }
+}
+
 
 queue()
     .defer(d3.json, 'data/risk_factors.json')
     .defer(d3.json, 'data/continents.json')
     .defer(d3.csv, 'data/data_bp_combined_fixed.csv', processBPRow)
+    .defer(d3.csv, 'data/prevalence-overweight-obese-physical-activity.csv', processBarRow)
     .await(createVisualizations);
 
 
-function createVisualizations(error, risk_factors, continents, bp_data) {
+function createVisualizations(error, risk_factors, continents, bp_data, bar_data) {
     const heartHeight = 2 * $('.view3').height() / 3;
     heart = new BeatingHeart('#chart-area-2', risk_factors, heartHeight);
     scatter = new ScatterPlot('#chart-area-5', bp_data, '#world-legend', continents);
+    barChart = new BarChart('#chart-area-9', bar_data)
 }
 
 function filterScatter() {

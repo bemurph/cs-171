@@ -44,25 +44,11 @@ h1{
   display: inline-block;
     content: ' ';
     background-image: url('../images/heart_red.svg');
-    background-size: 1.25rem 1.25rem;
-    height: 1.25rem;
-    width: 1.25rem;
+    background-size: 1.5rem 1.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
     background-repeat: no-repeat;
     margin-right: 6px;
-    animation-name: grow;
-    animation-duration: .6s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-@keyframes grow {
-  from {
-    transform: scale(1);
-  }
-  
-  to {
-    transform: scale(1.4);
-  }
 }
 
 h2{
@@ -392,13 +378,13 @@ h4{
 /**************************/
 
 
-.bar {
-  fill: #e41a1c;
-}
+/*.bar {*/
+  /*fill: #e41a1c;*/
+/*}*/
 
-.bar:hover {
-  fill: #9e1d35 ;
-}
+/*.bar:hover {*/
+  /*fill: #9e1d35 ;*/
+/*}*/
 
 .axis {
   font: 10px sans-serif;

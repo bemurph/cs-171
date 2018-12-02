@@ -212,7 +212,7 @@
                     <div class="col-md-12">
                         <p class="bottom-0">Systolic blood pressure is the maximum pressure in the arteries when the heart contracts, and is therefore a major determinant of heart disease risk.
                             The visualization below explores the correlation between a country's mean systolic blood pressure and CVD DALYs*.
-                        You can click on the different regions in the world map to filter by those regions. Hover over the dots for more information about individual countries.</p>
+                        You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</p>
                         <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a cardiovascular risk factor.</a>
                     </div>
                 </div>
@@ -346,13 +346,13 @@
                 <div class="col-md-12">
                     <h4>Being physically inactive often leads to a higher likelihood of overweight and obesity.</h4>
                     <label for="ranking-type">Group by</label>
-                    <select class="form-control" id="ranking-type">
-                        <option value="Overweight">Overweight</option>
-                        <option value="Obese">Obesity</option>
-                        <option value="Physical_inactivity">Physical Inactivity</option>
+                    <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
+                        <option value="overweight">Overweight</option>
+                        <option value="obese">Obesity</option>
+                        <option value="physicallyInactive">Physical Inactivity</option>
                     </select>
 
-                    <button type="button" class="btn btn-link" id="change-sorting"><i class="glyphicon glyphicon-sort"></i> Sort</button>
+                    <button type="button" class="btn btn-link" id="change-sorting" onclick="barChart.reverse()"><i class="glyphicon glyphicon-sort"></i> Sort</button>
                     <div id="chart-area-9"></div>
                 </div>
             </div>

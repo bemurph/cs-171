@@ -72,15 +72,14 @@ ScatterPlot.prototype.initVis = function() {
         .attr('class', 'label')
         .text('CVD DALYs per 1,000,000 people');
 
-    vis.continentColor = d3.scaleOrdinal()
+    continentColor = d3.scaleOrdinal()
         .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
         .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
 
     vis.tooltip = d3.select('body').append('div')
-        .attr('class', 'tooltip')
-        .style('opacity', 0);
+        .attr('class', 'tooltip-bar');
 
-    vis.mapLegend = new WorldLegend(vis.legendElement, vis.legendData, vis.continentColor);
+    vis.mapLegend = new WorldLegend(vis.legendElement, vis.legendData, continentColor);
 
     vis.filterData();
 };
@@ -111,11 +110,11 @@ ScatterPlot.prototype.updateVis = function() {
 
     bubbles.enter().append('circle')
             .classed('bubble', true)
-            .attr('fill', d => vis.continentColor(d.region))
+            .attr('fill', d => continentColor(d.region))
             .on('mouseover', function(d) {
                 vis.tooltip.transition()
                     .duration(vis.transitionDuration/2)
-                    .style("opacity", .9);
+                    .style('display', 'block');
                 vis.tooltip.html("Country: "+d.country+
                     "<br>Year: "+vis.selectedYear+
                     "<br>"+vis.selectedGender+" population: "+d.population.toLocaleString()+
@@ -125,9 +124,8 @@ ScatterPlot.prototype.updateVis = function() {
                     .style("top", (d3.event.pageY - 28) + "px");
             })
             .on("mouseout", function(d) {
-                vis.tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
+                vis.tooltip.transition().duration(vis.transitionDuration/2)
+                    .style('display', 'none');
             })
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
