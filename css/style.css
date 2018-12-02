@@ -260,12 +260,12 @@ h4{
   color: #ff7f00;
 }
 
-.sugar-indicator::before{
-  background-image: url('../images/candy.svg');
+.cho-indicator::before{
+  background-image: url('../images/cho.svg');
 }
 
-.sugar-indicator strong {
-  color: #984ea3;
+.cho-indicator strong {
+  color: #00c0ff;
 }
 
 .inactivity-indicator::before{
