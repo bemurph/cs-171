@@ -145,7 +145,7 @@ h4{
 .next-content span:before{
   display: inline-block;
   content: ' ';
-  background-image: url(../images/down.svg);
+  background-image: url(../images/arrowDown.svg);
   background-size: 22px 22px;
   height: 22px;
   width: 22px;

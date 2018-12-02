@@ -16,7 +16,7 @@ var windowWidth = $( window ).width() - 200;
             top: event.pageY - 40,
             left: windowWidth - 10,
             display: "block",
-            width: 175,
+            width: 180,
         }).html(text)
     }).mouseout(function(){
         $(".navigation-tooltip").css("display","none");
