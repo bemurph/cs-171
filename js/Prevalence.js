@@ -8,7 +8,8 @@ BarChart = function(_parentElement, _data, _legendElement, _legendData) {
     this.textFriendlyCategories = {
         overweight: "being overweight",
         obese: "obesity",
-        physicallyInactive: "physical inactivity"
+        physicallyInactive: "physical inactivity",
+        smoking: "smoking"
     };
     this.mapLegend = new WorldLegend(_legendElement, _legendData, filterBar);
 

@@ -75,6 +75,7 @@ function processBarRow(d) {
         overweight: +d.Overweight,
         physicallyInactive: +d.Physical_inactivity,
         region: d.Region,
+        smoking: d.Smoking,
         country: d.Country
     }
 }
