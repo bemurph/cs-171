@@ -39,4 +39,8 @@ $(document).ready(function() {
     $('.next-content').on('click', function() {
         $.fn.viewScroller.showMainView('next');
     });
+
+    $('#bar-order').on('click', function() {
+        $('#order-arrow').toggleClass('rotated');
+    });
 });

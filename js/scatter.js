@@ -4,7 +4,7 @@ ScatterPlot = function(_parentElement, _data, _legendElement, _legendData) {
     this.filteredData = this.data;
     this.selectedGender = 'Male';
     this.selectedYear = 2000;
-    this.transitionDuration = 1000;
+    this.transitionDuration = 750;
     this.textFriendlyGenders = {
         Male: 'men',
         Female: 'women',
@@ -116,8 +116,16 @@ ScatterPlot.prototype.updateVis = function() {
     bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('fill', d => continentColor(d.region))
-            .on('mouseover', vis.tooltip.show)
-            .on("mouseout", vis.tooltip.hide)
+            .on('mouseover', function(d) {
+                let thisElement = d3.select(this);
+                vis.svg.selectAll('.bubble').style('opacity', 0.1);
+                thisElement.style('opacity', 1);
+                vis.tooltip.show(d);
+            })
+            .on('mouseout', function(d) {
+                vis.svg.selectAll('.bubble').style('opacity', 1);
+                vis.tooltip.hide(d);
+            })
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
             .attr('cy', d => vis.yScale(d.popCVD))
