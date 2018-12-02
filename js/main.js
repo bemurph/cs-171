@@ -14,7 +14,7 @@ var windowWidth = $( window ).width() - 200;
         let text = $(event.target).data('title');
         $(".navigation-tooltip").css({
             top: event.pageY - 40,
-            left: windowWidth,
+            left: windowWidth - 10,
             display: "block",
             width: 175,
         }).html(text)
@@ -22,8 +22,8 @@ var windowWidth = $( window ).width() - 200;
         $(".navigation-tooltip").css("display","none");
     });
 
-$(".count-1").animateNumber({ number: 17.9});
-$(".count-2").animateNumber({ number: 85});
+$(".count-1").animateNumber({ number: 17.9},1500);
+$(".count-2").animateNumber({ number: 85},1500);
 
 $(document).ready(function() {
     $('#risk-factor-list a').click(function(event) {
