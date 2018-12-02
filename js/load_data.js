@@ -92,9 +92,13 @@ function createVisualizations(error, risk_factors, continents, bp_data, bar_data
     const heartHeight = 2 * $('.view3').height() / 3;
     heart = new BeatingHeart('#chart-area-2', risk_factors, heartHeight);
     scatter = new ScatterPlot('#chart-area-5', bp_data, '#world-legend', continents);
-    barChart = new BarChart('#chart-area-9', bar_data)
+    barChart = new BarChart('#chart-area-9', bar_data, '#bar-world-legend', continents);
 }
 
 function filterScatter() {
     scatter.filterData();
+}
+
+function filterBar() {
+    barChart.filterData();
 }

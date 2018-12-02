@@ -9,8 +9,7 @@ ScatterPlot = function(_parentElement, _data, _legendElement, _legendData) {
         Male: 'men',
         Female: 'women',
     };
-    this.legendElement = _legendElement;
-    this.legendData = _legendData;
+    this.mapLegend = new WorldLegend(_legendElement, _legendData, filterScatter);
 
     this.initVis();
 };
@@ -79,7 +78,6 @@ ScatterPlot.prototype.initVis = function() {
     vis.tooltip = d3.select('body').append('div')
         .attr('class', 'tooltip-bar');
 
-    vis.mapLegend = new WorldLegend(vis.legendElement, vis.legendData, continentColor);
 
     vis.filterData();
 };
