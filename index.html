@@ -361,13 +361,17 @@
                     <div id="chart-area-9"></div>
                 </div>
                 <div class="col-md-4">
-                    <label for="ranking-type">Group by</label>
-                    <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
-                        <option value="overweight">Overweight</option>
-                        <option value="obese">Obesity</option>
-                        <option value="physicallyInactive">Physical Inactivity</option>
-                    </select>
-                    Order:
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="ranking-type" class="dark-red">Viewing prevalence of</label>
+                            <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
+                                <option value="overweight">Overweight</option>
+                                <option value="obese">Obesity</option>
+                                <option value="physicallyInactive">Physical Inactivity</option>
+                            </select>
+                        </div>
+                    </form>
+                    <span class="dark-red">Order   </span>
                     <a id="bar-order" href="#view-8" onclick="barChart.reverse()">Descending</a>
                     <div id="bar-world-legend"></div>
                 </div>
