@@ -4,13 +4,12 @@ ScatterPlot = function(_parentElement, _data, _legendElement, _legendData) {
     this.filteredData = this.data;
     this.selectedGender = 'Male';
     this.selectedYear = 2000;
-    this.transitionDuration = 1000;
+    this.transitionDuration = 750;
     this.textFriendlyGenders = {
         Male: 'men',
         Female: 'women',
     };
-    this.legendElement = _legendElement;
-    this.legendData = _legendData;
+    this.mapLegend = new WorldLegend(_legendElement, _legendData, filterScatter);
 
     this.initVis();
 };
@@ -70,17 +69,23 @@ ScatterPlot.prototype.initVis = function() {
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .attr('class', 'label')
-        .text('CVD DALYs per 1,000,000 people');
+        .text('Heart disease DALYs per 1,000,000 people');
 
     continentColor = d3.scaleOrdinal()
         .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
         .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
 
-    vis.tooltip = d3.select('body').append('div')
-        .attr('class', 'tooltip-bar');
+    vis.tooltip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10,0])
+        .html(function(d) {
+            return "<strong>Country:</strong> <span style='color: " + continentColor(d.region) + "'>" + d.country + "</span>" +
+                "<br><strong>" + vis.selectedGender + " population:</strong> " + d.population.toLocaleString() +
+                "<br><strong>Heart disease DALYs per million:</strong> <span style='color:red'>" + Math.round(d.popCVD) + "</span>"+
+                "<br><strong>Mean systolic blood pressure:</strong> <span style='color:red'>" + d.bloodPressure + "</span> mmHg";
+        });
 
-    vis.mapLegend = new WorldLegend(vis.legendElement, vis.legendData, continentColor);
-
+    vis.svg.call(vis.tooltip);
     vis.filterData();
 };
 
@@ -112,20 +117,14 @@ ScatterPlot.prototype.updateVis = function() {
             .classed('bubble', true)
             .attr('fill', d => continentColor(d.region))
             .on('mouseover', function(d) {
-                vis.tooltip.transition()
-                    .duration(vis.transitionDuration/2)
-                    .style('display', 'block');
-                vis.tooltip.html("Country: "+d.country+
-                    "<br>Year: "+vis.selectedYear+
-                    "<br>"+vis.selectedGender+" population: "+d.population.toLocaleString()+
-                    "<br>CVD DALYs per million: "+Math.round(d.popCVD)+
-                    "<br>Mean systolic blood pressure: "+d.bloodPressure+" mmHg")
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
+                let thisElement = d3.select(this);
+                vis.svg.selectAll('.bubble').style('opacity', 0.1);
+                thisElement.style('opacity', 1);
+                vis.tooltip.show(d);
             })
-            .on("mouseout", function(d) {
-                vis.tooltip.transition().duration(vis.transitionDuration/2)
-                    .style('display', 'none');
+            .on('mouseout', function(d) {
+                vis.svg.selectAll('.bubble').style('opacity', 1);
+                vis.tooltip.hide(d);
             })
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))

@@ -40,26 +40,12 @@ h1{
   margin-bottom:5rem;
 }
 
-<<<<<<< HEAD
-=======
-.heart-icon:before{
-  display: inline-block;
-    content: ' ';
-    background-image: url('../images/heart_red.svg');
-    background-size: 1.5rem 1.5rem;
-    height: 1.5rem;
-    width: 1.5rem;
-    background-repeat: no-repeat;
-    margin-right: 6px;
-}
-
->>>>>>> a443041188821cdc31acc667a536e49586086b5e
 h2{
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  text-align: left;
-  font-size: 1.5rem;
-  color: var(--main-color);
+  margin-top: 2rem !important;
+  margin-bottom: 1rem !important;
+  text-align: left !important;
+  font-size: 1.5rem !important;
+  color: var(--main-color) !important;
 }
 
 h3{
@@ -85,9 +71,11 @@ h4{
   font-weight: 600;
 }
 
-.key-indicators{
+.landing-indicators .key-indicators{
   font-size: 1rem;
   color: var(--main-color);
+  margin-bottom: 0 !important;
+  text-shadow: 0px 2px 1px #2b438942;
 }
 
 .key-indicators::before{
@@ -260,12 +248,12 @@ h4{
   color: #ff7f00;
 }
 
-.sugar-indicator::before{
-  background-image: url('../images/candy.svg');
+.cho-indicator::before{
+  background-image: url('../images/cho.svg');
 }
 
-.sugar-indicator strong {
-  color: #984ea3;
+.cho-indicator strong {
+  color: #00c0ff;
 }
 
 .inactivity-indicator::before{
@@ -398,7 +386,7 @@ div.tooltip {
 
 .axis-title {
   fill: #9C8B83;
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 
 .x-axis {
@@ -406,12 +394,12 @@ div.tooltip {
 }
 
 .d3-tip {
-  line-height: 1;
+  line-height: 1.25rem;
   font-weight: bold;
-  padding: 12px;
+  padding: 0.75rem;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
-  border-radius: 2px;
+  border-radius: 0.5rem;
 }
 
 /* Creates a small triangle extender for the tooltip */
@@ -594,7 +582,6 @@ div.tooltip {
   padding: 0 8px;
 }
 
-/* Display the columns below each other instead of side by side on small screens */
 @media screen and (max-width: 650px) {
   .column {
       width: 100%;
@@ -665,5 +652,10 @@ div.tooltip {
   top: 6px;
 }
 
+.rotated {
+    -webkit-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
 
 

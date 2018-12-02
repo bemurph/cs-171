@@ -53,7 +53,7 @@ WorldLegend.prototype.initVis = function() {
             else {
                 vis.selectedRegions.splice(vis.selectedRegions.indexOf(d.properties.CONTINENT), 1);
             }
-            filterScatter();
+            vis.filterFunction();
         })
         .on('mouseout', function(d) {
             d3.select(this).classed('continent-hover', false);

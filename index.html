@@ -46,6 +46,9 @@
     <a href="#view-9">
         <div data-title="Recommendations to lower heart disease risk" class="navigation-dot"></div>
     </a>
+    <a href="#view-10">
+            <div data-title="About" class="navigation-dot"></div>
+    </a>
 </div>
 <div class="tooltip-map"></div>
 <div class="tooltip-bar"></div>
@@ -73,7 +76,7 @@
                     </p>
 
                 </div>
-                <div class="col-6" style="text-align: left; padding-left: 3rem; border-left: 1px solid #778bb986">
+                <div class="col-6 landing-indicators" style="text-align: left; padding-left: 3rem; border-left: 1px solid #778bb986">
                     <p class="key-indicators">Heart disease is the <span
                             class="highlight">number 1</span> cause of death globally
                     <br><br><br><br></p>
@@ -162,11 +165,11 @@
                             for <span class="highlight">13%</span> of deaths globally</p>
                         <p class="key-indicators smoking-indicator detail-text"><strong>Tobacco use</strong> accounts for <span
                                 class="highlight">9%</span></p>
-                        <p class="key-indicators sugar-indicator detail-text"><strong>High blood sugar</strong> accounts for <span
-                                class="highlight">6%</span></p>
                         <p class="key-indicators inactivity-indicator detail-text"><strong>Physical inactivity</strong> accounts for
                             <span class="highlight">6%</span></p>
                         <p class="key-indicators obesity-indicator detail-text"><strong>Obesity</strong> accounts for <span
+                                class="highlight">5%</span></p>
+                        <p class="key-indicators cho-indicator detail-text"><strong>High cholesterol</strong> accounts for <span
                                 class="highlight">5%</span></p>
                         <a class="source absolute-bottom" href="https://www.who.int/healthinfo/global_burden_disease/GlobalHealthRisks_report_full.pdf">Source: World Health Organization Global Risks Report, p.6</a>
                     </div>
@@ -213,10 +216,10 @@
                 <h2 class="blood-title" id="sys_view_5">Systolic Blood Pressure Contributes to Heart Disease Mortality</h2>
                 <div class="row bottom-1">
                     <div class="col-md-12">
-                        <p class="bottom-0">Systolic blood pressure is the maximum pressure in the arteries when the heart contracts, and is therefore a major determinant of heart disease risk.
-                            The visualization below explores the correlation between a country's mean systolic blood pressure and CVD DALYs*.
+                        <p class="bottom-0"><strong>Systolic blood pressure</strong> is the maximum pressure in the arteries when the heart contracts, and is therefore a <strong>major determinant of heart disease risk</strong>.
+                            The visualization below explores the correlation between a country's mean systolic blood pressure and the <strong>burden</strong> of heart disease, represented as heart disease Disability Adjusted Life Years (DALYs)*.
                         You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</p>
-                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a cardiovascular risk factor.</a>
+                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a heart disease risk factor.</a>
                     </div>
                 </div>
                  <div class="row bottom-1">
@@ -238,7 +241,7 @@
                                     <option value="2000">2000</option>
                                     <option value="2010">2010</option>
                                 </select>
-                            </div>every 1 mmHg increase in systolic blood pressure was associated with a <span id="cvd-increase-text"></span> unit increase in CVD DALYs per 1,000,000 people.
+                            </div>every 1 mmHg increase in systolic blood pressure was associated with a <span id="cvd-increase-text"></span> unit increase in heart disease DALYs per 1,000,000 people.
                         </form>
                         <div id="world-legend"></div>
                     </div>
@@ -249,8 +252,8 @@
                         <a class="source" href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source: World Health Organization</a></p>
                     </div>
                     <div class="col-md-12">
-                        <p>1 in 3 adults have uncontrolled blood pressure, as too do <a href="#chol_view_6">1 in 3 adults have uncontrolled cholesterol</a>
-                            <a class="source" href="https://www.cdc.gov/vitalsigns/cardiovasculardisease/index.html">Source: Centers for Disease Control and PRevention</a></p>
+                        <p>In addition to 1 in 3 adults having uncontrolled blood pressure, <a href="#chol_view_6">1 in 3 adults also have uncontrolled cholesterol</a>
+                            <br><a class="source" href="https://www.cdc.gov/vitalsigns/cardiovasculardisease/index.html">Source: Centers for Disease Control and Prevention</a></p>
                     </div>
                 </div>
 
@@ -347,21 +350,26 @@
         <div class="bag-inner">
         <div class="container">
             <h2 class="overweight-title" id="rf_view_8">Prevalence of Overweight, Obesity, and Physical Inactivity</h2>
+            <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#bp_view_4">blood pressure</a> and <a href="#chol_view_6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
+                The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
+                The prevalence of these modifiable risk factors varies across different countries.
+            </h4>
+            <p>Choose from the dropdown menu to view the prevalance of being overweight, obesity, physical inactivity,
+            and tobacco use. Click on different regions on the world map to filter by those regions. </p>
             <div class="row">
-                <div class="col-md-12">
-                    <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#bp_view_4">blood pressure</a> and <a href="#chol_view_6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
-                        The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
-                    The prevalence of these modifiable risk factors varies across different countries.
-                    </h4>
+                <div class="col-md-8">
+                    <div id="chart-area-9"></div>
+                </div>
+                <div class="col-md-4">
                     <label for="ranking-type">Group by</label>
                     <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
                         <option value="overweight">Overweight</option>
                         <option value="obese">Obesity</option>
                         <option value="physicallyInactive">Physical Inactivity</option>
                     </select>
-
-                    <button type="button" class="btn btn-link" id="change-sorting" onclick="barChart.reverse()"><i class="glyphicon glyphicon-sort"></i> Sort</button>
-                    <div id="chart-area-9"></div>
+                    Order:
+                    <a id="bar-order" href="#view-8" onclick="barChart.reverse()">Descending</a>
+                    <div id="bar-world-legend"></div>
                 </div>
             </div>
             <div class="next-content">
@@ -439,7 +447,9 @@
                         <button onclick="window.location.href='https://www.heartfoundation.org.au/'" type="button" class="btn btn-info">Heart Foundation</button>
                         <button onclick="window.location.href='https://www.heart.org/'" type="button" class="btn btn-info">American Heart Association</button>
                         <button onclick="window.location.href='https://www.who.int/cardiovascular_diseases/en/'" type="button" class="btn btn-info">World Health Organisation</button>
-                    
+                        <div class="next-content">
+                                <span>NEXT: About</span>
+                            </div>
                     </div>
         </div>
     </div>
@@ -455,7 +465,7 @@
                         <div class="row">
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img1.jpg" alt="Jane" style="width:100%">
+                                    <img src="images/img1.jpg" alt="Kerry Ivey" style="width:100%">
                                     <div>
                                     <h3>Kerry Ivey</h3>
                                     </div>
@@ -464,22 +474,22 @@
                             
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img2.jpg" alt="Mike" style="width:100%">
+                                    <img src="images/img2.jpg" alt="Brendan Murphy" style="width:100%">
                                     <div>
-                                    <h3>Brendon Murphy</h3>
+                                    <h3>Brendan Murphy</h3>
                                     </div>
                                 </div>
                                 </div>
                             
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img3.jpg" alt="John" style="width:100%">
+                                    <img src="images/img3.jpg" alt="Nil Tuzcu" style="width:100%">
                                     <h3>Nil Tuzcu</h3>
                                 </div>
                                 </div>
                                 <div class="column">
                                         <div class="card">
-                                        <img src="images/img4.jpg" alt="John" style="width:100%">
+                                        <img src="images/img4.jpg" alt="Ka Ning Yip" style="width:100%">
                                         <div>
                                             <h3>Ka Ning Yip</h3>
                                         </div>
@@ -488,24 +498,28 @@
                             </div>
 
                             <h3>References</h3>
-                            <p>
+                            <p style="font-size:13px;">
                                 1. View 2&5 Data Sources: <a href="http://www.who.int/healthinfo/global_burden_disease/estimates/en/index1.html"> http://www.who.int/healthinfo/global_burden_disease/estimates/en/index1.html</a>
                                 <br>
                                 2. View 5,7,8 Data Sources: <a href="http://apps.who.int/gho/data/node.main.A867?lang=en">http://apps.who.int/gho/data/node.main.A867?lang=en</a>
                                 <br>
                                 3. View 8 Data Sources: <a href="http://apps.who.int/gho/data/node.main.65">http://apps.who.int/gho/data/node.main.65</a>
                                 <br>
-                                4. High Blood Pressure Icon: from the Noun Project
+                                4. High Blood Pressure Icon: By John Salzarulo from the Noun Projectfrom the Noun Project
                                 <br>
-                                5. Tobacco Use Icon: from the Noun Project
+                                5. Tobacco Use Icon: Smoking by Andrejs Kirma from the Noun Project
                                 <br>
-                                6. High Blood Sugar Icon: from the Noun Project
+                                6. High Blood Sugar Icon: By Deemak Daksina from the Noun Project
                                 <br>
-                                7. Physical Inactivity Icon: from the Noun Project
+                                7. Physical Inactivity Icon: By Luis Prado from the Noun Project
                                 <br>
-                                8. Obesity Icon: from the Noun Project
+                                8. Obesity Icon: By Gan Khoon Lay from the Noun Project
                                 <br>
                                 9. High Cholesterol Icon: By Gan Khoon Lay from the Noun Project
+                                <br>
+                                10. Heart Icon: By DesignBite from the Noun Project
+                                <br>
+                                11. Image on view 4: <a href="https://cholesterol-about.weebly.com/">https://cholesterol-about.weebly.com/</a>
                             </p>
                     </div>
     </div>
@@ -539,11 +553,11 @@
 <script src="js/world_legend.js"></script>
 <script src="js/heart.js"></script>
 <script src="js/scatter.js"></script>
+<script src="js/Prevalence.js"></script>
 <script src="js/load_data.js"></script>
 <script src="js/cholesterol_line.js"></script>
 <!--<script src="js/cholesterol_gauge.js"></script>-->
 <script src="js/d3-tip.js"></script>
-<script src="js/Prevalence.js"></script>
 <script src="js/main.js"></script>
 <!-- <script src="js/scatter.js"></script> -->
 </body>
