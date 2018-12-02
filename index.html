@@ -350,23 +350,25 @@
         <div class="bag-inner">
         <div class="container">
             <h2 class="overweight-title" id="rf_view_8">Prevalence of Overweight, Obesity, and Physical Inactivity</h2>
+            <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#bp_view_4">blood pressure</a> and <a href="#chol_view_6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
+                The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
+                The prevalence of these modifiable risk factors varies across different countries.
+            </h4>
+            <p>Choose from the dropdown menu to view the prevalance of being overweight, obesity, physical inactivity,
+            and tobacco use. Click on different regions on the world map to filter by those regions. </p>
             <div class="row">
                 <div class="col-md-8">
-                    <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#bp_view_4">blood pressure</a> and <a href="#chol_view_6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
-                        The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
-                    The prevalence of these modifiable risk factors varies across different countries.
-                    </h4>
+                    <div id="chart-area-9"></div>
+                </div>
+                <div class="col-md-4">
                     <label for="ranking-type">Group by</label>
                     <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
                         <option value="overweight">Overweight</option>
                         <option value="obese">Obesity</option>
                         <option value="physicallyInactive">Physical Inactivity</option>
                     </select>
-
-                    <button type="button" class="btn btn-link" id="change-sorting" onclick="barChart.reverse()"><i class="glyphicon glyphicon-sort"></i> Sort</button>
-                    <div id="chart-area-9"></div>
-                </div>
-                <div class="col-md-4">
+                    Order:
+                    <a id="bar-order" href="#view-8" onclick="barChart.reverse()">Descending</a>
                     <div id="bar-world-legend"></div>
                 </div>
             </div>
@@ -463,7 +465,7 @@
                         <div class="row">
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img1.jpg" alt="Jane" style="width:100%">
+                                    <img src="images/img1.jpg" alt="Kerry Ivey" style="width:100%">
                                     <div>
                                     <h3>Kerry Ivey</h3>
                                     </div>
@@ -472,22 +474,22 @@
                             
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img2.jpg" alt="Mike" style="width:100%">
+                                    <img src="images/img2.jpg" alt="Brendan Murphy" style="width:100%">
                                     <div>
-                                    <h3>Brendon Murphy</h3>
+                                    <h3>Brendan Murphy</h3>
                                     </div>
                                 </div>
                                 </div>
                             
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img3.jpg" alt="John" style="width:100%">
+                                    <img src="images/img3.jpg" alt="Nil Tuzcu" style="width:100%">
                                     <h3>Nil Tuzcu</h3>
                                 </div>
                                 </div>
                                 <div class="column">
                                         <div class="card">
-                                        <img src="images/img4.jpg" alt="John" style="width:100%">
+                                        <img src="images/img4.jpg" alt="Ka Ning Yip" style="width:100%">
                                         <div>
                                             <h3>Ka Ning Yip</h3>
                                         </div>
