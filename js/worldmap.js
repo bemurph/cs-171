@@ -21,6 +21,15 @@ var barSVG = d3.select(".bar-area")
                 .append("g")
                 .attr("transform", "translate(" + barMargin.left + "," + barMargin.top + ")");
 
+                barSVG.append("text")
+                .text("Number of Deaths")
+                .style("font-size","14px")
+                .style("color","#333333")
+                .attr("y",-10)
+                .attr("class","bar-axis-text")
+                .style("display","none");
+                
+
 var barXScale = d3.scaleBand()
     .range([0, barWidth])
     .paddingInner(0.1);
@@ -272,14 +281,8 @@ var vis_corophlet = function(){
                     yAxisGroupBar = barSVG.select(".y-axis-bar")
                       .call(yAxisBar);
 
-                    barSVG.append("text")
-                          .text("Number of Deaths")
-                          .style("font-size","14px")
-                          .style("color","#333333")
-                          .attr("y",-10);
-                          
-
-                          
+                     d3.select(".bar-axis-text")
+                        .style("display","block");        
                 
                   }
                   else{
