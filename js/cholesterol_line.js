@@ -22,7 +22,6 @@ var y = d3.scaleLinear()
     .range([heightC, marginC.top]);
 
 var mean_cholesterol = [];
-var raise_cholesterol5 = [];
 
 // Define the line
 var lineC = d3.line()
@@ -118,7 +117,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     y.domain([d3.min(mean_cholesterol, function (d) {
         return +d.Cholesterol;
     }),
-        0.5 + d3.max(mean_cholesterol, function (d) {
+        0.2 + d3.max(mean_cholesterol, function (d) {
             return +d.Cholesterol;
         })]);
 
@@ -283,12 +282,12 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
 
         // Generate Circle Graph
 
-        circleRadii = [40, 20, 10];
+        circleRadii = [function (d) { return d.Prevalence; }];
 
         var circles = svgG.selectAll("circle")
                                   .data(circleRadii)
                                   .enter()
-                                  .append("circle")
+                                  .append("circle");
 
         var circleAttributes = circles
                                .attr("cx", 150)
