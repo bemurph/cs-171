@@ -102,11 +102,12 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             var gender = d3.nest().key(function (d) {
                 return d.Gender
             })
-            var prevalence = d3.nest().key(function (d) {
-                return d.Prevalence
-            })
+ //           var prevalence = d3.nest().key(function (d) {
+ //               return d.Prevalence
+ //           })
                 .entries(leaves);
-            return {cholesterol: cholesterol, gender: gender, prevalence: prevalence};
+ //           return {cholesterol: cholesterol, gender: gender, prevalence: prevalence};
+            return {cholesterol: cholesterol, gender: gender};
         })
         .entries(mean_cholesterol);
 
