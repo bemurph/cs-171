@@ -1,16 +1,8 @@
 //Margins for the line graph
 
 var marginC = {top: 20, right: 80, bottom: 20, left: 80},
-    widthC = 700 - marginC.left - marginC.right,
+    widthC = 850 - marginC.left - marginC.right,
     heightC = 500 - marginC.top - marginC.bottom;
-
-//Margins for the circle gauge
-
-var marginG = {top: 20, right: 20, bottom: 20, left: 20},
-    widthG = 300 - marginG.left - marginG.right,
-    heightG = 100 - marginG.top - marginG.bottom;
-
-//var countrySelect = [];
 
 var parseYear = d3.timeParse("%Y");
 var formatYear = d3.timeFormat("%Y");
@@ -50,22 +42,6 @@ var svgC = d3.select("#chart-area-7")
 var color = d3.scaleOrdinal()
     .domain(["Male", "Female"])
     .range(["#4071FF", "#FE57FF"]);
-
-// Create the svg canvas and color scheme in the "circle" div
-var svgG = d3.select("#chart-area-8")
-    .append("svg")
-    .style("width", widthG + marginG.left + marginG.right)
-    .style("height", heightG + marginG.top + marginG.bottom)
-    .attr("width", widthG + marginG.left + marginG.right)
-    .attr("height", heightG + marginG.top + marginG.bottom)
-    .append("g")
-    .attr("transform","translate(" + marginG.left + "," + marginG.top + ")")
-    .attr("class", "svg");
-
-var colorG = d3.scaleOrdinal()
-    .domain([0, 20, 40, 60, 80])
-    .range(['#fee5d9','#fcae91','#fb6a4a','#de2d26','#a50f15']);
-
 
 // Define the div for the tooltip
 var div = d3.select("body").append("div")
@@ -145,7 +121,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - 60)
         .attr("x", 0 - (heightC / 2))
-        .attr("dy", "1em")
+        .attr("dy", "2em")
+        .attr("font-size", "12px")
         .style("text-anchor", "middle")
         .text("Average Cholesterol in mmol/L")
         .attr("class", "y axis label");
@@ -242,12 +219,13 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .data(color.domain())
             .enter()
             .append("g")
+            .attr("font-size", "10px")
             .attr("class", "legend")
             .attr('transform', function (d, i) {
                 var heightL = legendRectSize + legendSpacing;
                 var offset = heightL * color.domain().length / 2;
-                var horz = -2 * legendRectSize;
-                var vert = i * heightL - offset;
+                var horz = -2 * legendRectSize + 725;
+                var vert = i * heightL - offset +300;
                 return 'translate(' + horz + ',' + vert + ')';
             });
 
@@ -265,7 +243,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             });
 
         svgC.append("text")
-            .attr("transform", "translate(" + (widthC + 3) + "," + y(mean_cholesterol[0].Threshold) + ")")
+            .attr("transform", "translate(" + (widthC + 2) + "," + y(mean_cholesterol[0].Threshold + 0.05) + ")")
             .attr("dy", ".35em")
             .attr("font-size", "10px")
             .attr("text-anchor", "start")
@@ -273,27 +251,12 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .text("Optimal Level");
 
         svgC.append("text")
-            .attr("transform", "translate(" + (widthC + 3) + "," + y(mean_cholesterol[0].High) + ")")
+            .attr("transform", "translate(" + (widthC + 2) + "," + y(mean_cholesterol[0].High + 0.05) + ")")
             .attr("dy", ".35em")
             .attr("font-size", "10px")
             .attr("text-anchor", "start")
             .style("fill", "9e1d35")
             .text("High Cholesterol");
-
-        // Generate Circle Graph
-
-        circleRadii = [function (d) { return d.Prevalence; }];
-
-        var circles = svgG.selectAll("circle")
-                                  .data(circleRadii)
-                                  .enter()
-                                  .append("circle");
-
-        var circleAttributes = circles
-                               .attr("cx", 150)
-                               .attr("cy", 25)
-                               .attr("r", function (d) { return d; })
-                               .style("fill", d => colorG(d.key));
 
     };
 
