@@ -18,11 +18,11 @@ ScatterPlot = function(_parentElement, _data, _legendElement, _legendData) {
 ScatterPlot.prototype.initVis = function() {
     let vis = this;
 
-    vis.margin = {top: 30, right: 0, bottom: 40, left: 50};
+    vis.margin = {top: 15, right: 15, bottom: 30, left: 50};
     const boundingBox = d3.select(vis.parentElement).node().getBoundingClientRect();
 
     vis.width = boundingBox.width - vis.margin.left - vis.margin.right;
-    vis.height = vis.width*3/4 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width*3/5 - vis.margin.top - vis.margin.bottom;
 
     vis.svg = d3.select(vis.parentElement).append('svg')
         .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -47,12 +47,12 @@ ScatterPlot.prototype.initVis = function() {
 
     // adding axes is also simpler now, just translate x-axis to (0,height) and it's already defined to be a bottom axis.
     vis.xAxisElement = vis.svg.append('g')
-        .attr('transform', 'translate(0,' + vis.height + ')')
+        .attr('transform', 'translate(0,' + (vis.height + 10) + ')')
         .attr('class', 'x-axis');
 
     vis.xAxisLabel = vis.svg.append('text')
         .attr('x', vis.width)
-        .attr('y', vis.height - 10)
+        .attr('y', vis.height)
         .attr('text-anchor', 'end')
         .attr('class', 'label')
         .text('Blood pressure');
@@ -61,19 +61,24 @@ ScatterPlot.prototype.initVis = function() {
         .scale(vis.yScale);
 
     vis.yAxisElement = vis.svg.append('g')
-        .attr('class', 'y-axis');
+        .attr('class', 'y-axis')
+        .attr('transform', 'translate('+(-20)+',0)');
 
     vis.yAxisLabel = vis.svg.append('text')
         .attr("transform", "rotate(-90)")
-        .attr("y", 6)
+        .attr("y", -10)
         .attr("dy", ".71em")
         .style("text-anchor", "end")
         .attr('class', 'label')
-        .text('Disability adjusted life years from Cardiovascular Disease');
+        .text('CVD DALYs per 1,000,000 people');
 
     vis.continentColor = d3.scaleOrdinal()
         .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
         .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
+
+    vis.tooltip = d3.select('body').append('div')
+        .attr('class', 'tooltip')
+        .style('opacity', 0);
 
     vis.mapLegend = new WorldLegend(vis.legendElement, vis.legendData, vis.continentColor);
 
@@ -96,7 +101,7 @@ ScatterPlot.prototype.updateVis = function() {
     vis.xScale.domain(d3.extent(vis.filteredData, d => d.bloodPressure)).nice();
     vis.yScale.domain(d3.extent(vis.filteredData, d => d.popCVD)).nice();
     vis.radius.domain(d3.extent(vis.filteredData, d => d.population)).nice();
-    vis.yAxisElement.transition().duration(vis.transitionDuration)
+    vis.xAxisElement.transition().duration(vis.transitionDuration)
         .call(vis.xAxis);
     vis.yAxisElement.transition().duration(vis.transitionDuration)
         .call(vis.yAxis);
@@ -107,6 +112,23 @@ ScatterPlot.prototype.updateVis = function() {
     bubbles.enter().append('circle')
             .classed('bubble', true)
             .attr('fill', d => vis.continentColor(d.region))
+            .on('mouseover', function(d) {
+                vis.tooltip.transition()
+                    .duration(vis.transitionDuration/2)
+                    .style("opacity", .9);
+                vis.tooltip.html("Country: "+d.country+
+                    "<br>Year: "+vis.selectedYear+
+                    "<br>"+vis.selectedGender+" population: "+d.population.toLocaleString()+
+                    "<br>CVD DALYs per million: "+Math.round(d.popCVD)+
+                    "<br>Mean systolic blood pressure: "+d.bloodPressure+" mmHg")
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function(d) {
+                vis.tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
         .merge(bubbles).transition().duration(vis.transitionDuration)
             .attr('cx', d => vis.xScale(d.bloodPressure))
             .attr('cy', d => vis.yScale(d.popCVD))
@@ -116,9 +138,7 @@ ScatterPlot.prototype.updateVis = function() {
         .style('opacity', 0);
 
     const cvdIncreaseValue = vis.calcLinear();
-    const cvdIncreaseText = "For "+ vis.textFriendlyGenders[vis.selectedGender] + " in " + vis.selectedYear + ", every 1 mmHg increase in systolic blood pressure was associated with a " + cvdIncreaseValue + " unit increase in CVD DALYs*";
-
-    d3.select('#cvd-increase-text').text(cvdIncreaseText);
+    d3.select('#cvd-increase-text').text(cvdIncreaseValue);
 };
 
 ScatterPlot.prototype.setGender = function(gender) {
@@ -141,7 +161,7 @@ ScatterPlot.prototype.calcLinear = function(){
 
     let vis = this;
     const x = "bloodPressure",
-          y = "CVD";
+          y = "popCVD";
           // minX = d3.min(vis.filteredData,d => d.bloodPressure),
           // minY = d3.min(vis.filteredData, d => d.CVD);
     
@@ -210,5 +230,5 @@ ScatterPlot.prototype.calcLinear = function(){
     //         x: (minY - b) / m
     //     }
     // }
-    return Math.round(m);
+    return +m.toFixed(1);
 };

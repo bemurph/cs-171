@@ -34,13 +34,13 @@
     <a href="#view-5">
         <div data-title="Systolic Blood Pressure" class="navigation-dot"></div>
     </a>
-    <a href="#view-8">
+    <a href="#view-6">
         <div data-title="High Cholesterol" class="navigation-dot"></div>
     </a>
-    <a href="#view-6">
+    <a href="#view-7">
         <div data-title="Average Cholesterol in Adults" class="navigation-dot"></div>
     </a>
-    <a href="#view-7">
+    <a href="#view-8">
         <div data-title="Recommendations" class="navigation-dot"></div>
     </a>
 </div>
@@ -132,7 +132,7 @@
 
 
     <!-- VIEW-3 -->
-    <div vs-anchor="view-3" id="view-3" class="mainview">
+    <div vs-anchor="view-3" id="view-3" class="mainview view3">
         <div class="vs-center-wrap">
             <div class="container">
                 <h2 class="heart-icon">Risk Factors for Cardiovascular Disease</h2>
@@ -193,46 +193,50 @@
 
     <!-- VIEW-5 -->
     <div vs-anchor="view-5" class="mainview view5">
-
-        <div class="vs-center-wrap">
             <div class="container">
-                <h2 class="heart-icon">Association between mean systolic blood pressure and cardiovascular disease in countries with
-                    a population greater than 20 million people</b></h2>
-                <div class="row">
-                    <div class="col-md-9">
+                <h2 class="heart-icon">Systolic Blood Pressure</h2>
+                <div class="row bottom-1">
+                    <div class="col-md-12">
+                        <p class="bottom-0">Systolic blood pressure is the maximum pressure in the arteries when the heart contracts, and is therefore a major determinant of heart disease risk.
+                            The visualization below explores the correlation between a country's mean systolic blood pressure and CVD DALYs*.
+                        You can click on the different regions in the world map to filter by those regions. Hover over the dots for more information about individual countries.</p>
+                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a cardiovascular risk factor.</a>
+                    </div>
+                </div>
+                 <div class="row bottom-1">
+                    <div class="col-md-8">
+
+                        <div id="chart-area-5">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
                         <form class="form-inline">
-                            <div class="form-group" id="bp-gender">
-                                <label for="x-value">Gender</label>
-                                <select class="form-control" id="x-value" onchange="scatter.setGender(this.value)">
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
+                            <div class="form-group d-inline-block">
+                                For
+                                <select style="margin-right: 5px" class="form-control" id="x-value" onchange="scatter.setGender(this.value)">
+                                    <option value="Male">men</option>
+                                    <option value="Female">women</option>
                                 </select>
-                                <label style="margin-left: 2rem" for="y-value">Year</label>
+                                in
                                 <select class="form-control" id="y-value" onchange="scatter.setYear(+this.value)">
                                     <option value="2000">2000</option>
                                     <option value="2010">2010</option>
                                 </select>
-                            </div>
+                            </div>every 1 mmHg increase in systolic blood pressure was associated with a <span id="cvd-increase-text"></span> unit increase in CVD DALYs per 1,000,000 people.
                         </form>
-                        <div id="chart-area-5">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <p id="cvd-increase-text"></p>
                         <div id="world-legend"></div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability.
-                        <a href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source: World Health Organization</a></p>
+                        <p><small>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability.</small>
+                        <a class="source" href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source: World Health Organization</a></p>
                     </div>
                 </div>
             </div>
             <div class="next-content">
                 <span>NEXT: High Cholesterol</span>
             </div>
-        </div>
     </div>
 
     <!-- VIEW-6 -->

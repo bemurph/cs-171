@@ -62,7 +62,7 @@ function processBPRow(d) {
         population: +d.population,
         CVD: +d.CVD,
         bloodPressure: +d.bloodpressure,
-        popCVD: +d.CVD/(+d.population)
+        popCVD: (+d.CVD/(+d.population))*1000000
     }
 }
 

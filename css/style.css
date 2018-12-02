@@ -7,7 +7,7 @@
 
 body {
   background-color: #f7f7f7;
-  text-align: center;
+  /*text-align: center;*/
   font-family: 'Source Sans Pro', sans-serif;
 }
 
@@ -398,4 +398,28 @@ h4{
 
 .x-axis {
   font-size: 10px;
+}
+
+.tooltip {
+   position: absolute;
+   text-align: center;
+   /*width: 100px;*/
+   /*height: 75px;*/
+   padding: 5px;
+   font: 12px sans-serif;
+   background: #e0a800;
+   border: 0px;
+   border-radius: 8px;
+   pointer-events: none;
+ }
+
+#cvd-increase-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  display: contents;
+  color: var(--main-color);
+}
+
+.bottom-1 {
+  margin-bottom: 1rem;
 }

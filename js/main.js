@@ -36,4 +36,7 @@ $(document).ready(function() {
     });
     let activeView = window.location.hash ? window.location.hash : '#view-1';
     $('a[href="'+activeView+'"] .navigation-dot').addClass('active');
+    $('.next-content').on('click', function() {
+        $.fn.viewScroller.showMainView('next');
+    });
 });
