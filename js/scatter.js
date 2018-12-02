@@ -22,7 +22,7 @@ ScatterPlot.prototype.initVis = function() {
     const boundingBox = d3.select(vis.parentElement).node().getBoundingClientRect();
 
     vis.width = boundingBox.width - vis.margin.left - vis.margin.right;
-    vis.height = vis.width*3/5 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width/2 - vis.margin.top - vis.margin.bottom;
 
     vis.svg = d3.select(vis.parentElement).append('svg')
         .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -55,7 +55,7 @@ ScatterPlot.prototype.initVis = function() {
         .attr('y', vis.height)
         .attr('text-anchor', 'end')
         .attr('class', 'label')
-        .text('Blood pressure');
+        .text('Blood pressure (mmHg)');
 
     vis.yAxis = d3.axisLeft()
         .scale(vis.yScale);
