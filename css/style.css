@@ -355,22 +355,20 @@ h4{
 .low_threshold {
   fill: none;
   stroke: #e41a1c;
-  stroke-width: 3px;
-  stroke-dasharray: 3;
+  stroke-width: 1px;
 }
 
 .high_threshold {
   fill: none;
   stroke: #9e1d35;
-  stroke-width: 3px;
-  stroke-dasharray: 3;
+  stroke-width: 1px;
 }
 
-.focus {
+.dot {
   font-size: 14px;
 }
 
-.focus circle {
+.dot circle {
   fill: #5e8dc9;
 }
 
@@ -398,4 +396,15 @@ h4{
 
 .x-axis {
   font-size: 10px;
+}
+
+.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  height: 28px;
+  padding: 2px;
+  font: 10px sans-serif;
+  background: #f0f0e8;
+  pointer-events: none;
 }

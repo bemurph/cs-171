@@ -12,7 +12,7 @@ var gauge = function(container, configuration) {
         pointerHeadLengthPercent	: 0.9,
 
         minValue					: 0,
-        maxValue					: 100,
+        maxValue					: 10,
 
         minAngle					: -90,
         maxAngle					: 90,
@@ -36,7 +36,6 @@ var gauge = function(container, configuration) {
     var ticks = undefined;
     var tickData = undefined;
     var pointer = undefined;
-
     var donut = d3.pie();
 
     function deg2rad(deg) {
@@ -58,7 +57,6 @@ var gauge = function(container, configuration) {
         range = config.maxAngle - config.minAngle;
         r = config.size / 2;
         pointerHeadLength = Math.round(r * config.pointerHeadLengthPercent);
-
         // a linear scale that maps domain values to a percent from 0..1
         scale = d3.scaleLinear()
             .range([0,1])
@@ -123,7 +121,6 @@ var gauge = function(container, configuration) {
                 return 'rotate(' +newAngle +') translate(0,' +(config.labelInset - r) +')';
             })
             .text(config.labelFormat);
-
         var lineData = [ [config.pointerWidth / 2, 0],
             [0, -pointerHeadLength],
             [-(config.pointerWidth / 2), 0],
@@ -153,7 +150,6 @@ var gauge = function(container, configuration) {
             .attr('transform', 'rotate(' +newAngle +')');
     }
     that.update = update;
-
     configure(configuration);
 
     return that;
@@ -170,21 +166,16 @@ function onDocumentReady() {
     });
     powerGauge.render();
 
-    //UPDATE HERE
     function updateReadings() {
         // just pump in random data here...
-        var gaugeSelect = svg.selectAll(".CountryGroups")
-            .data(data)
-            .enter()
-            .append("g")
-            .attr("class", "CountryGroups");
+        powerGauge.update(Math.random() * 10);
     }
 
     // every few seconds update reading values
     updateReadings();
-    //setInterval(function() {
-      //  updateReadings();
-    //}, 10 * 1000);
+    setInterval(function() {
+        updateReadings();
+    }, 5 * 1000);
 }
 
 if ( !window.isLoaded ) {

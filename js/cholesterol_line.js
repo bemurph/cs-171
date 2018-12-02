@@ -58,7 +58,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     if (error) throw error;
 
     // Format the data
-    data.forEach(function(d) {
+    data.forEach(function (d) {
         d.Country = d.Country;
         d.Cholesterol = +d.Cholesterol;
         d.Gender = d.Gender;
@@ -67,10 +67,10 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         d.High = +d.High;
     });
 
-   // console.log(data);
+    // console.log(data);
     mean_cholesterol = data;
 
-    var processraisedcholesterolRow = function(d) {
+    var processraisedcholesterolRow = function (d) {
         return {
             Country: d.Country,
             ["Both sexes"]: +d["Both sexes"],
@@ -79,31 +79,37 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         }
     }
 
-    d3.csv("data/raised-total-cholesterol-adult-5plus-2008.csv", processraisedcholesterolRow, function(data2) {
+    d3.csv("data/raised-total-cholesterol-adult-5plus-2008.csv", processraisedcholesterolRow, function (data2) {
         raise_cholesterol5 = data2;
         // console.log(data2);
     });
 
     var nest = d3.nest()
-        .key(function(d){
+        .key(function (d) {
             return d.Country;
         })
-        .rollup(function(leaves){
-            var cholesterol = d3.max(leaves, function(d){
+        .rollup(function (leaves) {
+            var cholesterol = d3.max(leaves, function (d) {
                 return d.Cholesterol
             })
-            var gender = d3.nest().key(function(d){
+            var gender = d3.nest().key(function (d) {
                 return d.Gender
             })
                 .entries(leaves);
-            return {cholesterol:cholesterol, gender:gender};
+            return {cholesterol: cholesterol, gender: gender};
         })
         .entries(mean_cholesterol);
 
     // Scale the range of the data
-    x.domain(d3.extent(mean_cholesterol, function(d) { return +d.Year; }));
-    y.domain([d3.min(mean_cholesterol, function(d) { return +d.Cholesterol; }),
-        0.5 + d3.max(mean_cholesterol, function(d) { return +d.Cholesterol; })]);
+    x.domain(d3.extent(mean_cholesterol, function (d) {
+        return +d.Year;
+    }));
+    y.domain([d3.min(mean_cholesterol, function (d) {
+        return +d.Cholesterol;
+    }),
+        0.5 + d3.max(mean_cholesterol, function (d) {
+            return +d.Cholesterol;
+        })]);
 
     // Set up the x axis
     var xAxis = svgC.append("g")
@@ -143,19 +149,19 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         .data(nest)
         .enter()
         .append("option")
-        .attr("value", function(d){
+        .attr("value", function (d) {
             return d.key;
         })
-        .text(function(d){
+        .text(function (d) {
             return d.key;
         });
 
 
     // Function to create the initial graph
-    var initialGraph = function(country){
+    var initialGraph = function (country) {
 
         // Filter the data to include only country of interest
-        var selectCountry = nest.filter(function(d){
+        var selectCountry = nest.filter(function (d) {
             return d.key == country;
         });
 
@@ -163,7 +169,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
 
 
         var selectCountryGroups = svgC.selectAll(".CountryGroups")
-            .data(selectCountry, function(d){
+            .data(selectCountry, function (d) {
                 return d ? d.key : this.key;
             })
             .enter()
@@ -172,25 +178,52 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
 
 
         var initialPath = selectCountryGroups.selectAll(".line")
-            .data(function(d) { return d.value.gender; })
+            .data(function (d) {
+                return d.value.gender;
+            })
             .enter()
             .append("path");
 
         initialPath
-            .attr("d", function(d){
+            .attr("d", function (d) {
                 return lineC(d.values)
             })
             .attr("class", "line")
             .attr('stroke', d => color(d.key));
 
+        //add a dot at each data point to which hover behaviour can be attached
+        svgC.selectAll('dot')
+        //.data(mean_cholesterol)
+            .enter()
+            .append('circle')
+            .attr('r', 2)
+            .attr('cx', function (d) {
+                return x(d.Year);
+            })
+            .attr('cy', function (d) {
+                return y(d.Cholesterol);
+            })
+            //attach mouse hover behaviour to the dots
+            .on('mouseover', function (d) {
+                div.transition().style('opacity', .9);
+                div.html('' + formatYear(d.Year) + '<br/>' + d.Cholesterol + ' mmol/L')
+                    .style('left', (d3.event.pageX) + 'px')
+                    .style('top', (d3.event.pageY) + 'px');
+            })
+            .on('mouseout', function (d) {
+                div.transition().style('opacity', 0);
+            });
+
         svgC.append("path")
             .data([mean_cholesterol])
             .attr("class", "line low_threshold")
+            .style("stroke-dasharray", "30, 30")
             .attr("d", lineTL);
 
         svgC.append("path")
             .data([mean_cholesterol])
             .attr("class", "line high_threshold")
+            .style("stroke-dasharray", "30, 30")
             .attr("d", lineTH);
 
         var legendRectSize = 10;
@@ -201,9 +234,9 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .enter()
             .append("g")
             .attr("class", "legend")
-            .attr('transform', function(d, i) {
+            .attr('transform', function (d, i) {
                 var heightL = legendRectSize + legendSpacing;
-                var offset =  heightL * color.domain().length / 2;
+                var offset = heightL * color.domain().length / 2;
                 var horz = -2 * legendRectSize;
                 var vert = i * heightL - offset;
                 return 'translate(' + horz + ',' + vert + ')';
@@ -218,33 +251,29 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         legend.append('text')
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize - legendSpacing)
-            .text(function(d) { return d; });
-
-
-        var dot = svgC.selectAll("dot")
-            .data(mean_cholesterol)
-            .enter().append("circle")
-            .attr("r", 1);
-
-        dot
-            .attr("cx", function (d) {
-                return x(d.Year);
-            })
-            .attr("cy", function (d) {
-                return y(d.Cholesterol);
-            })
-            .on("mouseover", function (d) {
-                div.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                div.html("Year: " + formatYear(d.Year) + "<p>" + d.Cholesterol + "mmol/L </p>")
-                    .style("left", (d3.event.pageX) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
+            .text(function (d) {
+                return d;
             });
+
+        svgC.append("text")
+            .attr("transform", "translate(" + (widthC + 3) + "," + y(mean_cholesterol[0].Threshold) + ")")
+            .attr("dy", ".35em")
+            .attr("font-size", "10px")
+            .attr("text-anchor", "start")
+            .style("fill", "e41a1c")
+            .text("Optimal Level");
+
+        svgC.append("text")
+            .attr("transform", "translate(" + (widthC + 3) + "," + y(mean_cholesterol[0].High) + ")")
+            .attr("dy", ".35em")
+            .attr("font-size", "10px")
+            .attr("text-anchor", "start")
+            .style("fill", "9e1d35")
+            .text("High Cholesterol");
 
 
         //   document.getElementsByClassName("cholesterol-prevalence-1")[0].innerHTML = "In 2008, the prevalence of high " +
-       //     "cholesterol for " + country + " is: "
+        //     "cholesterol for " + country + " is: "
     };
 
     // Create initial graph
@@ -252,27 +281,43 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
 
 
     // Update the data
-    var updateGraph = function(country){
+    var updateGraph = function (country) {
 
         // Filter the data to include only country of interest
-        var selectCountry = nest.filter(function(d){
+        var selectCountry = nest.filter(function (d) {
             return d.key == country;
         })
 
         // Select all of the grouped elements and update the data
         var selectCountryGroups = svgC.selectAll(".CountryGroups")
             .data(selectCountry)
-            .style("color", function(d, i) { return i ? null : "red"; });
+            .style("color", function (d, i) {
+                return i ? null : "red";
+            });
 
         // Select all the lines and transition to new positions
         selectCountryGroups.selectAll(".line")
-            .data(function(d) { return d.value.gender; },
-                function(d){ return d.key; })
+            .data(function (d) {
+                    return d.value.gender;
+                },
+                function (d) {
+                    return d.key;
+                })
             .transition()
             .duration(1000)
-            .attr("d", function(d){
+            .attr("d", function (d) {
                 return lineC(d.values);
             })
+            //attach mouse hover behaviour to the dots
+            .on('mouseover', function (d) {
+                div.transition().style('opacity', .9);
+                div.html('' + formatYear(d.Year) + '<br/>' + d.Cholesterol + ' mmol/L')
+                    .style('left', (d3.event.pageX) + 'px')
+                    .style('top', (d3.event.pageY) + 'px');
+            })
+            .on('mouseout', function (d) {
+                div.transition().style('opacity', 0);
+            });
 
         // Update the Y-axis
         d3.select(".y")
@@ -285,12 +330,11 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
                 .tickSize(0, 0));
 
 
-
     }
 
 
     // Run update function when dropdown selection changes
-    countryList.on('change', function(){
+    countryList.on('change', function () {
 
         // Find which country was selected from the dropdown
         var selectedCountry = d3.select(this)
@@ -303,5 +347,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         updateGraph(selectedCountry);
 
     });
+
+    //gauge
 
 });

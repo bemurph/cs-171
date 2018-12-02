@@ -21,6 +21,13 @@ var xP = d3.scaleBand()
 var yP = d3.scaleLinear()
     .range([heightP, 0]);
 
+// Tooltip
+
+var tooltip = d3.select("body").append("div").attr("class", "tooltip");
+
+var regionColor = d3.scaleOrdinal()
+    .domain(['Asia', 'Americas', 'Africa', 'Europe', 'Oceania'])
+    .range(['#e41a1c', '#ff7f00', '#4daf4a', '#377eb8', '#984ea3']);
 
 // Axis
 var xAxisP = d3.axisBottom()
@@ -29,15 +36,9 @@ var xAxisP = d3.axisBottom()
 var yAxisP = d3.axisLeft()
     .scale(yP);
 
-var xAxisGroup = svgP.append("g")
-    .attr("class", "x-axis axis")
-    .attr("transform", "translate(0," + heightP + ")")
-    .selectAll("text")
-        .style("text-anchor", "end")
-        .attr("dx", "-.8em")
-        .attr("dy", ".15em")
-        .attr("transform", "rotate(-65)")
-        .style("font-size","5px");
+//var xAxisGroup = svgP.append("g")
+//    .attr("class", "x-axis axis")
+//    .attr("transform", "translate(0," + heightP + ")")
 
 var yAxisGroup = svgP.append("g")
     .attr("class", "y-axis axis");
@@ -80,11 +81,13 @@ var changeSortingOrder = d3.select("#change-sorting").on("click", function() {
 
 // Load CSV file
 function loadData() {
-    d3.csv("data/prevalence-cholesterol-physical-activity.csv", function(error, csv) {
+    d3.csv("data/prevalence-overweight-obese-physical-activity.csv", function(error, csv) {
 
         csv.forEach(function(d){
-            d.Cholesterol_high = +d.Cholesterol_high;
+            d.Obese = +d.Obese;
+            d.Overweight = +d.Overweight;
             d.Physical_inactivity = +d.Physical_inactivity;
+            d.Region = d.Region;
         });
 
         // Store csv data in global variable
@@ -101,10 +104,12 @@ function updateVisualization() {
     // Get the selected ranking option
     var rankingType = selectRankingType.property("value");
 
-    if(rankingType == "High Cholesterol")
-        yAxisTitle.text("Prevalence (%), 2008");
+    if(rankingType == "Overweight")
+        yAxisTitle.text("Prevalence (%)");
+    else if (rankingType == "Obese")
+        yAxisTitle.text("Prevalence (%)");
     else
-        yAxisTitle.text("Prevalence (%), 2016");
+        yAxisTitle.text("Prevalence (%)");
 
     // Sort data
     data.sort(function(a, b) { return b[rankingType] - a[rankingType]; });
@@ -125,6 +130,7 @@ function updateVisualization() {
         .attr("height",0)
         .attr("y",heightP)
         .attr("class", "bar")
+        .attr('fill', d => regionColor(d.Region))
 
         // Update
         .merge(bars)
@@ -135,7 +141,23 @@ function updateVisualization() {
         .attr("x", function(d) { return xP(d.Country); })
         .attr("y", function(d) { return yP(d[rankingType]); })
         .attr("width", xP.bandwidth())
+        .attr("height", function(d) { return heightP - yP(d[rankingType]); });
+
+    svgP.selectAll(".bar")
+        .data(data)
+        .enter().append("rect")
+        .attr("x", function(d) { return xP(d.Country); })
+        .attr("y", function(d) { return yP(d[rankingType]); })
+        .attr("width", xP.bandwidth())
         .attr("height", function(d) { return heightP - yP(d[rankingType]); })
+        .on("mousemove", function(d){
+            tooltip
+                .style("left", d3.event.pageX - 50 + "px")
+                .style("top", d3.event.pageY - 70 + "px")
+                .style("display", "inline-block")
+                .html((d.Country) + "<br>" + (d[rankingType]));
+        })
+        .on("mouseout", function(d){ tooltip.style("display", "none");});
 
     // Exit
     bars.exit().remove();
