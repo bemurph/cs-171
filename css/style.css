@@ -30,6 +30,7 @@ li{
   display: none;
   position: absolute;
   z-index: 2;
+  text-align: center;
 }
 
 h1{
@@ -308,7 +309,6 @@ h4{
 
 .recommendation {
   display: none;
-  box-shadow: 0px 0px 7px 2px #0000001f;
   padding: 1.25rem;
 }
 
@@ -517,48 +517,48 @@ h4{
 }
 
 #blood-pressure-recommendation li:before{
-  background-image: url(../images/blood-ribbon.svg);
+  background-image: url(../images/blood-tick.svg);
   display: inline-block;
   content: ' ';
-  background-size: 18px 18px;
-  height: 18px;
-  width: 18px;
+  background-size: 14px 14px;
+  height: 14px;
+  width: 14px;
   position: relative;
   top: 3px;
-  right: 5px
+  right: 5px;
 }
 
 #cholesterol-recommendation li:before{
-  background-image: url(../images/cho-ribbon.svg);
+  background-image: url(../images/cho-tick.svg);
   display: inline-block;
   content: ' ';
-  background-size: 18px 18px;
-  height: 18px;
-  width: 18px;
+  background-size: 14px 14px;
+  height: 14px;
+  width: 14px;
   position: relative;
   top: 3px;
   right: 5px
 }
 
 #smoking-recommendation li:before{
-  background-image: url(../images/smoking-ribbon.svg);
+  background-image: url(../images/smoking-tick.svg);
   display: inline-block;
   content: ' ';
-  background-size: 18px 18px;
-  height: 18px;
-  width: 18px;
+  background-size: 14px 14px;
+  height: 14px;
+  width: 14px;
   position: relative;
   top: 3px;
   right: 5px
 }
 
 #diabetes-recommendation li:before{
-  background-image: url(../images/diabetes-ribbon.svg);
+  background-image: url(../images/diabetes-tick.svg);
   display: inline-block;
   content: ' ';
-  background-size: 18px 18px;
-  height: 18px;
-  width: 18px;
+  background-size: 14px 14px;
+  height: 14px;
+  width: 14px;
   position: relative;
   top: 3px;
   right: 5px
@@ -586,4 +586,11 @@ h4{
 .btn-info:hover{
   color: white !important;
   background-color: var(--main-color)  !important;
+}
+
+.recommendation-div{
+  max-width: 46% !important;
+  margin-right: 4% !important;
+  box-shadow: 0px 0px 7px 2px #0000001f;
+  border: 1px solid #26438e36;
 }
