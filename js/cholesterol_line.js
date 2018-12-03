@@ -2,7 +2,7 @@
 
 var marginC = {top: 20, right: 80, bottom: 20, left: 80},
     widthC = 850 - marginC.left - marginC.right,
-    heightC = 450 - marginC.top - marginC.bottom;
+    heightC = 400 - marginC.top - marginC.bottom;
 
 var parseYear = d3.timeParse("%Y");
 var formatYear = d3.timeFormat("%Y");
@@ -35,6 +35,9 @@ var svgC = d3.select("#chart-area-7")
     .style("height", heightC + marginC.top + marginC.bottom)
     .attr("width", widthC + marginC.left + marginC.right)
     .attr("height", heightC + marginC.top + marginC.bottom)
+    .style("margin-left", "auto")
+    .style("margin-right", "auto")
+    .style("display", "block")
     .append("g")
     .attr("transform","translate(" + marginC.left + "," + marginC.top + ")")
     .attr("class", "svg");

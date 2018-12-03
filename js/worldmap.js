@@ -217,18 +217,18 @@ var vis_corophlet = function(){
 
                       $(".bar-area-name").html("Country: "+ countryData[d.id][selectYear].Country);
                       $(".bar-area-population").html("Population: "+ countryData[d.id][selectYear].Population_Total.toLocaleString()+",000");
-                      $(".bar-area-ratio").html("Proportion of death attributable  to CVD: "+ ratioFormat(countryData[d.id][selectYear].ratio_Total));                     
+                      $(".bar-area-ratio").html("Proportion of death attributable to heart disease: "+ ratioFormat(countryData[d.id][selectYear].ratio_Total));                     
                       
-                      var bardata = [{name:"Cardiovascular diseases",abbr:"C.V.D.", rank: countryData[d.id][selectYear].Cardiovascular_Total},
-                                    {name:"Infectious and parasitic diseases",abbr:"I.P.D.", rank: countryData[d.id][selectYear].Infectious_Total},
-                                    {name: "Malignant neoplasms",abbr:"M.N.", rank: countryData[d.id][selectYear].Malignant_Total},
-                                    {name: "Mental and substance use disorders",abbr:"M.S.D.", rank: countryData[d.id][selectYear].Mental_Total},
-                                    {name: "Neurological conditions",abbr:"N.C.", rank: countryData[d.id][selectYear].Neurological_Total},
-                                    {name: "Sense Organ Diseases",abbr:"S.O.D.", rank: countryData[d.id][selectYear].Sense_Total},
-                                    {name: "Respiratory Diseases",abbr:"R.D.", rank: countryData[d.id][selectYear].Respiratory_Total},
-                                    {name: "Musculoskeletal Diseases",abbr:"M.D.", rank: countryData[d.id][selectYear].Musculoskeletal_Total},
-                                    {name: "Unintentional Injuries",abbr:"U.I.", rank: countryData[d.id][selectYear].Unintentional_Total},
-                                    {name: "Intentional Injuries",abbr:"I.I.", rank: countryData[d.id][selectYear].Intentional_Total}];
+                      var bardata = [{name:"Heart diseases",abbr:"HD", rank: countryData[d.id][selectYear].Cardiovascular_Total},
+                                    {name:"Infectious and parasitic diseases",abbr:"IPD", rank: countryData[d.id][selectYear].Infectious_Total},
+                                    {name: "Malignant neoplasms",abbr:"MN", rank: countryData[d.id][selectYear].Malignant_Total},
+                                    {name: "Mental and substance use disorders",abbr:"MSD", rank: countryData[d.id][selectYear].Mental_Total},
+                                    {name: "Neurological conditions",abbr:"NC", rank: countryData[d.id][selectYear].Neurological_Total},
+                                    {name: "Sense Organ Diseases",abbr:"SOD", rank: countryData[d.id][selectYear].Sense_Total},
+                                    {name: "Respiratory Diseases",abbr:"RD", rank: countryData[d.id][selectYear].Respiratory_Total},
+                                    {name: "Musculoskeletal Diseases",abbr:"MD", rank: countryData[d.id][selectYear].Musculoskeletal_Total},
+                                    {name: "Unintentional Injuries",abbr:"UI", rank: countryData[d.id][selectYear].Unintentional_Total},
+                                    {name: "Intentional Injuries",abbr:"II", rank: countryData[d.id][selectYear].Intentional_Total}];
                       
                       barXScale.domain(bardata.map(function(d){return d.abbr}));
                       barYScale.domain([0,d3.max(bardata,function(d){return d.rank})]);
@@ -259,7 +259,7 @@ var vis_corophlet = function(){
                           .attr("width", barXScale.bandwidth())
                           .attr("height",function(d){return barHeight - barYScale(d.rank)})
                           .attr("fill",function(d){
-                            if (d.name == "Cardiovascular diseases"){
+                            if (d.name == "Heart diseases"){
                               return "#d72748"
                             }
                             else{

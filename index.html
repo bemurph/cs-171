@@ -64,12 +64,12 @@
                     <p class="introduction-text">
                         Heart disease is the <strong>single biggest killer</strong> worldwide, but it can mostly be <strong>prevented</strong>.
                         <br> <br>
-                        Heart disease refers to conditions that involve narrowed or blocked blood vessels that can lead to a heart attack, chest pain (angina) or stroke. 610,000 Americans die from heart disease every year
+                        Heart disease refers to conditions that involve narrowed or blocked blood vessels that can lead to a heart attack, chest pain (angina) or stroke. 610,000 Americans die from heart disease every year.
                         <br><br>
                         There is no one cause for heart disease, but there are <a href="#view-3">risk factors</a> that increase your chance of developing it.
                         The more risk factors you have, the bigger your risk is of a heart attack or stroke.
                         <br><br>
-                        Apart from gender, which can not be changed, most other heart disease risk factors can be changed, and <strong>there is plenty you can do to improve your heart health!</strong>
+                        Apart from gender, most other heart disease risk factors can be changed, and <strong>there is plenty you can do to improve your heart health!</strong>
                         <a href="#view-4">High blood pressure</a> is the single biggest heart disease risk factor. Other important risk factors include <a href="#view-6">high blood cholesterol</a>, <a href="#view-8">physical inactivity, smoking and obesity</a>.
                     <br>
 
@@ -84,7 +84,7 @@
                         people died from heart disease in 2016
                         <br><br><br><br></p>
                     <p class="key-indicators"> Of these deaths, <span class="highlight"><span class="count-2">85 </span>%</span>
-                        are due to heart attack and stroke.
+                        are due to heart attack and stroke
                         <br><br><br><br></p>
                     <p class="key-indicators">Most heart diseases <span class="highlight">can be prevented</span></p>
                     <a class="source" href="http://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)">Source: World Health Organization</a>
@@ -107,7 +107,7 @@
             <div id="chart-area-3"></div>
             <div class="worldmap-legend"></div>
             <div class="bar-area">
-                <p style="color: #333333"><strong>Heart disease is the number 1 cause of death worldwide.</strong> Different countries have different heart disease burdens. <span style="background-color:#bb203f61">Click on a country</span> to check out its proportion of deaths that are attributable to heart disease, and to compare heart disease with leading causes of mortality. Color intensity reflects the country-specific heart disease burden</p>
+                <p style="color: #333333"><strong>Heart disease is the number 1 cause of death worldwide.</strong> Different countries have different heart disease burdens. Click on a country to check out its proportion of deaths that are attributable to heart disease, and to compare heart disease with leading causes of mortality. Color intensity reflects the country-specific heart disease burden</p>
                 <p class="bar-area-name"></p>
                 <p class="bar-area-population"></p>
                 <p class="bar-area-ratio"></p>
@@ -188,7 +188,7 @@
                         <p class="detail-text">
                             Blood pressure is the pressure your blood puts on your artery walls. Your blood pressure naturally goes up and down all the time, adjusting to your heart’s needs depending on what you are doing. <strong>A blood pressure reading under 120/80mmHg is considered optimal.</strong>
                             <br><br>
-                            Blood pressure that’s high (over 120/80mmHg) over a long time is one of the main risk factors for heart disease. In fact, uncontrolled high <a href="#sys_view_5">systolic blood pressure</a> can lead to a heart attack or stroke. It may also affect your kidneys.
+                            Blood pressure that’s high (over 120/80mmHg) over a long time is one of the main risk factors for heart disease. In fact, uncontrolled high <a href="#view-5">systolic blood pressure</a> can lead to a heart attack or stroke. It may also affect your kidneys.
                             <br><br>
                             <strong>There are many things you can do to lower your blood pressure</strong>, such as <a href="#view-8">losing excess weight, undertaking regular physical activity, and quitting smoking</a>. However, the importance of blood pressure as a risk factor is different across different geographic regions of the world.
                             <br>
@@ -215,9 +215,7 @@
                     <div class="col-md-12">
                         <h4><strong>Systolic blood pressure</strong> is the maximum pressure in the arteries when the heart contracts, and is therefore a <strong>major determinant of heart disease risk</strong>.
                             The visualization below explores the correlation between a country's mean systolic blood pressure and the <strong>burden</strong> of heart disease, represented as heart disease Disability Adjusted Life Years (DALYs)*.
-                        </h4>
-                        <h4>You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</h4>
-                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a heart disease risk factor.</a>
+                        You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</h4>
                     </div>
                 </div>
                 <div class="row bottom-1">
@@ -227,7 +225,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <form class="form-inline">
+                        <form class="form-inline bottom-1">
                             <div class="form-group d-inline-block">
                                 For
                                 <select style="margin-right: 5px" class="form-control" id="x-value" onchange="scatter.setGender(this.value)">
@@ -246,13 +244,15 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <p><small>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability.</small>
-                        <a class="source" href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source: World Health Organization</a></p>
+                        <p style="line-height: 1rem"><small>*One DALY can be thought of as one lost year of "healthy" life. The sum of these DALYs across the population, or the burden of disease, can be thought of as a measurement of the gap between current health status and an ideal health situation where the entire population lives to an advanced age, free of disease and disability.</small></p>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-12">
-                        <p><h4>In addition to 1 in 3 adults having uncontrolled blood pressure, <a href="#view-6">1 in 3 adults also have uncontrolled cholesterol</a></h4>
-                            <a class="source" href="https://www.cdc.gov/vitalsigns/cardiovasculardisease/index.html">Source 1: Centers for Disease Control and Prevention</a>
-                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source 2: Elevated systolic blood pressure as a heart disease risk factor.</a></p>
+                        <!-- <p><h4>In addition to 1 in 3 adults having uncontrolled blood pressure, <a href="#view-6">1 in 3 adults also have uncontrolled cholesterol</a>.</h4> -->
+                            <a class="source" href="https://www.cdc.gov/vitalsigns/cardiovasculardisease/index.html" style="margin-right: 1rem">Source 1: Centers for Disease Control and Prevention</a>
+                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386" style="margin-right: 1rem">Source 2: Elevated systolic blood pressure as a heart disease risk factor</a>
+                        <a class="source" href="https://www.who.int/healthinfo/global_burden_disease/metrics_daly/en/">Source 3: World Health Organization</a></p>
                     </div>
                 </div>
 
@@ -271,33 +271,22 @@
                 <div class="row">
                     <div class="col-md-12">
                         <p class="detail-text">
-                            Cholesterol is a waxy like substance that circulates in the blood. As the amount of cholesterol in your blood increases, so does the your risk of heart disease. It is <strong>optimal</strong> to have cholesterol levels below
-                            5.2 mmol/L (or 200 mg/dL)
+                            Cholesterol is a waxy like substance that circulates in the blood. As the amount of cholesterol in your blood increases, so too does your risk of heart disease. It is <strong>optimal</strong> to have cholesterol levels below
+                            5.2 mmol/L (or 200 mg/dL).
                             <br><br>
                         </p>
-                    </div>
-                    <div class="col-md-8">
                         <p class="detail-text">
-
-                            <strong>Your cholesterol levels are considered high if they are greater than 6.2 mmol/L (or 240 mg/dL).</strong> High cholesterol is one of the major controllable risk factors for coronary heart disease, heart
-                            attack and stroke. The reason high cholesterol levels increases your risk of heart disease is because, when there is too much cholesterol in the blood, it
+                            
+                            <img src="images/chol_bv_wall.png" width="40%" style="float: right;padding-left:1rem;">
+                            <strong>Your cholesterol levels are considered high if they are greater than 6.2 mmol/L (or 240 mg/dL).</strong> When there is too much cholesterol in the blood, it
                             can build up on the inside of blood vessel walls, causing the blood vessels to narrow and less flexible. Heart attacks and strokes occur when a blood clot forms and blocks one of these narrowed arteries.
                             <br><br>
-                        </p>
-
-                        <div id="chart-area-6">
-
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <img src="images/chol_bv_wall.png" width="400">
-                    </div>
-                    <div class="col-md-12">
-                        <p class="detail-text">If you have other risk factors such as <a href="#view-4">high blood pressure</a>, <a href="#view-8">smoking or obesity</a>, your risk
+                        </p><p class="detail-text">If you have other risk factors such as <a href="#view-4">high blood pressure</a>, <a href="#view-8">smoking or obesity</a>, your risk
                             increases even more. The more risk factors you have and the more severe they are, the more your overall risk is
                             compounded. The good news is that much can be done to improve blood cholesterol levels, and in recent years, some <a href="#view-7">countries</a> have managed to lower the blood cholesterol concentrations of their population.
                             <br>
                             <a class="source" href="https://www.nhlbi.nih.gov/files/docs/public/heart/wyntk.pdf">Source: National Institute of Health</a>
+                 
                     </div>
                 </div>
                 <div class="next-content">
@@ -313,34 +302,25 @@
         <div class="container">
             <h2 class="cho-title" id="chol_view_7">Global Trends in Average Cholesterol Levels in Adults 25 Years and Older</h2>
             <div class="row">
-                <p><h4>The <strong>optimal</strong> total blood cholesterol level for an adult is below 5.2 mmol/L,
-                and an individual is considered to have high cholesterol when the total blood cholesterol level is above
-                6.2mmol/L. Although in recent years, cholesterol levels have improved in many countries, average cholesterol
-                levels are often elevated above the desirable level.
+                <h4 style="margin-top: 0 !important;">The <strong>optimal</strong> total blood cholesterol level for an adult is below 5.2 mmol/L. 
+                    High cholesterol occurs when the total blood cholesterol level is above
+                6.2 mmol/L. In recent years cholesterol levels have improved in many countries; however the average cholesterol
+                levels are still often elevated above the desirable level.
                 <br><br>
-                If you have high cholesterol, that puts you at risk for heart disease, stroke, and peripheral arterial
-                disease. However, your personal cholesterol goal depends on other risk factors you may have,
-                like <a href="#view-8">smoking, being overweight, and being physically inactive</a>.
-               </h4></p>
+                Having high cholesterol puts you at risk for heart disease. Your personal cholesterol goal depends on other risk factors you may have,
+                including <a href="#view-8">smoking, being overweight, and being physically inactive</a>.
+               </h4>
 
                 <div class="col-md-12">
                     <div id="cholesterol" class="dark-red">Select a Country: </div>
                     <div id="chart-area-7"></div>
                 </div>
-               <!-- <div class="col-md-4">
-
-                    <div id="chart-area-8"></div>-->
-
-                    <!-- to implement gauge to show prevalence of high cholesterol in each country -->
-
-                </div>
-                <h4>No matter your level of cholesterol, it is important to be <a href="#view-8">physically active and
-                    maintain a healthy body weight</a> to keep your heart healthy now and into the future</h4>
             </div>
 
             <div class="next-content">
                 <span>NEXT: Overweight, obesity, physical inactivity, and smoking are important heart disease risk factors</span>
             </div>
+        </div>
         </div>
     </div>
 
@@ -349,13 +329,13 @@
         <div class="bag-inner">
         <div class="container">
             <h2 class="overweight-title" id="rf_view_8">Prevalence of Overweight, Obesity, Smoking, and Physical Inactivity</h2>
-            <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#view-4">blood pressure</a> and <a href="#view-6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
-                The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
+            <h4><strong>There is plenty you can do</strong> to improve your <a href="#view-4">blood pressure</a> and <a href="#view-6">cholesterol levels</a> which in turn reduces your risk of heart disease.
+                The most important heart disease risk factors that you can change are being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
                 The prevalence of these modifiable risk factors varies across different countries.
             </h4>
-            <p>Choose from the dropdown menu to view the prevalance of being overweight, obesity, physical inactivity,
-            and tobacco use. Click on the ordering option to choose the order. Click on different regions on the world
-                map to filter by those regions. Hover over the bars to view the data for specific countries.</p>
+            <h4>Choose from the dropdown menu to view the prevalance of being overweight, obese, physically inactive,
+            and smoking. Click on the ordering option to choose the order. Click on different regions on the world
+                map to filter by those regions. Hover over the bars to view the data for specific countries.</h4>
             <div class="row">
                 <div class="col-md-8">
                     <div id="chart-area-9"></div>
@@ -371,7 +351,7 @@
                                 <option value="smoking">Smoking</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="margin-bottom:1rem">
                             <label for="ranking-order" class="dark-red">Order</label>
                             <select class="form-control" id="ranking-order" onchange="barChart.reverse()">
                                 <option value="descending">Descending</option>
@@ -463,7 +443,7 @@
                             </div>
                         </div>
             
-                        <h3>For more information, visit</h3>
+                        <h3>For more information, visit:</h3>
                         <button onclick="window.location.href='https://www.heartfoundation.org.au/'" type="button" class="btn btn-info">Heart Foundation</button>
                         <button onclick="window.location.href='https://www.heart.org/'" type="button" class="btn btn-info">American Heart Association</button>
                         <button onclick="window.location.href='https://www.who.int/cardiovascular_diseases/en/'" type="button" class="btn btn-info">World Health Organisation</button>
@@ -539,7 +519,7 @@
                                 <br>
                                 10. Heart Icon: By DesignBite from the Noun Project
                                 <br>
-                                11. Images on views 4 and 6: <a href="https://www.wikihow.com/Lower-Diastolic-Blood-Pressure">https://www.wikihow.com/Lower-Diastolic-Blood-Pressure</a>      <a href="https://cholesterol-about.weebly.com/">https://cholesterol-about.weebly.com/</a>
+                                11. Images on views 4 and 6: <a href="https://www.wikihow.com/Lower-Diastolic-Blood-Pressure" style="margin-right:1rem">https://www.wikihow.com/Lower-Diastolic-Blood-Pressure</a> <a href="https://cholesterol-about.weebly.com/">https://cholesterol-about.weebly.com/</a>
                             </p>
                     </div>
     </div>
