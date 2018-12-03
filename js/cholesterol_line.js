@@ -2,7 +2,7 @@
 
 var marginC = {top: 20, right: 80, bottom: 20, left: 80},
     widthC = 850 - marginC.left - marginC.right,
-    heightC = 500 - marginC.top - marginC.bottom;
+    heightC = 450 - marginC.top - marginC.bottom;
 
 var parseYear = d3.timeParse("%Y");
 var formatYear = d3.timeFormat("%Y");
@@ -43,10 +43,13 @@ var color = d3.scaleOrdinal()
     .domain(["Male", "Female"])
     .range(["#4071FF", "#FE57FF"]);
 
-// Define the div for the tooltip
-var div = d3.select("body").append("div")
+// append the tooltip DOM element
+var tooltip = d3.select("body").append("div")
+    .attr("id", "tooltip")
     .attr("class", "tooltip")
+    .style("position", "absolute")
     .style("opacity", 0);
+
 
 // Import the CSV data
 d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, data) {
@@ -89,13 +92,13 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
     // Scale the range of the data
     x.domain(d3.extent(mean_cholesterol, function (d) {
         return +d.Year;
-    }));
+    })).nice();
     y.domain([d3.min(mean_cholesterol, function (d) {
         return +d.Cholesterol;
     }),
         0.2 + d3.max(mean_cholesterol, function (d) {
             return +d.Cholesterol;
-        })]);
+        })]).nice();
 
     // Set up the x axis
     var xAxis = svgC.append("g")
@@ -126,6 +129,8 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         .style("text-anchor", "middle")
         .text("Average Cholesterol in mmol/L")
         .attr("class", "y axis label");
+
+    svgC.append('g').classed('data-points', true);
 
     // Create a dropdown for countries
     var countryList = d3.select("#cholesterol");
@@ -177,28 +182,6 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .attr("class", "line")
             .attr('stroke', d => color(d.key));
 
-        //add a dot at each data point to which hover behaviour can be attached
-        svgC.selectAll('dot')
-        //.data(mean_cholesterol)
-            .enter()
-            .append('circle')
-            .attr('r', 2)
-            .attr('cx', function (d) {
-                return x(d.Year);
-            })
-            .attr('cy', function (d) {
-                return y(d.Cholesterol);
-            })
-            //attach mouse hover behaviour to the dots
-            .on('mouseover', function (d) {
-                div.transition().style('opacity', .9);
-                div.html('' + formatYear(d.Year) + '<br/>' + d.Cholesterol + ' mmol/L')
-                    .style('left', (d3.event.pageX) + 'px')
-                    .style('top', (d3.event.pageY) + 'px');
-            })
-            .on('mouseout', function (d) {
-                div.transition().style('opacity', 0);
-            });
 
         svgC.append("path")
             .data([mean_cholesterol])
@@ -219,7 +202,6 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .data(color.domain())
             .enter()
             .append("g")
-            .attr("font-size", "10px")
             .attr("class", "legend")
             .attr('transform', function (d, i) {
                 var heightL = legendRectSize + legendSpacing;
@@ -238,6 +220,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         legend.append('text')
             .attr('x', legendRectSize + legendSpacing)
             .attr('y', legendRectSize - legendSpacing)
+            .attr("font-size", "10px")
             .text(function (d) {
                 return d;
             });
@@ -257,6 +240,40 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .attr("text-anchor", "start")
             .style("fill", "9e1d35")
             .text("High Cholesterol");
+
+        svgC.select('g.data-points').selectAll("dot")
+            .data(data.filter(function(d) {
+                return d.Country === country;
+            }))
+            .enter().append("circle").classed('dot', true)
+            .attr("r", 3)
+            .style("fill", "white").style('stroke', '#000')
+            .attr("cx", function(d) { return x(d.Year); })
+            .attr("cy", function(d) { return y(+d.Cholesterol); })
+            //attach mouse hover behaviour to the dots
+            .on("mouseover", function(d) { // onMouseOver() - expand the circle, set and show the tooltip
+                d3.select(this).style("opacity", 0.7);
+                d3.select(this).attr("r", 10); /*    expand the point circle to be 10 pixels wide,
+                                                        so slight movement of the mouse doesn't hide it again */
+                // set the tooltip text
+                tooltip.html('Year: ' + formatYear(d.Year) + '<br/>' + "Average Cholesterol: " + d.Cholesterol + ' mmol/L' + '<br/>' +
+                    "Prevalence of High Cholesterol: " + d.Prevalence + '% ')
+                    .style("left", (d3.event.pageX) + "px")
+                    .style("top", (d3.event.pageY - 50) + "px");
+                // fadeIn the tooltip
+                tooltip.transition()
+                    .duration(1000)
+                    .style("opacity", 0.9)
+            })
+            .on("mouseout", function(d) { // onMouseOut() - shrink the circle, hide the tooltip
+                //d3.select(this).style("opacity", 0);
+                d3.select(this).attr("r", 3); // shrink point circle back to 5px
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", 0); // fadeOut the tooltip
+                tooltip.style("left", "-9999") // move the tooltip off screen so that we don't obscure the graph circles
+            });
+
 
     };
 
@@ -291,16 +308,6 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .attr("d", function (d) {
                 return lineC(d.values);
             })
-            //attach mouse hover behaviour to the dots
-            .on('mouseover', function (d) {
-                div.transition().style('opacity', .9);
-                div.html('' + formatYear(d.Year) + '<br/>' + d.Cholesterol + ' mmol/L')
-                    .style('left', (d3.event.pageX) + 'px')
-                    .style('top', (d3.event.pageY) + 'px');
-            })
-            .on('mouseout', function (d) {
-                div.transition().style('opacity', 0);
-            });
 
 
         // Update the Y-axis
@@ -308,13 +315,27 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             .transition()
             .duration(1500)
             .call(d3.axisLeft(y)
-                .ticks(5)
+                .ticks(10)
                 .tickSizeInner(0)
                 .tickPadding(6)
                 .tickSize(0, 0));
 
+        var circles = svgC.select('g.data-points').selectAll(".dot")
+            .data(data.filter(function(d) {
+                return d.Country === country;
+            }));
+
+        circles
+            .enter().append("circle")
+            .merge(circles).classed('data-point', true)
+            .attr("r", 3)
+            .style("fill", "white").style('stroke', '#000')
+            .transition().duration(1000)
+            .attr("cx", function(d) { return x(d.Year); })
+            .attr("cy", function(d) { return y(+d.Cholesterol); })
 
     }
+
 
 
     // Run update function when dropdown selection changes

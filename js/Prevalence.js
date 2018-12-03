@@ -8,7 +8,8 @@ BarChart = function(_parentElement, _data, _legendElement, _legendData) {
     this.textFriendlyCategories = {
         overweight: "being overweight",
         obese: "obesity",
-        physicallyInactive: "physical inactivity"
+        physicallyInactive: "physical inactivity",
+        smoking: "smoking"
     };
     this.mapLegend = new WorldLegend(_legendElement, _legendData, filterBar);
 
@@ -22,7 +23,7 @@ BarChart.prototype.initVis = function () {
     const boundingBox = d3.select(vis.parentElement).node().getBoundingClientRect();
 
     vis.width = boundingBox.width - vis.margin.left - vis.margin.right;
-    vis.height = vis.width/2 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width*0.75 - vis.margin.top - vis.margin.bottom;
 
     vis.svg = d3.select(vis.parentElement).append('svg')
         .attr("width", vis.width + vis.margin.left + vis.margin.right)
@@ -33,32 +34,23 @@ BarChart.prototype.initVis = function () {
 // The API for scales have changed in v4. There is a separate module d3-scale which can be used instead. The main change here is instead of d3.scale.linear, we have d3.scaleLinear.
     vis.xScale = d3.scaleBand()
         .range([0, vis.width])
-        .paddingInner(0.1);
+        .padding(0.1);
 
     vis.yScale = d3.scaleLinear()
         .range([vis.height, 0]);
-
-// the axes are much cleaner and easier now. No need to rotate and orient the axis, just call axisBottom, axisLeft etc.
-    vis.xAxis = d3.axisBottom()
-        .scale(vis.xScale);
-
-    // adding axes is also simpler now, just translate x-axis to (0,height) and it's already defined to be a bottom axis.
-    vis.xAxisElement = vis.svg.append('g')
-        .attr('transform', 'translate(0,' + vis.height + ')')
-        .attr('class', 'x-axis axis');
 
     vis.yAxis = d3.axisLeft()
         .scale(vis.yScale);
 
     vis.yAxisElement = vis.svg.append('g')
         .attr('class', 'y-axis axis')
-        .attr('transform', 'translate('+(-20)+',0)');
+        // .attr('transform', 'translate('+(-5)+',0)');
 
     vis.yAxisLabel = vis.svg.append('text')
         .attr("class", "axis-title")
-        .attr("text-anchor", "middle")
+        // .attr("text-anchor", "middle")
         .attr("y", -10)
-        .attr("x", 0);
+        .attr("x", -10);
 
     vis.tooltip = d3.tip()
         .attr('class', 'd3-tip')
@@ -70,7 +62,7 @@ BarChart.prototype.initVis = function () {
 
     vis.svg.call(vis.tooltip);
 
-    vis.updateVis();
+    vis.filterData();
 };
 
 BarChart.prototype.updateVis = function() {
@@ -84,6 +76,8 @@ BarChart.prototype.updateVis = function() {
 
     vis.xScale.domain(vis.filteredData.map(d => d.country));
     vis.yScale.domain([0, d3.max(vis.filteredData, d => d[vis.selectedCategory])]);
+
+    vis.yAxisLabel.text('Prevalence of '+vis.textFriendlyCategories[vis.selectedCategory]+' (%)');
 
     vis.bars = vis.svg.selectAll(".bar")
         .data(vis.filteredData, d => d.country);
@@ -115,7 +109,9 @@ BarChart.prototype.updateVis = function() {
                 .attr("height", d => vis.height - vis.yScale(d[vis.selectedCategory]))
             .transition().duration(vis.transitionDuration/2)
                 .style("opacity", 1);
-    vis.bars.exit().transition().duration(vis.transitionDuration).remove();
+    vis.bars.exit().transition().duration(vis.transitionDuration/2)
+            .style('opacity', 0)
+            .remove();
 
     vis.yAxisElement.transition().duration(vis.transitionDuration).delay(vis.transitionDuration/2)
         .call(vis.yAxis);
@@ -133,13 +129,14 @@ BarChart.prototype.selectCategory = function(newCategory) {
     let vis = this;
 
     vis.selectedCategory = newCategory;
-    vis.updateVis();
+    vis.filterData();
 };
 
 
 BarChart.prototype.filterData = function() {
     let vis = this;
     vis.filteredData = vis.data.filter(d =>
+        d[vis.selectedCategory] > 0 &&
         (vis.mapLegend.selectedRegions.length === 0 || vis.mapLegend.selectedRegions.includes(d.region))
     );
     vis.updateVis();

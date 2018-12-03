@@ -350,23 +350,30 @@
         <div class="bag-inner">
         <div class="container">
             <h2 class="overweight-title" id="rf_view_8">Prevalence of Overweight, Obesity, and Physical Inactivity</h2>
+            <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#bp_view_4">blood pressure</a> and <a href="#chol_view_6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
+                The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
+                The prevalence of these modifiable risk factors varies across different countries.
+            </h4>
+            <p>Choose from the dropdown menu to view the prevalance of being overweight, obesity, physical inactivity,
+            and tobacco use. Click on different regions on the world map to filter by those regions. </p>
             <div class="row">
                 <div class="col-md-8">
-                    <h4>Heart disease is the <strong>single biggest killer</strong> worldwide. However, <strong>there is plenty you can do</strong> to improve your <a href="#bp_view_4">blood pressure</a> and <a href="#chol_view_6">cholesterol levels</a>, which in turn, reduces your risk of heart disease.
-                        The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
-                    The prevalence of these modifiable risk factors varies across different countries.
-                    </h4>
-                    <label for="ranking-type">Group by</label>
-                    <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
-                        <option value="overweight">Overweight</option>
-                        <option value="obese">Obesity</option>
-                        <option value="physicallyInactive">Physical Inactivity</option>
-                    </select>
-
-                    <button type="button" class="btn btn-link" id="change-sorting" onclick="barChart.reverse()"><i class="glyphicon glyphicon-sort"></i> Sort</button>
                     <div id="chart-area-9"></div>
                 </div>
                 <div class="col-md-4">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="ranking-type" class="dark-red">Viewing prevalence of</label>
+                            <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
+                                <option value="overweight">Overweight</option>
+                                <option value="obese">Obesity</option>
+                                <option value="physicallyInactive">Physical Inactivity</option>
+                                <option value="smoking">Smoking</option>
+                            </select>
+                        </div>
+                    </form>
+                    <span class="dark-red">Order   </span>
+                    <a id="bar-order" href="#view-8" onclick="barChart.reverse()">Descending</a>
                     <div id="bar-world-legend"></div>
                 </div>
             </div>
@@ -463,7 +470,7 @@
                         <div class="row">
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img1.jpg" alt="Jane" style="width:100%">
+                                    <img src="images/img1.jpg" alt="Kerry Ivey" style="width:100%">
                                     <div>
                                     <h3>Kerry Ivey</h3>
                                     </div>
@@ -472,22 +479,22 @@
                             
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img2.jpg" alt="Mike" style="width:100%">
+                                    <img src="images/img2.jpg" alt="Brendan Murphy" style="width:100%">
                                     <div>
-                                    <h3>Brendon Murphy</h3>
+                                    <h3>Brendan Murphy</h3>
                                     </div>
                                 </div>
                                 </div>
                             
                                 <div class="column">
                                 <div class="card">
-                                    <img src="images/img3.jpg" alt="John" style="width:100%">
+                                    <img src="images/img3.jpg" alt="Nil Tuzcu" style="width:100%">
                                     <h3>Nil Tuzcu</h3>
                                 </div>
                                 </div>
                                 <div class="column">
                                         <div class="card">
-                                        <img src="images/img4.jpg" alt="John" style="width:100%">
+                                        <img src="images/img4.jpg" alt="Ka Ning Yip" style="width:100%">
                                         <div>
                                             <h3>Ka Ning Yip</h3>
                                         </div>
@@ -496,7 +503,7 @@
                             </div>
 
                             <h3>References</h3>
-                            <p style="font-size:14px;">
+                            <p style="font-size:13px;">
                                 1. View 2&5 Data Sources: <a href="http://www.who.int/healthinfo/global_burden_disease/estimates/en/index1.html"> http://www.who.int/healthinfo/global_burden_disease/estimates/en/index1.html</a>
                                 <br>
                                 2. View 5,7,8 Data Sources: <a href="http://apps.who.int/gho/data/node.main.A867?lang=en">http://apps.who.int/gho/data/node.main.A867?lang=en</a>
@@ -516,6 +523,8 @@
                                 9. High Cholesterol Icon: By Gan Khoon Lay from the Noun Project
                                 <br>
                                 10. Heart Icon: By DesignBite from the Noun Project
+                                <br>
+                                11. Image on view 4: <a href="https://cholesterol-about.weebly.com/">https://cholesterol-about.weebly.com/</a>
                             </p>
                     </div>
     </div>
