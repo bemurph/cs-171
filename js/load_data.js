@@ -70,11 +70,15 @@ function processBPRow(d) {
 }
 
 function processBarRow(d) {
+    if (d.Smoking === '' ) {
+        d.Smoking = 0;
+    }
     return {
         obese: +d.Obese,
         overweight: +d.Overweight,
         physicallyInactive: +d.Physical_inactivity,
         region: d.Region,
+        smoking: +d.Smoking,
         country: d.Country
     }
 }
