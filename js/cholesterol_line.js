@@ -124,8 +124,7 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
         .attr("transform", "rotate(-90)")
         .attr("y", 0 - 60)
         .attr("x", 0 - (heightC / 2))
-        .attr("dy", "2em")
-        .attr("font-size", "12px")
+        .attr("dy", "0.71em")
         .style("text-anchor", "middle")
         .text("Average Cholesterol in mmol/L")
         .attr("class", "y axis label");
@@ -226,17 +225,17 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             });
 
         svgC.append("text")
-            .attr("transform", "translate(" + (widthC + 2) + "," + y(mean_cholesterol[0].Threshold + 0.05) + ")")
+            .attr("transform", "translate(" + (widthC - 40) + "," + y(mean_cholesterol[0].Threshold + 0.05) + ")")
             .attr("dy", ".35em")
-            .attr("font-size", "10px")
+            .attr("font-size", "12px")
             .attr("text-anchor", "start")
             .style("fill", "e41a1c")
             .text("Optimal Level");
 
         svgC.append("text")
-            .attr("transform", "translate(" + (widthC + 2) + "," + y(mean_cholesterol[0].High + 0.05) + ")")
+            .attr("transform", "translate(" + (widthC - 40) + "," + y(mean_cholesterol[0].High + 0.05) + ")")
             .attr("dy", ".35em")
-            .attr("font-size", "10px")
+            .attr("font-size", "12px")
             .attr("text-anchor", "start")
             .style("fill", "9e1d35")
             .text("High Cholesterol");
@@ -247,29 +246,31 @@ d3.csv("data/mean-total-blood-cholesterol-age-adjusted.csv", function(error, dat
             }))
             .enter().append("circle").classed('dot', true)
             .attr("r", 3)
-            .style("fill", "white").style('stroke', '#000')
+            .style("fill", "#fee0d2").style('stroke', '#000')
             .attr("cx", function(d) { return x(d.Year); })
             .attr("cy", function(d) { return y(+d.Cholesterol); })
             //attach mouse hover behaviour to the dots
             .on("mouseover", function(d) { // onMouseOver() - expand the circle, set and show the tooltip
-                d3.select(this).style("opacity", 0.7);
-                d3.select(this).attr("r", 10); /*    expand the point circle to be 10 pixels wide,
+                d3.select(this)
+                    .style("opacity", 0.7);
+                d3.select(this)
+                    .attr("r", 5); /*    expand the point circle to be 5 pixels wide,
                                                         so slight movement of the mouse doesn't hide it again */
                 // set the tooltip text
-                tooltip.html('Year: ' + formatYear(d.Year) + '<br/>' + "Average Cholesterol: " + d.Cholesterol + ' mmol/L' + '<br/>' +
-                    "Prevalence of High Cholesterol: " + d.Prevalence + '% ')
+                tooltip.html('<strong>Year: </strong>' + formatYear(d.Year) + '<br/>' + "<strong>Average Cholesterol: </strong>" + d.Cholesterol + ' mmol/L' + '<br/>' +
+                    "<strong>Prevalence of High Cholesterol: </strong>" + d.Prevalence + '% ')
                     .style("left", (d3.event.pageX) + "px")
                     .style("top", (d3.event.pageY - 50) + "px");
                 // fadeIn the tooltip
                 tooltip.transition()
-                    .duration(1000)
+                    .duration(500)
                     .style("opacity", 0.9)
             })
             .on("mouseout", function(d) { // onMouseOut() - shrink the circle, hide the tooltip
                 //d3.select(this).style("opacity", 0);
                 d3.select(this).attr("r", 3); // shrink point circle back to 5px
                 tooltip.transition()
-                    .duration(200)
+                    .duration(500)
                     .style("opacity", 0); // fadeOut the tooltip
                 tooltip.style("left", "-9999") // move the tooltip off screen so that we don't obscure the graph circles
             });
