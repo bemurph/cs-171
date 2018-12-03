@@ -87,7 +87,7 @@
                         are due to heart attack and stroke.
                         <br><br><br><br></p>
                     <p class="key-indicators">Most heart diseases <span class="highlight">can be prevented</span></p>
-                    <a class="source" href="http://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)">Source</a>
+                    <a class="source" href="http://www.who.int/news-room/fact-sheets/detail/cardiovascular-diseases-(cvds)">Source: World Health Organization</a>
                 </div>
             </div>
             <div class="next-content">
@@ -129,7 +129,7 @@
 
                 <form style="margin-left: 20px;" class="form-inline">
                     <div class="form-group" id="select-box-year">
-                        <label for="year-type">Year</label>
+                        <label for="map-year-type">Year</label>
                         <select class="form-control" id="map-year-type">
                             <option value="2016">2016</option>
                             <option value="2000">2000</option>
@@ -213,10 +213,11 @@
                 <h2 class="blood-title" id="sys_view_5">Systolic Blood Pressure Contributes to Heart Disease Mortality</h2>
                 <div class="row bottom-1">
                     <div class="col-md-12">
-                        <p class="bottom-0"><h4><strong>Systolic blood pressure</strong> is the maximum pressure in the arteries when the heart contracts, and is therefore a <strong>major determinant of heart disease risk</strong>.
+                        <h4><strong>Systolic blood pressure</strong> is the maximum pressure in the arteries when the heart contracts, and is therefore a <strong>major determinant of heart disease risk</strong>.
                             The visualization below explores the correlation between a country's mean systolic blood pressure and the <strong>burden</strong> of heart disease, represented as heart disease Disability Adjusted Life Years (DALYs)*.
                         </h4>
-                        You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</p>
+                        <h4>You can click on the different regions in the world map to filter by those regions. The size of a dot is proportional to the country's population. Hover over the dots for more information about individual countries.</h4>
+                        <a class="source" href="https://www.ncbi.nlm.nih.gov/pubmed/10955386">Source: Elevated systolic blood pressure as a heart disease risk factor.</a>
                     </div>
                 </div>
                 <div class="row bottom-1">
@@ -323,7 +324,7 @@
                </h4></p>
 
                 <div class="col-md-12">
-                    <div id="cholesterol">Select a Country: </div>
+                    <div id="cholesterol" class="dark-red">Select a Country: </div>
                     <div id="chart-area-7"></div>
                 </div>
                <!-- <div class="col-md-4">
@@ -338,7 +339,7 @@
             </div>
 
             <div class="next-content">
-                <span>NEXT: Overweight, obesity, smoking and physical inactivity are important heart disease risk factors</span>
+                <span>NEXT: Overweight, obesity, physical inactivity, and smoking are important heart disease risk factors</span>
             </div>
         </div>
     </div>
@@ -401,11 +402,12 @@
                         </div>
                         <div class="row">
                             <div class="col-md-6 recommendation-div arrow-right">
-                                <h3 class="pick-risk">If you have...  <span style="text-transform: capitalize; font-size: 14px">  (Select a risk factor)</span></h3>
+                                <h3 class="pick-risk">If you...  <span style="text-transform: capitalize; font-size: 14px">  (Select a risk factor)</span></h3>
                                 <div id="risk-factor-list">
-                                    <h3 class="recom-blood-pres"><a href="#view-9" data-target="#blood-pressure-recommendation" class="active">High blood pressure</a></h3>
-                                    <h3 class="recom-cholesterol"><a href="#view-9" data-target="#cholesterol-recommendation">High cholesterol</a></h3>
-                                    <h3 class="recom-diabetes"><a href="#view-9" data-target="#diabetes-recommendation">Diabetes</a></h3>
+                                    <h3 class="recom-blood-pres"><a href="#view-9" data-target="#blood-pressure-recommendation" class="active">Have high blood pressure</a></h3>
+                                    <h3 class="recom-cholesterol"><a href="#view-9" data-target="#cholesterol-recommendation">Have high cholesterol</a></h3>
+                                    <h3 class="recom-obesity"><a href="#view-9" data-target="#obesity-recommendation">Are obese</a></h3>
+                                    <h3 class="recom-inactivity"><a href="#view-9" data-target="#inactivity-recommendation">Are physically inactive</a></h3>
                                     <h3 class="recom-smoking"><a href="#view-9" data-target="#smoking-recommendation">A smoking habit</a></h3>
                                 </div>
                             </div>
@@ -432,15 +434,24 @@
                                     </ul>
                                     <a class="source" href="http://www.heart.org/en/health-topics/cholesterol/prevention-and-treatment-of-high-cholesterol-hyperlipidemia/cooking-to-lower-cholesterol">Source</a>
                                 </div>
-                                <div class="recommendation" id="diabetes-recommendation">
+                                <div class="recommendation" id="obesity-recommendation">
                                     <ul>
-                                        <li>Reduce sweets and added sugars, such as corn syrups, soda, and candy</li>
-                                        <li>Increase fiber and whole grains, such as oatmeal, brown rice, and whole grain pasta</li>
-                                        <li>Exercise regularly</li>
-                                        <li>Limit your alcohol intake</li>
-                                        <li><a href="https://www.cdc.gov/healthyweight/assessing/index.html">Maintain a healthy weight</a></li>
+                                        <li>Eat a healthier diet</li>
+                                        <li>Get regular exercise</li>
+                                        <li>Aim to lose 1 pound per week</li>
+                                        <li>Maintain a BMI under 25</li>
                                     </ul>
-                                    <a class="source" href="http://www.heart.org/en/health-topics/diabetes/prevention--treatment-of-diabetes/living-healthy-with-diabetes">Source</a>
+                                    <a class="source" href="https://www.everydayhealth.com/heart-disease/obesity-heart-disease-whats-connection/">Source</a>
+                                </div>
+                                <div class="recommendation" id="inactivity-recommendation">
+                                    <ul>
+                                        <li>Choose activities you enjoy</li>
+                                        <li>Get 150 minutes of intense physical activity a week</li>
+                                        <li>Do muscle-strengthening activities 2 days a week</li>
+                                        <li>Be active with others</li>
+                                        <li>Vary the type of activity you do</li>
+                                    </ul>
+                                    <a class="source" href="https://www.heartfoundation.org.au/active-living/get-active">Source</a>
                                 </div>
                                 <div class="recommendation" id="smoking-recommendation">
                                     <ul>
@@ -547,6 +558,7 @@
 <script src="js/queue.v1.min.js"></script>
 <script src="js/d3.min.js"></script>
 <script src="js/d3-legend.min.js"></script>
+<script src="js/d3-tip.js"></script>
 <script src="js/topojson.min.js"></script>
 
 <!-- Visualization objects -->
@@ -565,9 +577,7 @@
 <script src="js/Prevalence.js"></script>
 <script src="js/load_data.js"></script>
 <script src="js/cholesterol_line.js"></script>
-<script src="js/d3-tip.js"></script>
 <script src="js/main.js"></script>
-<!-- <script src="js/scatter.js"></script> -->
 </body>
 
 </html>
