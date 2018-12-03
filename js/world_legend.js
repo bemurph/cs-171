@@ -14,7 +14,7 @@ WorldLegend.prototype.initVis = function() {
     const boundingBox = d3.select(vis.parentElement).node().getBoundingClientRect();
 
     vis.width = boundingBox.width - vis.margin.left - vis.margin.right;
-    vis.height = vis.width*3/4 - vis.margin.top - vis.margin.bottom;
+    vis.height = vis.width*0.5 - vis.margin.top - vis.margin.bottom;
 
     // SVG drawing area
     vis.svg = d3.select(vis.parentElement).append("svg")
