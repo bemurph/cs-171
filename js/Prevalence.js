@@ -8,7 +8,8 @@ BarChart = function(_parentElement, _data, _legendElement, _legendData) {
     this.textFriendlyCategories = {
         overweight: "being overweight",
         obese: "obesity",
-        physicallyInactive: "physical inactivity"
+        physicallyInactive: "physical inactivity",
+        smoking: "smoking"
     };
     this.mapLegend = new WorldLegend(_legendElement, _legendData, filterBar);
 
@@ -61,7 +62,7 @@ BarChart.prototype.initVis = function () {
 
     vis.svg.call(vis.tooltip);
 
-    vis.updateVis();
+    vis.filterData();
 };
 
 BarChart.prototype.updateVis = function() {
@@ -128,13 +129,14 @@ BarChart.prototype.selectCategory = function(newCategory) {
     let vis = this;
 
     vis.selectedCategory = newCategory;
-    vis.updateVis();
+    vis.filterData();
 };
 
 
 BarChart.prototype.filterData = function() {
     let vis = this;
     vis.filteredData = vis.data.filter(d =>
+        d[vis.selectedCategory] > 0 &&
         (vis.mapLegend.selectedRegions.length === 0 || vis.mapLegend.selectedRegions.includes(d.region))
     );
     vis.updateVis();
