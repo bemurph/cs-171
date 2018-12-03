@@ -74,7 +74,22 @@ BeatingHeart.prototype.updateVis = function() {
         .attr('x', vis.centerX(vis.iconSize))
         .attr('y', vis.centerY(vis.iconSize))
         .attr('width', vis.iconSize)
-        .attr('height', vis.iconSize);
+        .attr('height', vis.iconSize)
+        .attr('class', d => d.name)
+        .on('mouseover', function(d) {
+            vis.svg.selectAll('.'+d.name)
+                .attr('width', vis.iconSize*1.25)
+                .attr('height', vis.iconSize*1.25)
+                .attr('x', vis.centerX(vis.iconSize*1.25))
+                .attr('y', vis.centerY(vis.iconSize*1.25));
+        })
+        .on('mouseout', function(d) {
+            vis.svg.selectAll('.'+d.name)
+                .attr('width', vis.iconSize)
+                .attr('height', vis.iconSize)
+                .attr('x', vis.centerX(vis.iconSize))
+                .attr('y', vis.centerY(vis.iconSize));
+        });
     vis.heart = vis.svg.append('image')
         .attr('xlink:href', 'images/heart2.svg')
         .attr('x', vis.centerX(vis.heartSize))

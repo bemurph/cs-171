@@ -106,7 +106,7 @@
             <div id="chart-area-3"></div>
             <div class="worldmap-legend"></div>
             <div class="bar-area">
-                <p style="color: #333333">Heart disease is the number 1 cause of death worldwide. Different countries have different heart disease burdens. <span style="background-color:#bb203f61">Click on a country</span> to check out its proportion of deaths that are attributable to heart disease, and to compare heart disease with leading causes of mortality. Color intensity reflects the country-specific heart disease burden</p>
+                <p style="color: #333333"><strong>Heart disease is the number 1 cause of death worldwide.</strong> Different countries have different heart disease burdens. <span style="background-color:#bb203f61">Click on a country</span> to check out its proportion of deaths that are attributable to heart disease, and to compare heart disease with leading causes of mortality. Color intensity reflects the country-specific heart disease burden</p>
                 <p class="bar-area-name"></p>
                 <p class="bar-area-population"></p>
                 <p class="bar-area-ratio"></p>
@@ -199,7 +199,7 @@
                         </p>
                     </div>
                     <div class="col-md-6">
-                        <img src="images/sysdias.jpg">
+                        <img src="images/sysdias.jpg" class="width-100">
                     </div>
                 </div>
             </div>
@@ -355,22 +355,32 @@
                 The most important heart disease risk factors that you can change are: being <strong>overweight or obese</strong>, being <strong>physically inactive</strong>, and <strong>smoking</strong>.
                 The prevalence of these modifiable risk factors varies across different countries.
             </h4>
-            <p>Choose from the dropdown menu to view the prevalance of being overweight, obesity, physical inactivity,
-            and tobacco use. Click on different regions on the world map to filter by those regions. </p>
+            <h4>Choose from the dropdown menu to view the prevalance of being overweight, obesity, physical inactivity,
+            and tobacco use. Click on the ordering option to choose the order. Click on different regions on the world
+                map to filter by those regions. Hover over the bars to view the data for specific countries.</h4>
             <div class="row">
                 <div class="col-md-8">
                     <div id="chart-area-9"></div>
                 </div>
                 <div class="col-md-4">
-                    <label for="ranking-type">Group by</label>
-                    <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
-                        <option value="overweight">Overweight</option>
-                        <option value="obese">Obesity</option>
-                        <option value="physicallyInactive">Physical Inactivity</option>
-                        <option value="smoking">Smoking</option>
-                    </select>
-                    Order:
-                    <a id="bar-order" href="#view-8" onclick="barChart.reverse()">Descending</a>
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <label for="ranking-type" class="dark-red">Viewing prevalence of</label>
+                            <select class="form-control" id="ranking-type" onchange="barChart.selectCategory(this.value)">
+                                <option value="overweight">Overweight</option>
+                                <option value="obese">Obesity</option>
+                                <option value="physicallyInactive">Physical Inactivity</option>
+                                <option value="smoking">Smoking</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="ranking-order" class="dark-red">Order</label>
+                            <select class="form-control" id="ranking-order" onchange="barChart.reverse()">
+                                <option value="descending">Descending</option>
+                                <option value="ascending">Ascending</option>
+                            </select>
+                        </div>
+                    </form>
                     <div id="bar-world-legend"></div>
                 </div>
             </div>
@@ -558,7 +568,6 @@
 <script src="js/Prevalence.js"></script>
 <script src="js/load_data.js"></script>
 <script src="js/cholesterol_line.js"></script>
-<!--<script src="js/cholesterol_gauge.js"></script>-->
 <script src="js/d3-tip.js"></script>
 <script src="js/main.js"></script>
 <!-- <script src="js/scatter.js"></script> -->

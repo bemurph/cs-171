@@ -589,9 +589,11 @@ div.tooltip {
   }
 }
 
-/* Add some shadows to create a card effect */
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f7f7f7 !important;
+  border: 1px solid rgba(0,0,0,.125) !important;
+  border-radius: 2px !important;
 }
 
 .card h3{
@@ -658,4 +660,18 @@ div.tooltip {
     transform: rotate(180deg);
 }
 
+#ranking-type {
+    margin-left: 1rem;
+}
 
+#ranking-order {
+    margin-left: 1rem;
+}
+
+.dark-red {
+    color:#9e1d35;
+}
+
+.width-100 {
+    width: 100%;
+}
