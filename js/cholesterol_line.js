@@ -45,8 +45,8 @@ var color = d3.scaleOrdinal()
 
 // append the tooltip DOM element
 var tooltip = d3.select("body").append("div")
-    .attr("id", "tooltip")
-    .attr("class", "tooltip")
+   // .attr("id", "tooltip")
+    .attr("class", "d3-tip")
     .style("position", "absolute")
     .style("opacity", 0);
 
