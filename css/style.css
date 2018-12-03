@@ -662,6 +662,14 @@ div.tooltip {
     margin-left: 1rem;
 }
 
+#ranking-order {
+    margin-left: 1rem;
+}
+
 .dark-red {
     color:#9e1d35;
+}
+
+.width-100 {
+    width: 100%;
 }
